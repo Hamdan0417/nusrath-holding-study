@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>خارطة الطريق | Implementation Roadmap</title>
-<link rel="stylesheet" href="styles.css">
-<style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>خارطة الطريق | Implementation Roadmap</title><link rel="stylesheet" href="styles.css"><style>
 /* Roadmap page — execution reference */
 .rm-hero {
  background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 100%);
@@ -294,125 +287,8 @@ body.dark-mode .export-bar button { color: #f5c977; }
  .rm-hero { padding: 20px; }
  .rm-filters, .export-bar, .rm-progress-bar, .m-checkbox { display: none !important; }
 }
-</style>
-</head>
-<body dir="rtl">
-
-<header class="header">
- <div class="header-content">
- <div class="logo">ROADMAP</div>
- <h1><span class="lang-ar">خارطة الطريق التنفيذية</span><span class="lang-en">Implementation Roadmap</span></h1>
- <div class="subtitle"><span class="lang-ar">من البدء حتى الاكتمال — محطاتٌ ترافقنا في الطريق</span><span class="lang-en">From launch to completion — milestones that mark the path</span></div>
- <div class="breadcrumb">
- <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
- <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span>
- </div>
- </div>
-</header>
-
-<nav class="topnav">
- <div class="topnav-content">
- <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
- <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
- <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
- <a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a>
- <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
- <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
- <span class="nav-divider"></span>
- <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
- <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
- <a href="hacfi.html">🏭 HACFI</a>
- <a href="aret.html">🪵 Art Craft</a>
- <a href="superstruct.html">🏗 Superstruct</a>
- <span class="nav-divider"></span>
- <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
- <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
- <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
- <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
- <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
- <span class="nav-divider"></span>
- <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
- <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
- <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
- <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
- <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
- <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
- <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
- </div>
-</nav>
-
-<section class="rm-hero">
- <h1><span class="lang-ar">من البدء حتى الاكتمال</span><span class="lang-en">From Launch to Completion</span></h1>
- <p class="tagline">
- <span class="lang-ar">8 مراحل • 48 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
- <span class="lang-en">8 phases • 48 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
- </p>
-</section>
-
-<!-- PROGRESS BAR -->
-<section class="rm-progress-bar">
- <div class="rm-progress-top">
- <div class="rm-progress-label">
- <span class="lang-ar">التقدم الكلي</span><span class="lang-en">Overall Progress</span>
- </div>
- <div class="rm-progress-percent" id="overall-pct">0%</div>
- </div>
- <div class="rm-progress-track">
- <div class="rm-progress-fill" id="overall-fill" style="width: 0%;"></div>
- </div>
- <div class="rm-meta">
- <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-done">0</div><div class="rm-meta-label"><span class="lang-ar">منجزة</span><span class="lang-en">Done</span></div></div>
- <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">48</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
- <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/8</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div>
- <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-weeks">~18</div><div class="rm-meta-label"><span class="lang-ar">أسبوع متوقع</span><span class="lang-en">Est. Weeks</span></div></div>
- </div>
-</section>
-
-<!-- FILTERS -->
-<div class="rm-filters">
- <button class="rm-filter-chip active" data-filter="all"><span class="lang-ar">الكل</span><span class="lang-en">All</span></button>
- <button class="rm-filter-chip" data-filter="P0">P0</button>
- <button class="rm-filter-chip" data-filter="P1">P1</button>
- <button class="rm-filter-chip" data-filter="P2">P2</button>
- <button class="rm-filter-chip" data-filter="P3">P3</button>
- <button class="rm-filter-chip" data-filter="P5">P5</button>
- <button class="rm-filter-chip" data-filter="P6">P6</button>
- <button class="rm-filter-chip" data-filter="P7">P7</button>
- <button class="rm-filter-chip" data-filter="P8">P8</button>
- <button class="rm-filter-chip" data-filter="todo">🟡 <span class="lang-ar">غير مكتمل</span><span class="lang-en">Pending</span></button>
- <button class="rm-filter-chip" data-filter="done">✅ <span class="lang-ar">مكتمل</span><span class="lang-en">Done</span></button>
-</div>
-
-<!-- LEGEND -->
-<div class="legend">
- <div class="legend-item"><span class="legend-dot" style="background:#c9a961;"></span><span class="lang-ar">محطة عادية</span><span class="lang-en">Normal milestone</span></div>
- <div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span><span class="lang-ar">مكتملة</span><span class="lang-en">Done</span></div>
- <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span><span class="lang-ar">قيد التنفيذ</span><span class="lang-en">In progress</span></div>
- <div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span class="lang-ar">معلّقة</span><span class="lang-en">Blocked</span></div>
- <div class="legend-item"><strong style="color:#dc2626;">🔴</strong> <span class="lang-ar">مسار حرج</span><span class="lang-en">Critical path</span></div>
-</div>
-
-<!-- TIMELINE -->
-<main class="rm-timeline" id="rm-timeline">
- <!-- Phases rendered by JS -->
-</main>
-
-<!-- TOOLBAR -->
-<div class="export-bar">
- <button onclick="rmExport()">📥 <span class="lang-ar">تصدير التقدّم</span><span class="lang-en">Export Progress</span></button>
- <button onclick="rmImport()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button>
- <button onclick="window.print()">🖨 <span class="lang-ar">طباعة الخارطة</span><span class="lang-en">Print Roadmap</span></button>
- <button onclick="rmReset()">🔄 <span class="lang-ar">إعادة تعيين</span><span class="lang-en">Reset</span></button>
-</div>
-
-<footer>
- <div class="footer-content">
- <p><span class="lang-ar">© خارطة الطريق التنفيذية — مجموعة نصرت القابضة</span><span class="lang-en">© Implementation Roadmap — Nusrath Holding Group</span></p>
- </div>
-</footer>
-
-<script src="script.js"></script>
-<script>
+</style></head><body dir="rtl"><header class="header"><div class="header-content"><div class="logo">ROADMAP</div><h1><span class="lang-ar">خارطة الطريق التنفيذية</span><span class="lang-en">Implementation Roadmap</span></h1><div class="subtitle"><span class="lang-ar">من البدء حتى الاكتمال — محطاتٌ ترافقنا في الطريق</span><span class="lang-en">From launch to completion — milestones that mark the path</span></div><div class="breadcrumb"><a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
+ <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></div></div></header><nav class="topnav"><div class="topnav-content"><a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a><span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span><a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a><a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a><a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a><a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a><span class="nav-divider"></span><span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span><a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a><a href="hacfi.html">🏭 HACFI</a><a href="aret.html">🪵 Art Craft</a><a href="superstruct.html">🏗 Superstruct</a><span class="nav-divider"></span><span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span><a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a><a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a><a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a><a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a><span class="nav-divider"></span><span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span><a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a><a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a><a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a><a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a><a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a><a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a></div></nav><section class="rm-hero"><h1><span class="lang-ar">من البدء حتى الاكتمال</span><span class="lang-en">From Launch to Completion</span></h1><p class="tagline"><span class="lang-ar">8 مراحل • 48 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span><span class="lang-en">8 phases • 48 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span></p></section><!-- PROGRESS BAR --><section class="rm-progress-bar"><div class="rm-progress-top"><div class="rm-progress-label"><span class="lang-ar">التقدم الكلي</span><span class="lang-en">Overall Progress</span></div><div class="rm-progress-percent" id="overall-pct">0%</div></div><div class="rm-progress-track"><div class="rm-progress-fill" id="overall-fill" style="width: 0%;"></div></div><div class="rm-meta"><div class="rm-meta-cell"><div class="rm-meta-num" id="meta-done">0</div><div class="rm-meta-label"><span class="lang-ar">منجزة</span><span class="lang-en">Done</span></div></div><div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">48</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div><div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/8</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div><div class="rm-meta-cell"><div class="rm-meta-num" id="meta-weeks">~18</div><div class="rm-meta-label"><span class="lang-ar">أسبوع متوقع</span><span class="lang-en">Est. Weeks</span></div></div></div></section><!-- FILTERS --><div class="rm-filters"><button class="rm-filter-chip active" data-filter="all"><span class="lang-ar">الكل</span><span class="lang-en">All</span></button><button class="rm-filter-chip" data-filter="P0">P0</button><button class="rm-filter-chip" data-filter="P1">P1</button><button class="rm-filter-chip" data-filter="P2">P2</button><button class="rm-filter-chip" data-filter="P3">P3</button><button class="rm-filter-chip" data-filter="P5">P5</button><button class="rm-filter-chip" data-filter="P6">P6</button><button class="rm-filter-chip" data-filter="P7">P7</button><button class="rm-filter-chip" data-filter="P8">P8</button><button class="rm-filter-chip" data-filter="todo">🟡 <span class="lang-ar">غير مكتمل</span><span class="lang-en">Pending</span></button><button class="rm-filter-chip" data-filter="done">✅ <span class="lang-ar">مكتمل</span><span class="lang-en">Done</span></button></div><!-- LEGEND --><div class="legend"><div class="legend-item"><span class="legend-dot" style="background:#c9a961;"></span><span class="lang-ar">محطة عادية</span><span class="lang-en">Normal milestone</span></div><div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span><span class="lang-ar">مكتملة</span><span class="lang-en">Done</span></div><div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span><span class="lang-ar">قيد التنفيذ</span><span class="lang-en">In progress</span></div><div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span class="lang-ar">معلّقة</span><span class="lang-en">Blocked</span></div><div class="legend-item"><strong style="color:#dc2626;">🔴</strong><span class="lang-ar">مسار حرج</span><span class="lang-en">Critical path</span></div></div><!-- TIMELINE --><main class="rm-timeline" id="rm-timeline"><!-- Phases rendered by JS --></main><!-- TOOLBAR --><div class="export-bar"><button onclick="rmExport()">📥 <span class="lang-ar">تصدير التقدّم</span><span class="lang-en">Export Progress</span></button><button onclick="rmImport()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button><button onclick="window.print()">🖨 <span class="lang-ar">طباعة الخارطة</span><span class="lang-en">Print Roadmap</span></button><button onclick="rmReset()">🔄 <span class="lang-ar">إعادة تعيين</span><span class="lang-en">Reset</span></button></div><footer><div class="footer-content"><p><span class="lang-ar">© خارطة الطريق التنفيذية — مجموعة نصرت القابضة</span><span class="lang-en">© Implementation Roadmap — Nusrath Holding Group</span></p></div></footer><script src="script.js"></script><script>
 /* ============== ROADMAP DATA ============== */
 const PHASES = [
  {
@@ -475,9 +351,7 @@ const PHASES = [
  { id:'M3.6', titleAr:'اتفاقية التوريد المتبادل (8C)', titleEn:'Mutual Supply Agreement (8C)', descAr:'HACFI يوفر المعدن، Art Craft يوفر الخشب، Superstruct يُركّب — للمشاريع المشتركة.', descEn:'HACFI supplies metal, Art Craft supplies wood, Superstruct installs — for joint projects.', owner:'CEOs', critical:false, deliverables:'اتفاقية ثلاثية موقّعة' },
  { id:'M3.7', titleAr:'تعديل نشاط HACFI (حذف النجارة)', titleEn:'Amend HACFI activity (remove carpentry)', descAr:'تحديث السجل التجاري لـ HACFI لتبقى فقط أنشطة الصناعة والمعدن.', descEn:'Update HACFI CR to keep only industrial/metal activities.', owner:'GC', critical:false, deliverables:'سجل HACFI معدّل' },
  ]
- },
-
- {
+ }, {
  id: 'P5', num: '5', weeks: 'W12-W14',
  titleAr: 'إطلاق الحوكمة',
  titleEn: 'Governance Rollout',
@@ -518,7 +392,7 @@ const PHASES = [
  { id:'M7.3', titleAr:'إطلاق قناة البلاغات (Whistleblower)', titleEn:'Launch Whistleblower channel', descAr:'قناة مستقلة (بريد + هاتف + نموذج ويب) لتلقي البلاغات بسرية تامة.', descEn:'Independent channel (email + hotline + web form) receiving reports confidentially.', owner:'ARC + GC', critical:false, deliverables:'قناة مفعّلة + دليل استخدام' },
  { id:'M7.4', titleAr:'تدريب إلزامي على الحوكمة والامتثال', titleEn:'Mandatory governance & compliance training', descAr:'جميع الإدارات الوسطى — AML، COI، سلوك مهني، حماية بيانات (PDPL).', descEn:'All middle management — AML, COI, professional conduct, data protection (PDPL).', owner:'CHRO + GC', critical:false, deliverables:'سجل تدريب كامل' },
  { id:'M7.5', titleAr:'أول مراجعة داخلية', titleEn:'First Internal Audit cycle', descAr:'خطة مراجعة سنوية، تنفيذ 3 مراجعات (مالية، مشتريات، عقود).', descEn:'Annual audit plan, execute 3 audits (finance, procurement, contracts).', owner:'Internal Audit', critical:false, deliverables:'3 تقارير IA' },
- { id:'M7.6', titleAr:'تحديث التراخيص القطاعية', titleEn:'Update sector licenses', descAr:'SCE (Superstruct)، MIM (HACFI)، MISA ()، SAIP (Art Craft).', descEn:'SCE (Superstruct), MIM (HACFI), MISA (), SAIP (Art Craft).', owner:'GC', critical:false, deliverables:'4 تراخيص سارية' },
+ { id:'M7.6', titleAr:'تحديث التراخيص القطاعية', titleEn:'Update sector licenses', descAr:'SCE (Superstruct)، MIM (HACFI)، ()، SAIP (Art Craft).', descEn:'SCE (Superstruct), MIM (HACFI), (), SAIP (Art Craft).', owner:'GC', critical:false, deliverables:'4 تراخيص سارية' },
  ]
  },
  {
@@ -541,7 +415,7 @@ const PHASES = [
 const STORAGE_KEY = 'nh_roadmap_progress';
 let currentFilter = 'all';
 
-function loadProgress() { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+function loadProgress() { return JSON.parse(localStorage.getItem(STORAGE_KEY) | '{}'); }
 function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
 
 function totalMilestones() { return PHASES.reduce((n,p) => n + p.milestones.length, 0); }
@@ -560,69 +434,33 @@ function renderAll() {
  const progress = loadProgress();
  const total = totalMilestones();
  const done = doneCount();
- const pct = total ? Math.round((done / total) * 100) : 0;
-
- // Progress bar
+ const pct = total ? Math.round((done / total) * 100) : 0; // Progress bar
  document.getElementById('overall-pct').textContent = pct + '%';
  document.getElementById('overall-fill').style.width = pct + '%';
  document.getElementById('meta-done').textContent = done;
  document.getElementById('meta-total').textContent = total;
  document.getElementById('meta-phase').textContent = phasesCompleted() + '/' + PHASES.length;
- document.querySelector('.rm-timeline').style.setProperty('--progress', pct + '%');
-
- // Timeline
+ document.querySelector('.rm-timeline').style.setProperty('--progress', pct + '%'); // Timeline
  const box = document.getElementById('rm-timeline');
  box.innerHTML = PHASES.map(ph => {
  const phDone = ph.milestones.every(m => progress[m.id]);
  const phAny = ph.milestones.some(m => progress[m.id]);
- const phClass = phDone ? 'done' : (phAny ? 'active' : '');
-
- // Filter phase visibility
+ const phClass = phDone ? 'done' : (phAny ? 'active' : ''); // Filter phase visibility
  if (currentFilter !== 'all' && currentFilter !== 'todo' && currentFilter !== 'done' && currentFilter !== ph.id) {
  return '';
- }
-
- const msItems = ph.milestones.map(m => {
+ } const msItems = ph.milestones.map(m => {
  const checked = !!progress[m.id];
  if (currentFilter === 'todo' && checked) return '';
  if (currentFilter === 'done' && !checked) return '';
  const state = checked ? 'done' : '';
  return `
- <div class="milestone ${state}">
- <div class="m-checkbox ${checked?'checked':''}" onclick="toggleMilestone('${m.id}')" role="checkbox" aria-checked="${checked}"></div>
- <div class="m-body">
- <div class="m-top-row">
- <span class="m-num">${m.id}</span>
- <span class="m-title"><span class="lang-ar">${m.titleAr}</span><span class="lang-en">${m.titleEn}</span></span>
- </div>
- <div class="m-desc"><span class="lang-ar">${m.descAr}</span><span class="lang-en">${m.descEn}</span></div>
- <div class="m-tags">
- <span class="m-tag owner">👤 ${m.owner}</span>
+ <div class="milestone ${state}"><div class="m-checkbox ${checked?'checked':''}" onclick="toggleMilestone('${m.id}')" role="checkbox" aria-checked="${checked}"></div><div class="m-body"><div class="m-top-row"><span class="m-num">${m.id}</span><span class="m-title"><span class="lang-ar">${m.titleAr}</span><span class="lang-en">${m.titleEn}</span></span></div><div class="m-desc"><span class="lang-ar">${m.descAr}</span><span class="lang-en">${m.descEn}</span></div><div class="m-tags"><span class="m-tag owner">👤 ${m.owner}</span>
  ${m.critical ? '<span class="m-tag crit">🔴 <span class="lang-ar">مسار حرج</span><span class="lang-en">Critical</span></span>' : ''}
- </div>
- <div class="m-deliver">
+ </div><div class="m-deliver">
  📦 <strong><span class="lang-ar">المخرج:</span><span class="lang-en">Deliverable:</span></strong> ${m.deliverables}
- </div>
- </div>
- </div>`;
- }).filter(Boolean).join('');
-
- if (!msItems) return '';
-
- return `
- <section class="phase ${phClass}" data-phase="${ph.id}">
- <div class="phase-marker">${ph.num}</div>
- <div class="phase-head">
- <div class="phase-eyebrow"><span class="lang-ar">المرحلة ${ph.num}</span><span class="lang-en">Phase ${ph.num}</span> · ${ph.weeks}</div>
- <div class="phase-title"><span class="lang-ar">${ph.titleAr}</span><span class="lang-en">${ph.titleEn}</span></div>
- <div class="phase-desc"><span class="lang-ar">${ph.descAr}</span><span class="lang-en">${ph.descEn}</span></div>
- <div class="phase-meta">
- <span>${ph.milestones.filter(m => progress[m.id]).length}/${ph.milestones.length} <span class="lang-ar">منجزة</span><span class="lang-en">done</span></span>
- <span>⏱ ${ph.weeks}</span>
- </div>
- </div>
- <div class="milestones">${msItems}</div>
- </section>`;
+ </div></div></div>`;
+ }).filter(Boolean).join(''); if (!msItems) return ''; return `
+ <section class="phase ${phClass}" data-phase="${ph.id}"><div class="phase-marker">${ph.num}</div><div class="phase-head"><div class="phase-eyebrow"><span class="lang-ar">المرحلة ${ph.num}</span><span class="lang-en">Phase ${ph.num}</span> · ${ph.weeks}</div><div class="phase-title"><span class="lang-ar">${ph.titleAr}</span><span class="lang-en">${ph.titleEn}</span></div><div class="phase-desc"><span class="lang-ar">${ph.descAr}</span><span class="lang-en">${ph.descEn}</span></div><div class="phase-meta"><span>${ph.milestones.filter(m => progress[m.id]).length}/${ph.milestones.length} <span class="lang-ar">منجزة</span><span class="lang-en">done</span></span><span>⏱ ${ph.weeks}</span></div></div><div class="milestones">${msItems}</div></section>`;
  }).join('');
 }
 
@@ -686,6 +524,4 @@ window.rmReset = function() {
 };
 
 document.addEventListener('DOMContentLoaded', renderAll);
-</script>
-</body>
-</html>
+</script></body></html>

@@ -330,6 +330,7 @@ body.dark-mode .export-bar button { color: #f5c977; }
         <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
         <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
         <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
+        <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
         <span class="nav-divider"></span>
         <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
         <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
@@ -344,8 +345,8 @@ body.dark-mode .export-bar button { color: #f5c977; }
 <section class="rm-hero">
     <h1><span class="lang-ar">من البدء حتى الاكتمال</span><span class="lang-en">From Launch to Completion</span></h1>
     <p class="tagline">
-        <span class="lang-ar">9 مراحل • 52 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
-        <span class="lang-en">9 phases • 52 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
+        <span class="lang-ar">9 مراحل • 53 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
+        <span class="lang-en">9 phases • 53 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
     </p>
 </section>
 
@@ -362,7 +363,7 @@ body.dark-mode .export-bar button { color: #f5c977; }
     </div>
     <div class="rm-meta">
         <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-done">0</div><div class="rm-meta-label"><span class="lang-ar">منجزة</span><span class="lang-en">Done</span></div></div>
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">52</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
+        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">53</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
         <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/9</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div>
         <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-weeks">~18</div><div class="rm-meta-label"><span class="lang-ar">أسبوع متوقع</span><span class="lang-en">Est. Weeks</span></div></div>
     </div>
@@ -425,7 +426,8 @@ const PHASES = [
     milestones: [
       { id:'M0.1', titleAr:'موافقة المساهم على الدراسة', titleEn:'Shareholder approval of study', descAr:'قرار مكتوب من المهندس نصرت باعتماد الهيكل المقترح ومباشرة التنفيذ.', descEn:'Written resolution by Eng. Nusrath endorsing the proposed structure and launching execution.', owner:'Shareholder', critical:true, deliverables:'قرار مساهم موقّع + محضر اجتماع' },
       { id:'M0.2', titleAr:'اعتماد الميزانية والجدول الزمني', titleEn:'Budget & timeline approval', descAr:'تخصيص ميزانية للتنفيذ (رسوم حكومية، مستشارون، تراخيص) وجدول Gantt تقريبي.', descEn:'Execution budget (government fees, advisors, licenses) and tentative Gantt chart.', owner:'CFO + GC', critical:false, deliverables:'ميزانية موافق عليها + Gantt' },
-      { id:'M0.3', titleAr:'اختيار المستشار القانوني الخارجي', titleEn:'External law firm selection', descAr:'مكتب متخصص في إعادة الهيكلة والقابضات (مقترح: أحد المكاتب الخمس الكبار محلياً).', descEn:'Firm specialized in restructuring & holdings (proposed: a Big 5 local firm).', owner:'GC', critical:false, deliverables:'عقد خدمات قانونية موقّع' },
+      { id:'M0.3', titleAr:'بناء لوحة المستشارين الخارجيين', titleEn:'Build External Counsel Panel', descAr:'3-5 مكاتب معتمدة (كبير + متوسط + متخصص) — يتم الاستعانة بها عند الحاجة فقط، تحت إدارة GC. التفاصيل في صفحة الوظيفة القانونية.', descEn:'3-5 approved firms (large + mid + specialist) — engaged on-demand only, under GC management. Details in Legal Function page.', owner:'GC', critical:false, deliverables:'لوحة معتمدة + engagement letters قياسية' },
+      { id:'M0.3b', titleAr:'توظيف الفريق القانوني الداخلي الأساسي', titleEn:'Hire Core Internal Legal Team', descAr:'5 أشخاص تحت GC: مستشار تجاري أول، أمين سر، مسؤول امتثال، أخصائي عقود، باراليجال. مرحلياً حسب الحاجة.', descEn:'5 people under GC: Senior Commercial Counsel, Company Secretary, Compliance Officer, Contracts Specialist, Paralegal. Phased by need.', owner:'GC + CHRO', critical:true, deliverables:'5 تعيينات بعقود موقّعة' },
       { id:'M0.4', titleAr:'اختيار المراجع الخارجي الموحَّد', titleEn:'Unified external auditor selection', descAr:'مكتب مراجعة معتمد من SOCPA يخدم القابضة وكل التابعات لتوحيد القوائم.', descEn:'SOCPA-registered firm to serve Holding + all subsidiaries for consolidated statements.', owner:'ARC', critical:false, deliverables:'خطاب تعيين + عقد مراجعة' },
       { id:'M0.5', titleAr:'تجهيز Data Room وجمع المستندات', titleEn:'Data Room & documents assembly', descAr:'سجلات تجارية، تراخيص، عقود، قوائم مالية لآخر 3 سنوات، ملكية فكرية.', descEn:'CRs, licenses, contracts, 3-yr financials, IP records.', owner:'GC + CFO', critical:true, deliverables:'Data Room مُؤمَّن بصلاحيات' },
     ]

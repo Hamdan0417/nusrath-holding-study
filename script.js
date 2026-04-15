@@ -38,6 +38,7 @@
     { url: 'mqsala.html', titleAr: 'mQsala — التقنية والريادة', titleEn: 'mQsala — Tech & Ventures', keys: ['mqsala', 'tech', 'masarath', 'مغسلة'] },
     { url: 'shared-management.html', titleAr: 'الإدارة المشتركة', titleEn: 'Shared Management', keys: ['shared', 'management', 'إدارة مشتركة'] },
     { url: 'matrices.html', titleAr: 'الصلاحيات والتواقيع', titleEn: 'Authority & Signatures Matrices', keys: ['matrices', 'authority', 'doa', 'صلاحيات'] },
+    { url: 'legal-function.html', titleAr: 'الوظيفة القانونية', titleEn: 'Legal Function Architecture', keys: ['legal', 'function', 'counsel', 'gc', 'مستشار', 'قانوني', 'مكاتب', 'محاماة'] },
     { url: 'dual-roles.html', titleAr: 'الأدوار المزدوجة', titleEn: 'Dual Roles', keys: ['dual', 'roles', 'أدوار مزدوجة'] },
     { url: 'cr-registry.html', titleAr: 'السجلات التجارية', titleEn: 'Commercial Registers', keys: ['cr', 'registry', 'سجلات'] },
     { url: 'comparison.html', titleAr: 'مقارنة أشكال الشركات', titleEn: 'Entity Forms Comparison', keys: ['comparison', 'sjsc', 'llc', 'jsc', 'مقارنة'] },

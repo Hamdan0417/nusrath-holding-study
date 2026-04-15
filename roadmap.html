@@ -8,180 +8,180 @@
 <style>
 /* Roadmap page — execution reference */
 .rm-hero {
-    background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 100%);
-    color: #fff; padding: 70px 24px 50px; text-align: center;
-    position: relative; overflow: hidden;
+ background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 100%);
+ color: #fff; padding: 70px 24px 50px; text-align: center;
+ position: relative; overflow: hidden;
 }
 .rm-hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at top, rgba(201,169,97,0.12), transparent 60%);
-    pointer-events: none;
+ content: ''; position: absolute; inset: 0;
+ background: radial-gradient(circle at top, rgba(201,169,97,0.12), transparent 60%);
+ pointer-events: none;
 }
 .rm-hero h1 {
-    font-family: 'Playfair Display','Tajawal',serif;
-    font-size: clamp(30px, 4.5vw, 48px);
-    margin: 0 0 14px; color: #fff;
+ font-family: 'Playfair Display','Tajawal',serif;
+ font-size: clamp(30px, 4.5vw, 48px);
+ margin: 0 0 14px; color: #fff;
 }
 .rm-hero .tagline { font-size: 17px; opacity: 0.88; max-width: 700px; margin: 0 auto; line-height: 1.7; }
 
 /* Overall progress dashboard */
 .rm-progress-bar {
-    max-width: 980px; margin: -30px auto 30px;
-    background: #fff; border-radius: 18px;
-    padding: 24px 28px;
-    box-shadow: 0 12px 40px rgba(10,30,63,0.15);
-    border: 1px solid #e5d7a8;
-    position: relative; z-index: 5;
+ max-width: 980px; margin: -30px auto 30px;
+ background: #fff; border-radius: 18px;
+ padding: 24px 28px;
+ box-shadow: 0 12px 40px rgba(10,30,63,0.15);
+ border: 1px solid #e5d7a8;
+ position: relative; z-index: 5;
 }
 body.dark-mode .rm-progress-bar { background: #1a1f2e; border-color: #3a3f55; }
 .rm-progress-top {
-    display: flex; justify-content: space-between;
-    align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;
+ display: flex; justify-content: space-between;
+ align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;
 }
 .rm-progress-label {
-    font-family: 'Playfair Display','Tajawal',serif;
-    font-size: 18px; color: #0a1e3f; font-weight: 700;
+ font-family: 'Playfair Display','Tajawal',serif;
+ font-size: 18px; color: #0a1e3f; font-weight: 700;
 }
 body.dark-mode .rm-progress-label { color: #f5c977; }
 .rm-progress-percent {
-    font-family: 'Playfair Display','Tajawal',serif;
-    font-size: 32px; font-weight: 700; color: #c9a961;
+ font-family: 'Playfair Display','Tajawal',serif;
+ font-size: 32px; font-weight: 700; color: #c9a961;
 }
 .rm-progress-track {
-    height: 14px; background: #f5f0e4; border-radius: 999px;
-    overflow: hidden; position: relative;
+ height: 14px; background: #f5f0e4; border-radius: 999px;
+ overflow: hidden; position: relative;
 }
 body.dark-mode .rm-progress-track { background: #252b3d; }
 .rm-progress-fill {
-    height: 100%; background: linear-gradient(90deg, #c9a961, #b8924a, #c9a961);
-    border-radius: 999px; transition: width 0.8s cubic-bezier(.22,1.2,.36,1);
-    position: relative; box-shadow: 0 0 20px rgba(201,169,97,0.5);
+ height: 100%; background: linear-gradient(90deg, #c9a961, #b8924a, #c9a961);
+ border-radius: 999px; transition: width 0.8s cubic-bezier(.22,1.2,.36,1);
+ position: relative; box-shadow: 0 0 20px rgba(201,169,97,0.5);
 }
 .rm-progress-fill::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmer 2s infinite;
+ content: ''; position: absolute; inset: 0;
+ background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+ animation: shimmer 2s infinite;
 }
 @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
 .rm-meta {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px; margin-top: 18px;
+ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+ gap: 12px; margin-top: 18px;
 }
 .rm-meta-cell {
-    text-align: center; padding: 10px;
-    background: rgba(201,169,97,0.08); border-radius: 10px;
+ text-align: center; padding: 10px;
+ background: rgba(201,169,97,0.08); border-radius: 10px;
 }
 .rm-meta-num {
-    font-family: 'Playfair Display','Tajawal',serif;
-    font-size: 22px; font-weight: 700; color: #0a1e3f;
+ font-family: 'Playfair Display','Tajawal',serif;
+ font-size: 22px; font-weight: 700; color: #0a1e3f;
 }
 body.dark-mode .rm-meta-num { color: #f5c977; }
 .rm-meta-label { font-size: 11px; color: #718096; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
 /* Phase filter chips */
 .rm-filters {
-    max-width: 980px; margin: 0 auto 30px;
-    padding: 0 24px;
-    display: flex; gap: 8px; flex-wrap: wrap;
-    justify-content: center;
+ max-width: 980px; margin: 0 auto 30px;
+ padding: 0 24px;
+ display: flex; gap: 8px; flex-wrap: wrap;
+ justify-content: center;
 }
 .rm-filter-chip {
-    background: #fff; color: #2d3748;
-    border: 1px solid #e5d7a8; padding: 7px 14px;
-    border-radius: 20px; cursor: pointer; font-size: 12px;
-    font-weight: 600; transition: all 0.2s ease;
-    font-family: inherit; white-space: nowrap;
+ background: #fff; color: #2d3748;
+ border: 1px solid #e5d7a8; padding: 7px 14px;
+ border-radius: 20px; cursor: pointer; font-size: 12px;
+ font-weight: 600; transition: all 0.2s ease;
+ font-family: inherit; white-space: nowrap;
 }
 body.dark-mode .rm-filter-chip { background: #1a1f2e; color: #d4d8e0; border-color: #3a3f55; }
 .rm-filter-chip:hover { border-color: #c9a961; }
 .rm-filter-chip.active {
-    background: linear-gradient(135deg, #0a1e3f, #162b5e);
-    color: #c9a961; border-color: #c9a961;
+ background: linear-gradient(135deg, #0a1e3f, #162b5e);
+ color: #c9a961; border-color: #c9a961;
 }
 
 /* Timeline container */
 .rm-timeline {
-    max-width: 980px; margin: 0 auto; padding: 20px 24px 60px;
-    position: relative;
+ max-width: 980px; margin: 0 auto; padding: 20px 24px 60px;
+ position: relative;
 }
 .rm-timeline::before {
-    content: ''; position: absolute; top: 0; bottom: 0;
-    inset-inline-start: 44px; width: 3px;
-    background: linear-gradient(to bottom, #c9a961 0%, #c9a961 var(--progress, 0%), #e5d7a8 var(--progress, 0%), #e5d7a8 100%);
-    border-radius: 999px;
+ content: ''; position: absolute; top: 0; bottom: 0;
+ inset-inline-start: 44px; width: 3px;
+ background: linear-gradient(to bottom, #c9a961 0%, #c9a961 var(--progress, 0%), #e5d7a8 var(--progress, 0%), #e5d7a8 100%);
+ border-radius: 999px;
 }
 
 /* Phase block */
 .phase {
-    position: relative; padding-inline-start: 88px;
-    margin-bottom: 36px;
+ position: relative; padding-inline-start: 88px;
+ margin-bottom: 36px;
 }
 .phase-marker {
-    position: absolute; inset-inline-start: 10px; top: 0;
-    width: 70px; height: 70px; border-radius: 50%;
-    background: linear-gradient(135deg, #c9a961, #b8924a);
-    color: #0a1e3f; display: flex; align-items: center;
-    justify-content: center; font-family: 'Playfair Display','Tajawal',serif;
-    font-size: 26px; font-weight: 700;
-    box-shadow: 0 10px 28px rgba(201,169,97,0.4), 0 0 0 4px #fff;
-    z-index: 2;
+ position: absolute; inset-inline-start: 10px; top: 0;
+ width: 70px; height: 70px; border-radius: 50%;
+ background: linear-gradient(135deg, #c9a961, #b8924a);
+ color: #0a1e3f; display: flex; align-items: center;
+ justify-content: center; font-family: 'Playfair Display','Tajawal',serif;
+ font-size: 26px; font-weight: 700;
+ box-shadow: 0 10px 28px rgba(201,169,97,0.4), 0 0 0 4px #fff;
+ z-index: 2;
 }
 body.dark-mode .phase-marker { box-shadow: 0 10px 28px rgba(201,169,97,0.5), 0 0 0 4px #0a1e3f; }
 .phase.done .phase-marker { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
 .phase.active .phase-marker {
-    animation: pulseRing 2s ease-in-out infinite;
-    background: linear-gradient(135deg, #3b82f6, #1e40af); color: #fff;
+ animation: pulseRing 2s ease-in-out infinite;
+ background: linear-gradient(135deg, #3b82f6, #1e40af); color: #fff;
 }
 @keyframes pulseRing { 0%,100% { box-shadow: 0 0 0 4px #fff, 0 0 0 4px rgba(59,130,246,0.4); } 50% { box-shadow: 0 0 0 4px #fff, 0 0 0 14px rgba(59,130,246,0); } }
 
 .phase-head {
-    margin-bottom: 16px; padding-bottom: 12px;
-    border-bottom: 2px solid #e5d7a8;
+ margin-bottom: 16px; padding-bottom: 12px;
+ border-bottom: 2px solid #e5d7a8;
 }
 body.dark-mode .phase-head { border-bottom-color: #3a3f55; }
 .phase-eyebrow {
-    font-size: 12px; color: #c9a961; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    margin-bottom: 4px;
+ font-size: 12px; color: #c9a961; font-weight: 700;
+ letter-spacing: 2px; text-transform: uppercase;
+ margin-bottom: 4px;
 }
 .phase-title {
-    font-family: 'Playfair Display','Tajawal',serif;
-    font-size: 24px; font-weight: 700; color: #0a1e3f;
-    line-height: 1.3;
+ font-family: 'Playfair Display','Tajawal',serif;
+ font-size: 24px; font-weight: 700; color: #0a1e3f;
+ line-height: 1.3;
 }
 body.dark-mode .phase-title { color: #f5c977; }
 .phase-desc {
-    color: #718096; font-size: 14px; margin-top: 4px;
-    line-height: 1.6;
+ color: #718096; font-size: 14px; margin-top: 4px;
+ line-height: 1.6;
 }
 
 .phase-meta {
-    display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap;
-    font-size: 12px;
+ display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap;
+ font-size: 12px;
 }
 .phase-meta span {
-    background: rgba(201,169,97,0.12); padding: 4px 12px;
-    border-radius: 20px; color: #0a1e3f; font-weight: 600;
+ background: rgba(201,169,97,0.12); padding: 4px 12px;
+ border-radius: 20px; color: #0a1e3f; font-weight: 600;
 }
 body.dark-mode .phase-meta span { color: #f5c977; }
 
 /* Milestone list */
 .milestones {
-    display: flex; flex-direction: column; gap: 10px;
+ display: flex; flex-direction: column; gap: 10px;
 }
 .milestone {
-    background: #fff; border: 1px solid #e5d7a8;
-    border-inline-start: 4px solid #c9a961;
-    border-radius: 12px; padding: 16px 18px;
-    display: grid; grid-template-columns: auto 1fr auto;
-    gap: 14px; align-items: flex-start;
-    transition: all 0.2s ease;
+ background: #fff; border: 1px solid #e5d7a8;
+ border-inline-start: 4px solid #c9a961;
+ border-radius: 12px; padding: 16px 18px;
+ display: grid; grid-template-columns: auto 1fr auto;
+ gap: 14px; align-items: flex-start;
+ transition: all 0.2s ease;
 }
 body.dark-mode .milestone { background: #1a1f2e; border-color: #3a3f55; }
 .milestone:hover {
-    box-shadow: 0 6px 20px rgba(10,30,63,0.08);
-    transform: translateX(2px);
+ box-shadow: 0 6px 20px rgba(10,30,63,0.08);
+ transform: translateX(2px);
 }
 body[dir="rtl"] .milestone:hover { transform: translateX(-2px); }
 
@@ -193,46 +193,46 @@ body[dir="rtl"] .milestone:hover { transform: translateX(-2px); }
 .milestone.blocked .m-num { background: #dc2626; color: #fff; }
 
 .m-checkbox {
-    width: 22px; height: 22px; border: 2px solid #c9a961;
-    border-radius: 6px; cursor: pointer; flex-shrink: 0;
-    margin-top: 2px; display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s ease; background: transparent;
+ width: 22px; height: 22px; border: 2px solid #c9a961;
+ border-radius: 6px; cursor: pointer; flex-shrink: 0;
+ margin-top: 2px; display: flex; align-items: center; justify-content: center;
+ transition: all 0.2s ease; background: transparent;
 }
 .m-checkbox.checked {
-    background: #10b981; border-color: #10b981;
-    color: #fff; font-weight: 700;
+ background: #10b981; border-color: #10b981;
+ color: #fff; font-weight: 700;
 }
 .m-checkbox.checked::after { content: '✓'; font-size: 14px; }
 
 .m-body { min-width: 0; }
 .m-top-row {
-    display: flex; gap: 10px; align-items: center;
-    flex-wrap: wrap; margin-bottom: 6px;
+ display: flex; gap: 10px; align-items: center;
+ flex-wrap: wrap; margin-bottom: 6px;
 }
 .m-num {
-    font-family: 'Playfair Display','Tajawal',serif;
-    background: rgba(201,169,97,0.15); color: #c9a961;
-    padding: 3px 10px; border-radius: 6px;
-    font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+ font-family: 'Playfair Display','Tajawal',serif;
+ background: rgba(201,169,97,0.15); color: #c9a961;
+ padding: 3px 10px; border-radius: 6px;
+ font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
 }
 .m-title {
-    font-weight: 700; color: #0a1e3f;
-    font-family: 'Playfair Display','Tajawal',serif; font-size: 15px;
-    line-height: 1.4;
+ font-weight: 700; color: #0a1e3f;
+ font-family: 'Playfair Display','Tajawal',serif; font-size: 15px;
+ line-height: 1.4;
 }
 body.dark-mode .m-title { color: #f5c977; }
 .m-desc {
-    font-size: 13px; color: #2d3748; line-height: 1.6;
-    margin-bottom: 8px;
+ font-size: 13px; color: #2d3748; line-height: 1.6;
+ margin-bottom: 8px;
 }
 body.dark-mode .m-desc { color: #d4d8e0; }
 
 .m-tags {
-    display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
+ display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px;
 }
 .m-tag {
-    font-size: 11px; padding: 2px 10px; border-radius: 20px;
-    font-weight: 600;
+ font-size: 11px; padding: 2px 10px; border-radius: 20px;
+ font-weight: 600;
 }
 .m-tag.owner { background: rgba(10,30,63,0.08); color: #0a1e3f; }
 body.dark-mode .m-tag.owner { background: rgba(201,169,97,0.15); color: #f5c977; }
@@ -241,300 +241,300 @@ body.dark-mode .m-tag.owner { background: rgba(201,169,97,0.15); color: #f5c977;
 .m-tag.dep { background: rgba(107,114,128,0.12); color: #4b5563; }
 
 .m-deliver {
-    margin-top: 8px; padding: 8px 12px;
-    background: rgba(16,185,129,0.06); border-radius: 8px;
-    border-inline-start: 3px solid #10b981;
-    font-size: 12px; color: #065f46; line-height: 1.5;
+ margin-top: 8px; padding: 8px 12px;
+ background: rgba(16,185,129,0.06); border-radius: 8px;
+ border-inline-start: 3px solid #10b981;
+ font-size: 12px; color: #065f46; line-height: 1.5;
 }
 body.dark-mode .m-deliver { background: rgba(16,185,129,0.08); color: #86efac; }
 
 .m-actions {
-    display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
-    font-size: 11px; color: #718096;
+ display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
+ font-size: 11px; color: #718096;
 }
 
 /* Legend */
 .legend {
-    max-width: 980px; margin: 40px auto; padding: 20px 24px;
-    background: rgba(201,169,97,0.06); border: 1px dashed #c9a961;
-    border-radius: 12px;
-    display: flex; gap: 18px; flex-wrap: wrap;
-    justify-content: center; font-size: 13px;
+ max-width: 980px; margin: 40px auto; padding: 20px 24px;
+ background: rgba(201,169,97,0.06); border: 1px dashed #c9a961;
+ border-radius: 12px;
+ display: flex; gap: 18px; flex-wrap: wrap;
+ justify-content: center; font-size: 13px;
 }
 .legend-item { display: flex; align-items: center; gap: 6px; color: #2d3748; }
 body.dark-mode .legend-item { color: #d4d8e0; }
 .legend-dot {
-    width: 14px; height: 14px; border-radius: 4px; display: inline-block;
+ width: 14px; height: 14px; border-radius: 4px; display: inline-block;
 }
 
 .export-bar {
-    max-width: 980px; margin: 20px auto 40px;
-    padding: 0 24px;
-    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+ max-width: 980px; margin: 20px auto 40px;
+ padding: 0 24px;
+ display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
 }
 .export-bar button {
-    background: transparent; color: #0a1e3f;
-    border: 1px solid #c9a961; padding: 8px 18px;
-    border-radius: 20px; font-size: 13px; cursor: pointer;
-    font-weight: 600; transition: all 0.2s ease;
-    font-family: inherit;
+ background: transparent; color: #0a1e3f;
+ border: 1px solid #c9a961; padding: 8px 18px;
+ border-radius: 20px; font-size: 13px; cursor: pointer;
+ font-weight: 600; transition: all 0.2s ease;
+ font-family: inherit;
 }
 body.dark-mode .export-bar button { color: #f5c977; }
 .export-bar button:hover { background: #c9a961; color: #0a1e3f; }
 
 @media (max-width: 640px) {
-    .phase { padding-inline-start: 70px; }
-    .phase-marker { width: 54px; height: 54px; font-size: 20px; inset-inline-start: 6px; }
-    .rm-timeline::before { inset-inline-start: 33px; }
-    .milestone { grid-template-columns: auto 1fr; }
-    .m-actions { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; }
+ .phase { padding-inline-start: 70px; }
+ .phase-marker { width: 54px; height: 54px; font-size: 20px; inset-inline-start: 6px; }
+ .rm-timeline::before { inset-inline-start: 33px; }
+ .milestone { grid-template-columns: auto 1fr; }
+ .m-actions { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; }
 }
 
 @media print {
-    .rm-hero { padding: 20px; }
-    .rm-filters, .export-bar, .rm-progress-bar, .m-checkbox { display: none !important; }
+ .rm-hero { padding: 20px; }
+ .rm-filters, .export-bar, .rm-progress-bar, .m-checkbox { display: none !important; }
 }
 </style>
 </head>
 <body dir="rtl">
 
 <header class="header">
-    <div class="header-content">
-        <div class="logo">ROADMAP</div>
-        <h1><span class="lang-ar">خارطة الطريق التنفيذية</span><span class="lang-en">Implementation Roadmap</span></h1>
-        <div class="subtitle"><span class="lang-ar">من البدء حتى الاكتمال — محطاتٌ ترافقنا في الطريق</span><span class="lang-en">From launch to completion — milestones that mark the path</span></div>
-        <div class="breadcrumb">
-            <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
-            <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span>
-        </div>
-    </div>
+ <div class="header-content">
+ <div class="logo">ROADMAP</div>
+ <h1><span class="lang-ar">خارطة الطريق التنفيذية</span><span class="lang-en">Implementation Roadmap</span></h1>
+ <div class="subtitle"><span class="lang-ar">من البدء حتى الاكتمال — محطاتٌ ترافقنا في الطريق</span><span class="lang-en">From launch to completion — milestones that mark the path</span></div>
+ <div class="breadcrumb">
+ <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
+ <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span>
+ </div>
+ </div>
 </header>
 
 <nav class="topnav">
-    <div class="topnav-content">
-        <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-        <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
-        <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
-        <a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a>
-        <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
-        <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
-        <span class="nav-divider"></span>
-        <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
-        <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
-        <a href="hacfi.html">🏭 HACFI</a>
-        <a href="aret.html">🪵 Art Craft</a>
-        <a href="superstruct.html">🏗 Superstruct</a>
-        <span class="nav-divider"></span>
-        <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
-        <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
-        <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
-        <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
-        <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
-        <span class="nav-divider"></span>
-        <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
-        <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
-        <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
-        <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
-        <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
-        <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
-        <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
-    </div>
+ <div class="topnav-content">
+ <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+ <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
+ <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
+ <a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a>
+ <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
+ <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
+ <span class="nav-divider"></span>
+ <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
+ <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
+ <a href="hacfi.html">🏭 HACFI</a>
+ <a href="aret.html">🪵 Art Craft</a>
+ <a href="superstruct.html">🏗 Superstruct</a>
+ <span class="nav-divider"></span>
+ <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
+ <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
+ <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
+ <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
+ <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
+ <span class="nav-divider"></span>
+ <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
+ <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
+ <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
+ <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
+ <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
+ <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
+ <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
+ </div>
 </nav>
 
 <section class="rm-hero">
-    <h1><span class="lang-ar">من البدء حتى الاكتمال</span><span class="lang-en">From Launch to Completion</span></h1>
-    <p class="tagline">
-        <span class="lang-ar">8 مراحل • 48 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
-        <span class="lang-en">8 phases • 48 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
-    </p>
+ <h1><span class="lang-ar">من البدء حتى الاكتمال</span><span class="lang-en">From Launch to Completion</span></h1>
+ <p class="tagline">
+ <span class="lang-ar">8 مراحل • 48 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
+ <span class="lang-en">8 phases • 48 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
+ </p>
 </section>
 
 <!-- PROGRESS BAR -->
 <section class="rm-progress-bar">
-    <div class="rm-progress-top">
-        <div class="rm-progress-label">
-            <span class="lang-ar">التقدم الكلي</span><span class="lang-en">Overall Progress</span>
-        </div>
-        <div class="rm-progress-percent" id="overall-pct">0%</div>
-    </div>
-    <div class="rm-progress-track">
-        <div class="rm-progress-fill" id="overall-fill" style="width: 0%;"></div>
-    </div>
-    <div class="rm-meta">
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-done">0</div><div class="rm-meta-label"><span class="lang-ar">منجزة</span><span class="lang-en">Done</span></div></div>
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">48</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/8</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div>
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-weeks">~18</div><div class="rm-meta-label"><span class="lang-ar">أسبوع متوقع</span><span class="lang-en">Est. Weeks</span></div></div>
-    </div>
+ <div class="rm-progress-top">
+ <div class="rm-progress-label">
+ <span class="lang-ar">التقدم الكلي</span><span class="lang-en">Overall Progress</span>
+ </div>
+ <div class="rm-progress-percent" id="overall-pct">0%</div>
+ </div>
+ <div class="rm-progress-track">
+ <div class="rm-progress-fill" id="overall-fill" style="width: 0%;"></div>
+ </div>
+ <div class="rm-meta">
+ <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-done">0</div><div class="rm-meta-label"><span class="lang-ar">منجزة</span><span class="lang-en">Done</span></div></div>
+ <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">48</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
+ <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/8</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div>
+ <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-weeks">~18</div><div class="rm-meta-label"><span class="lang-ar">أسبوع متوقع</span><span class="lang-en">Est. Weeks</span></div></div>
+ </div>
 </section>
 
 <!-- FILTERS -->
 <div class="rm-filters">
-    <button class="rm-filter-chip active" data-filter="all"><span class="lang-ar">الكل</span><span class="lang-en">All</span></button>
-    <button class="rm-filter-chip" data-filter="P0">P0</button>
-    <button class="rm-filter-chip" data-filter="P1">P1</button>
-    <button class="rm-filter-chip" data-filter="P2">P2</button>
-    <button class="rm-filter-chip" data-filter="P3">P3</button>
-    <button class="rm-filter-chip" data-filter="P5">P5</button>
-    <button class="rm-filter-chip" data-filter="P6">P6</button>
-    <button class="rm-filter-chip" data-filter="P7">P7</button>
-    <button class="rm-filter-chip" data-filter="P8">P8</button>
-    <button class="rm-filter-chip" data-filter="todo">🟡 <span class="lang-ar">غير مكتمل</span><span class="lang-en">Pending</span></button>
-    <button class="rm-filter-chip" data-filter="done">✅ <span class="lang-ar">مكتمل</span><span class="lang-en">Done</span></button>
+ <button class="rm-filter-chip active" data-filter="all"><span class="lang-ar">الكل</span><span class="lang-en">All</span></button>
+ <button class="rm-filter-chip" data-filter="P0">P0</button>
+ <button class="rm-filter-chip" data-filter="P1">P1</button>
+ <button class="rm-filter-chip" data-filter="P2">P2</button>
+ <button class="rm-filter-chip" data-filter="P3">P3</button>
+ <button class="rm-filter-chip" data-filter="P5">P5</button>
+ <button class="rm-filter-chip" data-filter="P6">P6</button>
+ <button class="rm-filter-chip" data-filter="P7">P7</button>
+ <button class="rm-filter-chip" data-filter="P8">P8</button>
+ <button class="rm-filter-chip" data-filter="todo">🟡 <span class="lang-ar">غير مكتمل</span><span class="lang-en">Pending</span></button>
+ <button class="rm-filter-chip" data-filter="done">✅ <span class="lang-ar">مكتمل</span><span class="lang-en">Done</span></button>
 </div>
 
 <!-- LEGEND -->
 <div class="legend">
-    <div class="legend-item"><span class="legend-dot" style="background:#c9a961;"></span><span class="lang-ar">محطة عادية</span><span class="lang-en">Normal milestone</span></div>
-    <div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span><span class="lang-ar">مكتملة</span><span class="lang-en">Done</span></div>
-    <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span><span class="lang-ar">قيد التنفيذ</span><span class="lang-en">In progress</span></div>
-    <div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span class="lang-ar">معلّقة</span><span class="lang-en">Blocked</span></div>
-    <div class="legend-item"><strong style="color:#dc2626;">🔴</strong> <span class="lang-ar">مسار حرج</span><span class="lang-en">Critical path</span></div>
+ <div class="legend-item"><span class="legend-dot" style="background:#c9a961;"></span><span class="lang-ar">محطة عادية</span><span class="lang-en">Normal milestone</span></div>
+ <div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span><span class="lang-ar">مكتملة</span><span class="lang-en">Done</span></div>
+ <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span><span class="lang-ar">قيد التنفيذ</span><span class="lang-en">In progress</span></div>
+ <div class="legend-item"><span class="legend-dot" style="background:#dc2626;"></span><span class="lang-ar">معلّقة</span><span class="lang-en">Blocked</span></div>
+ <div class="legend-item"><strong style="color:#dc2626;">🔴</strong> <span class="lang-ar">مسار حرج</span><span class="lang-en">Critical path</span></div>
 </div>
 
 <!-- TIMELINE -->
 <main class="rm-timeline" id="rm-timeline">
-    <!-- Phases rendered by JS -->
+ <!-- Phases rendered by JS -->
 </main>
 
 <!-- TOOLBAR -->
 <div class="export-bar">
-    <button onclick="rmExport()">📥 <span class="lang-ar">تصدير التقدّم</span><span class="lang-en">Export Progress</span></button>
-    <button onclick="rmImport()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button>
-    <button onclick="window.print()">🖨 <span class="lang-ar">طباعة الخارطة</span><span class="lang-en">Print Roadmap</span></button>
-    <button onclick="rmReset()">🔄 <span class="lang-ar">إعادة تعيين</span><span class="lang-en">Reset</span></button>
+ <button onclick="rmExport()">📥 <span class="lang-ar">تصدير التقدّم</span><span class="lang-en">Export Progress</span></button>
+ <button onclick="rmImport()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button>
+ <button onclick="window.print()">🖨 <span class="lang-ar">طباعة الخارطة</span><span class="lang-en">Print Roadmap</span></button>
+ <button onclick="rmReset()">🔄 <span class="lang-ar">إعادة تعيين</span><span class="lang-en">Reset</span></button>
 </div>
 
 <footer>
-    <div class="footer-content">
-        <p><span class="lang-ar">© خارطة الطريق التنفيذية — مجموعة نصرت القابضة</span><span class="lang-en">© Implementation Roadmap — Nusrath Holding Group</span></p>
-    </div>
+ <div class="footer-content">
+ <p><span class="lang-ar">© خارطة الطريق التنفيذية — مجموعة نصرت القابضة</span><span class="lang-en">© Implementation Roadmap — Nusrath Holding Group</span></p>
+ </div>
 </footer>
 
 <script src="script.js"></script>
 <script>
 /* ============== ROADMAP DATA ============== */
 const PHASES = [
-  {
-    id: 'P0', num: '0', weeks: 'W1-W2',
-    titleAr: 'الإعداد والاستعداد',
-    titleEn: 'Preparation & Readiness',
-    descAr: 'تجهيز الأساسيات قبل أي إجراء رسمي — موافقات، ميزانية، مستشارون، وصالة بيانات.',
-    descEn: 'Set the groundwork before any formal filing — approvals, budget, advisors, data room.',
-    milestones: [
-      { id:'M0.1', titleAr:'موافقة المساهم على الدراسة', titleEn:'Shareholder approval of study', descAr:'قرار مكتوب من المهندس نصرت باعتماد الهيكل المقترح ومباشرة التنفيذ.', descEn:'Written resolution by Eng. Nusrath endorsing the proposed structure and launching execution.', owner:'Shareholder', critical:true, deliverables:'قرار مساهم موقّع + محضر اجتماع' },
-      { id:'M0.2', titleAr:'اعتماد الميزانية والجدول الزمني', titleEn:'Budget & timeline approval', descAr:'تخصيص ميزانية للتنفيذ (رسوم حكومية، مستشارون، تراخيص) وجدول Gantt تقريبي.', descEn:'Execution budget (government fees, advisors, licenses) and tentative Gantt chart.', owner:'CFO + GC', critical:false, deliverables:'ميزانية موافق عليها + Gantt' },
-      { id:'M0.3', titleAr:'بناء لوحة المستشارين الخارجيين', titleEn:'Build External Counsel Panel', descAr:'3-5 مكاتب معتمدة (كبير + متوسط + متخصص) — يتم الاستعانة بها عند الحاجة فقط، تحت إدارة GC. التفاصيل في صفحة الوظيفة القانونية.', descEn:'3-5 approved firms (large + mid + specialist) — engaged on-demand only, under GC management. Details in Legal Function page.', owner:'GC', critical:false, deliverables:'لوحة معتمدة + engagement letters قياسية' },
-      { id:'M0.3b', titleAr:'توظيف الفريق القانوني الداخلي الأساسي', titleEn:'Hire Core Internal Legal Team', descAr:'5 أشخاص تحت GC: مستشار تجاري أول، أمين سر، مسؤول امتثال، أخصائي عقود، باراليجال. مرحلياً حسب الحاجة.', descEn:'5 people under GC: Senior Commercial Counsel, Company Secretary, Compliance Officer, Contracts Specialist, Paralegal. Phased by need.', owner:'GC + CHRO', critical:true, deliverables:'5 تعيينات بعقود موقّعة' },
-      { id:'M0.4', titleAr:'اختيار المراجع الخارجي الموحَّد', titleEn:'Unified external auditor selection', descAr:'مكتب مراجعة معتمد من SOCPA يخدم القابضة وكل التابعات لتوحيد القوائم.', descEn:'SOCPA-registered firm to serve Holding + all subsidiaries for consolidated statements.', owner:'ARC', critical:false, deliverables:'خطاب تعيين + عقد مراجعة' },
-      { id:'M0.5', titleAr:'تجهيز Data Room وجمع المستندات', titleEn:'Data Room & documents assembly', descAr:'سجلات تجارية، تراخيص، عقود، قوائم مالية لآخر 3 سنوات، ملكية فكرية.', descEn:'CRs, licenses, contracts, 3-yr financials, IP records.', owner:'GC + CFO', critical:true, deliverables:'Data Room مُؤمَّن بصلاحيات' },
-    ]
-  },
-  {
-    id: 'P1', num: '1', weeks: 'W3-W4',
-    titleAr: 'تأسيس القابضة (SJSC)',
-    titleEn: 'Holding Incorporation (SJSC)',
-    descAr: 'ولادة الكيان الأم الذي ستنضوي تحته كل الشركات — أول لبنة في الهيكل الجديد.',
-    descEn: 'Birth of the parent entity that will consolidate all companies — the first brick of the new structure.',
-    milestones: [
-      { id:'M1.1', titleAr:'صياغة النظام الأساس النهائي', titleEn:'Finalize Articles of Association', descAr:'46 مادة، تشمل المسائل المحجوزة وصلاحيات المجلس وتوزيع الأرباح.', descEn:'46 articles including reserved matters, Board powers, dividend policy.', owner:'GC', critical:true, deliverables:'AoA موقّع' },
-      { id:'M1.2', titleAr:'قرار المؤسس', titleEn:'Founder\'s Resolution', descAr:'اعتماد النظام الأساس، تعيين الإدارة، تحديد المقر، السنة المالية.', descEn:'Adopt AoA, appoint management, set HQ, fiscal year.', owner:'Shareholder', critical:true, deliverables:'قرار موثّق عدلياً' },
-      { id:'M1.3', titleAr:'الإيداع لدى وزارة التجارة وإصدار السجل التجاري', titleEn:'MoC filing + CR issuance', descAr:'تقديم إلكتروني، دفع الرسوم، استلام رقم السجل التجاري.', descEn:'E-filing, fees payment, CR number issued.', owner:'GC', critical:true, deliverables:'SJSC CR + Unified Number' },
-      { id:'M1.4', titleAr:'تسجيل ZATCA + الرقم الضريبي', titleEn:'ZATCA registration + Tax ID', descAr:'تسجيل في ضريبة القيمة المضافة + الزكاة/الدخل.', descEn:'Register for VAT + Zakat/Income.', owner:'CFO', critical:true, deliverables:'TIN + VAT certificate' },
-      { id:'M1.5', titleAr:'فتح الحسابات البنكية', titleEn:'Bank accounts opening', descAr:'حساب رئيسي + حسابات فرعية، تفويضات التوقيع وفق DOA.', descEn:'Master + sub-accounts, signatory mandates per DOA.', owner:'CFO + GC', critical:false, deliverables:'بطاقات توقيع، IBAN' },
-      { id:'M1.6', titleAr:'تعيين أول مجلس وتنفيذيين', titleEn:'First Board & C-Suite appointment', descAr:'قرار تعيين 3-5 أعضاء + CEO + GC + CFO + COO.', descEn:'Appoint 3-5 Directors + CEO + GC + CFO + COO.', owner:'Shareholder', critical:true, deliverables:'قرار تعيين + عقود عمل' },
-    ]
-  },
-  {
-    id: 'P2', num: '2', weeks: 'W5-W7',
-    titleAr: 'نقل ملكية الشركات الشقيقة للقابضة',
-    titleEn: 'Transfer Sibling Ownership to Holding',
-    descAr: 'انتقال الحصص من نصرت الشخصي إلى القابضة — قلب عملية إعادة الهيكلة.',
-    descEn: 'Shift shares from Nusrath personally to the Holding — the heart of the restructuring.',
-    milestones: [
-      { id:'M2.1', titleAr:'تقييم الشركات الثلاث', titleEn:'Valuation of 3 entities', descAr:'تقييم مستقل من مكتب معتمد للاستخدام في نقل الحصص + ZATCA.', descEn:'Independent valuation from certified firm for share transfer + ZATCA.', owner:'CFO + External Valuer', critical:true, deliverables:'4 تقارير تقييم' },
-      { id:'M2.2', titleAr:'توقيع اتفاقيات نقل الحصص (×4)', titleEn:'Sign Share Transfer Agreements (x4)', descAr:'HACFI + Superstruct + Art Craft (الفرع حالياً) + حصة mQsala.', descEn:'HACFI + Superstruct + Art Craft (currently branch) + mQsala stake.', owner:'GC + Shareholder', critical:true, deliverables:'4 اتفاقيات موقّعة' },
-      { id:'M2.3', titleAr:'تعديل عقود تأسيس التابعات', titleEn:'Amend subsidiary AoAs', descAr:'تحديث المالك الجديد (القابضة)، خط الإدارة، المسائل المحجوزة.', descEn:'New owner (Holding), management line, reserved matters.', owner:'GC', critical:true, deliverables:'4 ملاحق تعديلية موثّقة' },
-      { id:'M2.4', titleAr:'الإيداع في MoC لكل كيان', titleEn:'MoC filings per entity', descAr:'تحديث السجلات التجارية وإصدار سجلات جديدة بالمالك الجديد.', descEn:'Update CRs and issue new ones reflecting new owner.', owner:'GC', critical:true, deliverables:'4 سجلات تجارية محدّثة' },
-      { id:'M2.5', titleAr:'تحديث المستفيد الحقيقي (UBO)', titleEn:'Update Beneficial Owner (UBO) disclosure', descAr:'تقديم إلزامي لوزارة التجارة: نصرت كمستفيد حقيقي في جميع الكيانات.', descEn:'Mandatory MoC filing: Nusrath as UBO across all entities.', owner:'GC', critical:true, deliverables:'5 إقرارات UBO' },
-      { id:'M2.6', titleAr:'تحديث GOSI، Qiwa، Muqeem', titleEn:'Update GOSI, Qiwa, Muqeem', descAr:'ربط الكيانات بالقابضة في الأنظمة العمالية والاجتماعية.', descEn:'Link entities to Holding in labor/social systems.', owner:'CHRO', critical:false, deliverables:'تحديثات في 3 منصات' },
-    ]
-  },
-  {
-    id: 'P3', num: '3', weeks: 'W8-W10',
-    titleAr: 'فصل Art Craft عن HACFI',
-    titleEn: 'Art Craft Split from HACFI',
-    descAr: 'تحويل فرع النجارة إلى كيان مستقل — عملية جراحية دقيقة على 5 مراحل.',
-    descEn: 'Transform the carpentry branch into a standalone entity — a delicate 5-stage surgical operation.',
-    milestones: [
-      { id:'M3.1', titleAr:'اعتماد خطة الفصل من المجلس', titleEn:'Board approval of split plan', descAr:'خطة الفصل (8A) من 5 مراحل + 3 مسارات قانونية.', descEn:'Split plan (8A): 5 phases + 3 legal paths.', owner:'Board', critical:true, deliverables:'محضر مجلس يعتمد الخطة' },
-      { id:'M3.2', titleAr:'تأسيس Art Craft LLC', titleEn:'Incorporate Art Craft LLC', descAr:'كيان جديد مملوك 100% للقابضة، نشاط: نجارة فاخرة + أثاث خشبي.', descEn:'New entity 100% Holding-owned, activity: luxury carpentry + wood furniture.', owner:'GC', critical:true, deliverables:'سجل تجاري جديد' },
-      { id:'M3.3', titleAr:'اتفاقية نقل الأصول (8B)', titleEn:'Asset Transfer Agreement (8B)', descAr:'نقل آلات، مخزون، عقود، موظفين من فرع HACFI إلى Art Craft LLC.', descEn:'Transfer machinery, inventory, contracts, employees from HACFI branch to Art Craft LLC.', owner:'GC + CFO', critical:true, deliverables:'اتفاقية + قائمة أصول منقولة' },
-      { id:'M3.4', titleAr:'نقل الموظفين (TUPE-like)', titleEn:'Employee transfer (TUPE-like)', descAr:'استئناف عقود العمل، الحفاظ على الحقوق والخدمة، إشعار GOSI/Qiwa.', descEn:'Employment contract continuity, rights preserved, GOSI/Qiwa notice.', owner:'CHRO + GC', critical:false, deliverables:'عقود موظفين محدّثة' },
-      { id:'M3.5', titleAr:'تسجيل علامة Metallica لدى SAIP', titleEn:'Register Metallica trademark with SAIP', descAr:'تحويل ملكية العلامة من HACFI إلى Art Craft، أو تسجيل جديد إن لم تكن مسجّلة.', descEn:'Transfer ownership from HACFI to Art Craft, or new registration if unregistered.', owner:'GC', critical:true, deliverables:'شهادة SAIP' },
-      { id:'M3.6', titleAr:'اتفاقية التوريد المتبادل (8C)', titleEn:'Mutual Supply Agreement (8C)', descAr:'HACFI يوفر المعدن، Art Craft يوفر الخشب، Superstruct يُركّب — للمشاريع المشتركة.', descEn:'HACFI supplies metal, Art Craft supplies wood, Superstruct installs — for joint projects.', owner:'CEOs', critical:false, deliverables:'اتفاقية ثلاثية موقّعة' },
-      { id:'M3.7', titleAr:'تعديل نشاط HACFI (حذف النجارة)', titleEn:'Amend HACFI activity (remove carpentry)', descAr:'تحديث السجل التجاري لـ HACFI لتبقى فقط أنشطة الصناعة والمعدن.', descEn:'Update HACFI CR to keep only industrial/metal activities.', owner:'GC', critical:false, deliverables:'سجل HACFI معدّل' },
-    ]
-  },
+ {
+ id: 'P0', num: '0', weeks: 'W1-W2',
+ titleAr: 'الإعداد والاستعداد',
+ titleEn: 'Preparation & Readiness',
+ descAr: 'تجهيز الأساسيات قبل أي إجراء رسمي — موافقات، ميزانية، مستشارون، وصالة بيانات.',
+ descEn: 'Set the groundwork before any formal filing — approvals, budget, advisors, data room.',
+ milestones: [
+ { id:'M0.1', titleAr:'موافقة المساهم على الدراسة', titleEn:'Shareholder approval of study', descAr:'قرار مكتوب من المهندس نصرت باعتماد الهيكل المقترح ومباشرة التنفيذ.', descEn:'Written resolution by Eng. Nusrath endorsing the proposed structure and launching execution.', owner:'Shareholder', critical:true, deliverables:'قرار مساهم موقّع + محضر اجتماع' },
+ { id:'M0.2', titleAr:'اعتماد الميزانية والجدول الزمني', titleEn:'Budget & timeline approval', descAr:'تخصيص ميزانية للتنفيذ (رسوم حكومية، مستشارون، تراخيص) وجدول Gantt تقريبي.', descEn:'Execution budget (government fees, advisors, licenses) and tentative Gantt chart.', owner:'CFO + GC', critical:false, deliverables:'ميزانية موافق عليها + Gantt' },
+ { id:'M0.3', titleAr:'بناء لوحة المستشارين الخارجيين', titleEn:'Build External Counsel Panel', descAr:'3-5 مكاتب معتمدة (كبير + متوسط + متخصص) — يتم الاستعانة بها عند الحاجة فقط، تحت إدارة GC. التفاصيل في صفحة الوظيفة القانونية.', descEn:'3-5 approved firms (large + mid + specialist) — engaged on-demand only, under GC management. Details in Legal Function page.', owner:'GC', critical:false, deliverables:'لوحة معتمدة + engagement letters قياسية' },
+ { id:'M0.3b', titleAr:'توظيف الفريق القانوني الداخلي الأساسي', titleEn:'Hire Core Internal Legal Team', descAr:'5 أشخاص تحت GC: مستشار تجاري أول، أمين سر، مسؤول امتثال، أخصائي عقود، باراليجال. مرحلياً حسب الحاجة.', descEn:'5 people under GC: Senior Commercial Counsel, Company Secretary, Compliance Officer, Contracts Specialist, Paralegal. Phased by need.', owner:'GC + CHRO', critical:true, deliverables:'5 تعيينات بعقود موقّعة' },
+ { id:'M0.4', titleAr:'اختيار المراجع الخارجي الموحَّد', titleEn:'Unified external auditor selection', descAr:'مكتب مراجعة معتمد من SOCPA يخدم القابضة وكل التابعات لتوحيد القوائم.', descEn:'SOCPA-registered firm to serve Holding + all subsidiaries for consolidated statements.', owner:'ARC', critical:false, deliverables:'خطاب تعيين + عقد مراجعة' },
+ { id:'M0.5', titleAr:'تجهيز Data Room وجمع المستندات', titleEn:'Data Room & documents assembly', descAr:'سجلات تجارية، تراخيص، عقود، قوائم مالية لآخر 3 سنوات، ملكية فكرية.', descEn:'CRs, licenses, contracts, 3-yr financials, IP records.', owner:'GC + CFO', critical:true, deliverables:'Data Room مُؤمَّن بصلاحيات' },
+ ]
+ },
+ {
+ id: 'P1', num: '1', weeks: 'W3-W4',
+ titleAr: 'تأسيس القابضة (SJSC)',
+ titleEn: 'Holding Incorporation (SJSC)',
+ descAr: 'ولادة الكيان الأم الذي ستنضوي تحته كل الشركات — أول لبنة في الهيكل الجديد.',
+ descEn: 'Birth of the parent entity that will consolidate all companies — the first brick of the new structure.',
+ milestones: [
+ { id:'M1.1', titleAr:'صياغة النظام الأساس النهائي', titleEn:'Finalize Articles of Association', descAr:'46 مادة، تشمل المسائل المحجوزة وصلاحيات المجلس وتوزيع الأرباح.', descEn:'46 articles including reserved matters, Board powers, dividend policy.', owner:'GC', critical:true, deliverables:'AoA موقّع' },
+ { id:'M1.2', titleAr:'قرار المؤسس', titleEn:'Founder\'s Resolution', descAr:'اعتماد النظام الأساس، تعيين الإدارة، تحديد المقر، السنة المالية.', descEn:'Adopt AoA, appoint management, set HQ, fiscal year.', owner:'Shareholder', critical:true, deliverables:'قرار موثّق عدلياً' },
+ { id:'M1.3', titleAr:'الإيداع لدى وزارة التجارة وإصدار السجل التجاري', titleEn:'MoC filing + CR issuance', descAr:'تقديم إلكتروني، دفع الرسوم، استلام رقم السجل التجاري.', descEn:'E-filing, fees payment, CR number issued.', owner:'GC', critical:true, deliverables:'SJSC CR + Unified Number' },
+ { id:'M1.4', titleAr:'تسجيل ZATCA + الرقم الضريبي', titleEn:'ZATCA registration + Tax ID', descAr:'تسجيل في ضريبة القيمة المضافة + الزكاة/الدخل.', descEn:'Register for VAT + Zakat/Income.', owner:'CFO', critical:true, deliverables:'TIN + VAT certificate' },
+ { id:'M1.5', titleAr:'فتح الحسابات البنكية', titleEn:'Bank accounts opening', descAr:'حساب رئيسي + حسابات فرعية، تفويضات التوقيع وفق DOA.', descEn:'Master + sub-accounts, signatory mandates per DOA.', owner:'CFO + GC', critical:false, deliverables:'بطاقات توقيع، IBAN' },
+ { id:'M1.6', titleAr:'تعيين أول مجلس وتنفيذيين', titleEn:'First Board & C-Suite appointment', descAr:'قرار تعيين 3-5 أعضاء + CEO + GC + CFO + COO.', descEn:'Appoint 3-5 Directors + CEO + GC + CFO + COO.', owner:'Shareholder', critical:true, deliverables:'قرار تعيين + عقود عمل' },
+ ]
+ },
+ {
+ id: 'P2', num: '2', weeks: 'W5-W7',
+ titleAr: 'نقل ملكية الشركات الشقيقة للقابضة',
+ titleEn: 'Transfer Sibling Ownership to Holding',
+ descAr: 'انتقال الحصص من نصرت الشخصي إلى القابضة — قلب عملية إعادة الهيكلة.',
+ descEn: 'Shift shares from Nusrath personally to the Holding — the heart of the restructuring.',
+ milestones: [
+ { id:'M2.1', titleAr:'تقييم الشركات الثلاث', titleEn:'Valuation of 3 entities', descAr:'تقييم مستقل من مكتب معتمد للاستخدام في نقل الحصص + ZATCA.', descEn:'Independent valuation from certified firm for share transfer + ZATCA.', owner:'CFO + External Valuer', critical:true, deliverables:'4 تقارير تقييم' },
+ { id:'M2.2', titleAr:'توقيع اتفاقيات نقل الحصص (×4)', titleEn:'Sign Share Transfer Agreements (x4)', descAr:'HACFI + Superstruct + Art Craft (الفرع حالياً) + حصة .', descEn:'HACFI + Superstruct + Art Craft (currently branch) + stake.', owner:'GC + Shareholder', critical:true, deliverables:'4 اتفاقيات موقّعة' },
+ { id:'M2.3', titleAr:'تعديل عقود تأسيس التابعات', titleEn:'Amend subsidiary AoAs', descAr:'تحديث المالك الجديد (القابضة)، خط الإدارة، المسائل المحجوزة.', descEn:'New owner (Holding), management line, reserved matters.', owner:'GC', critical:true, deliverables:'4 ملاحق تعديلية موثّقة' },
+ { id:'M2.4', titleAr:'الإيداع في MoC لكل كيان', titleEn:'MoC filings per entity', descAr:'تحديث السجلات التجارية وإصدار سجلات جديدة بالمالك الجديد.', descEn:'Update CRs and issue new ones reflecting new owner.', owner:'GC', critical:true, deliverables:'4 سجلات تجارية محدّثة' },
+ { id:'M2.5', titleAr:'تحديث المستفيد الحقيقي (UBO)', titleEn:'Update Beneficial Owner (UBO) disclosure', descAr:'تقديم إلزامي لوزارة التجارة: نصرت كمستفيد حقيقي في جميع الكيانات.', descEn:'Mandatory MoC filing: Nusrath as UBO across all entities.', owner:'GC', critical:true, deliverables:'5 إقرارات UBO' },
+ { id:'M2.6', titleAr:'تحديث GOSI، Qiwa، Muqeem', titleEn:'Update GOSI, Qiwa, Muqeem', descAr:'ربط الكيانات بالقابضة في الأنظمة العمالية والاجتماعية.', descEn:'Link entities to Holding in labor/social systems.', owner:'CHRO', critical:false, deliverables:'تحديثات في 3 منصات' },
+ ]
+ },
+ {
+ id: 'P3', num: '3', weeks: 'W8-W10',
+ titleAr: 'فصل Art Craft عن HACFI',
+ titleEn: 'Art Craft Split from HACFI',
+ descAr: 'تحويل فرع النجارة إلى كيان مستقل — عملية جراحية دقيقة على 5 مراحل.',
+ descEn: 'Transform the carpentry branch into a standalone entity — a delicate 5-stage surgical operation.',
+ milestones: [
+ { id:'M3.1', titleAr:'اعتماد خطة الفصل من المجلس', titleEn:'Board approval of split plan', descAr:'خطة الفصل (8A) من 5 مراحل + 3 مسارات قانونية.', descEn:'Split plan (8A): 5 phases + 3 legal paths.', owner:'Board', critical:true, deliverables:'محضر مجلس يعتمد الخطة' },
+ { id:'M3.2', titleAr:'تأسيس Art Craft LLC', titleEn:'Incorporate Art Craft LLC', descAr:'كيان جديد مملوك 100% للقابضة، نشاط: نجارة فاخرة + أثاث خشبي.', descEn:'New entity 100% Holding-owned, activity: luxury carpentry + wood furniture.', owner:'GC', critical:true, deliverables:'سجل تجاري جديد' },
+ { id:'M3.3', titleAr:'اتفاقية نقل الأصول (8B)', titleEn:'Asset Transfer Agreement (8B)', descAr:'نقل آلات، مخزون، عقود، موظفين من فرع HACFI إلى Art Craft LLC.', descEn:'Transfer machinery, inventory, contracts, employees from HACFI branch to Art Craft LLC.', owner:'GC + CFO', critical:true, deliverables:'اتفاقية + قائمة أصول منقولة' },
+ { id:'M3.4', titleAr:'نقل الموظفين (TUPE-like)', titleEn:'Employee transfer (TUPE-like)', descAr:'استئناف عقود العمل، الحفاظ على الحقوق والخدمة، إشعار GOSI/Qiwa.', descEn:'Employment contract continuity, rights preserved, GOSI/Qiwa notice.', owner:'CHRO + GC', critical:false, deliverables:'عقود موظفين محدّثة' },
+ { id:'M3.5', titleAr:'تسجيل علامة Metallica لدى SAIP', titleEn:'Register Metallica trademark with SAIP', descAr:'تحويل ملكية العلامة من HACFI إلى Art Craft، أو تسجيل جديد إن لم تكن مسجّلة.', descEn:'Transfer ownership from HACFI to Art Craft, or new registration if unregistered.', owner:'GC', critical:true, deliverables:'شهادة SAIP' },
+ { id:'M3.6', titleAr:'اتفاقية التوريد المتبادل (8C)', titleEn:'Mutual Supply Agreement (8C)', descAr:'HACFI يوفر المعدن، Art Craft يوفر الخشب، Superstruct يُركّب — للمشاريع المشتركة.', descEn:'HACFI supplies metal, Art Craft supplies wood, Superstruct installs — for joint projects.', owner:'CEOs', critical:false, deliverables:'اتفاقية ثلاثية موقّعة' },
+ { id:'M3.7', titleAr:'تعديل نشاط HACFI (حذف النجارة)', titleEn:'Amend HACFI activity (remove carpentry)', descAr:'تحديث السجل التجاري لـ HACFI لتبقى فقط أنشطة الصناعة والمعدن.', descEn:'Update HACFI CR to keep only industrial/metal activities.', owner:'GC', critical:false, deliverables:'سجل HACFI معدّل' },
+ ]
+ },
 
-  {
-    id: 'P5', num: '5', weeks: 'W12-W14',
-    titleAr: 'إطلاق الحوكمة',
-    titleEn: 'Governance Rollout',
-    descAr: 'تفعيل النظام الذي يربط كل هذا ويمنعه من الانهيار — المجلس، اللجان، DOA، السياسات.',
-    descEn: 'Activate the system that binds it all — Board, committees, DOA, policies.',
-    milestones: [
-      { id:'M5.1', titleAr:'اعتماد ميثاق المجلس', titleEn:'Adopt Board Charter', descAr:'9 أبواب، 25 مادة، تعريف الأدوار وصلاحيات المجلس.', descEn:'9 chapters, 25 articles, roles and Board powers.', owner:'Board', critical:true, deliverables:'محضر اعتماد + نسخة موقّعة' },
-      { id:'M5.2', titleAr:'تشكيل اللجان الأربع', titleEn:'Form 4 Committees', descAr:'ExCom، ARC (المراجعة والمخاطر)، N&R (الترشيحات)، I&S (الاستثمار والاستراتيجية).', descEn:'ExCom, ARC (Audit & Risk), N&R (Nom. & Rem.), I&S (Investment & Strategy).', owner:'Board', critical:true, deliverables:'4 قرارات تشكيل' },
-      { id:'M5.3', titleAr:'تفعيل مصفوفة الصلاحيات (DOA)', titleEn:'Activate DOA matrix', descAr:'DOA معتمدة + تعميم على جميع الإدارات + تنفيذ في ERP (إن وُجد).', descEn:'Approved DOA + circulation to all functions + ERP enforcement (if any).', owner:'GC + CFO', critical:true, deliverables:'DOA منشورة ومعتمدة' },
-      { id:'M5.4', titleAr:'اعتماد السياسات الحرجة', titleEn:'Approve critical policies', descAr:'COI، سياسة التوقيع، الأطراف ذات العلاقة، الخزينة، المشتريات، القانونية.', descEn:'COI, Signature, Related-Party, Treasury, Procurement, Legal.', owner:'Board', critical:true, deliverables:'6 سياسات معتمدة' },
-      { id:'M5.5', titleAr:'أول اجتماع رسمي للمجلس', titleEn:'First formal Board meeting', descAr:'اعتماد الاستراتيجية السنوية، الموازنة، KPIs للإدارة التنفيذية.', descEn:'Approve annual strategy, budget, KPIs for executives.', owner:'Board', critical:true, deliverables:'محضر الاجتماع الأول' },
-      { id:'M5.6', titleAr:'جمع إقرارات COI السنوية', titleEn:'Collect annual COI declarations', descAr:'كل عضو مجلس + تنفيذي + مسؤول شراء يوقّع إفصاح تعارض المصالح.', descEn:'Each Director + Executive + Procurement signs COI disclosure.', owner:'GC', critical:false, deliverables:'ملف إقرارات COI' },
-    ]
-  },
-  {
-    id: 'P6', num: '6', weeks: 'W14-W16',
-    titleAr: 'مركز الخدمات المشتركة والضرائب',
-    titleEn: 'Shared Services Center & Tax',
-    descAr: 'توفير 20-30% من التكاليف عبر تمركز الخدمات + تحسين الوضع الضريبي.',
-    descEn: 'Save 20-30% via centralized services + optimize tax posture.',
-    milestones: [
-      { id:'M6.1', titleAr:'تأسيس SSC في القابضة', titleEn:'Establish SSC at Holding', descAr:'وحدة داخلية تخدم جميع التابعات (مالية/قانونية/HR/IT/مشتريات/استراتيجية/مراجعة داخلية).', descEn:'Internal unit serving all subsidiaries (Finance/Legal/HR/IT/Procurement/Strategy/IA).', owner:'CEO + COO', critical:false, deliverables:'هيكل تنظيمي + تعيينات' },
-      { id:'M6.2', titleAr:'توقيع اتفاقيات الخدمات المشتركة', titleEn:'Sign Shared Services Agreements', descAr:'عقد موحد بين SSC وكل تابعة — 7 خدمات + SLA + 5 ملاحق.', descEn:'Unified contract between SSC and each subsidiary — 7 services + SLA + 5 annexes.', owner:'GC', critical:true, deliverables:'4 اتفاقيات SSC موقّعة' },
-      { id:'M6.3', titleAr:'تفعيل Cost Allocation Framework', titleEn:'Activate Cost Allocation Framework', descAr:'Cost-Plus 5-7%، CUP، Cost Sharing — 5 مفاتيح توزيع معتمدة.', descEn:'Cost-Plus 5-7%, CUP, Cost Sharing — 5 approved allocation keys.', owner:'CFO', critical:true, deliverables:'Framework + أول فوترة بينية' },
-      { id:'M6.4', titleAr:'تسجيل VAT Group في ZATCA', titleEn:'Register ZATCA VAT Group', descAr:'إعفاء المعاملات البينية من VAT — توفير كبير للسيولة.', descEn:'Exempt intercompany transactions from VAT — major cash flow savings.', owner:'CFO + GC', critical:false, deliverables:'موافقة ZATCA' },
-      { id:'M6.5', titleAr:'إعداد ملف Transfer Pricing', titleEn:'Prepare Transfer Pricing file', descAr:'Master File + 5 Local Files + Benchmarking — إلزامي ZATCA.', descEn:'Master File + 5 Local Files + Benchmarking — ZATCA mandatory.', owner:'CFO + Tax Advisor', critical:true, deliverables:'TP File كامل' },
-    ]
-  },
-  {
-    id: 'P7', num: '7', weeks: 'W16-W18',
-    titleAr: 'التشغيل الأول والامتثال الدوري',
-    titleEn: 'First Operations & Periodic Compliance',
-    descAr: 'بدء الدورة التشغيلية الفعلية مع التقارير والامتثال المستمر.',
-    descEn: 'Kick off the real operating cycle with reporting and ongoing compliance.',
-    milestones: [
-      { id:'M7.1', titleAr:'إطلاق التقارير الشهرية', titleEn:'Launch monthly reporting', descAr:'كل MD يرفع تقرير شهر (6 أقسام: ملخص، مالي، عمليات، HR، مخاطر، نظرة مستقبلية).', descEn:'Each MD submits monthly report (6 sections: summary, finance, ops, HR, risk, forward look).', owner:'CEO', critical:false, deliverables:'4 تقارير شهرية' },
-      { id:'M7.2', titleAr:'تفعيل Risk Register', titleEn:'Activate Risk Register', descAr:'سجل موحد للمخاطر الاستراتيجية والتشغيلية، يُراجع ربع سنوياً من ARC.', descEn:'Unified register of strategic/operational risks, quarterly ARC review.', owner:'ARC + CRO', critical:false, deliverables:'Risk Register منشور' },
-      { id:'M7.3', titleAr:'إطلاق قناة البلاغات (Whistleblower)', titleEn:'Launch Whistleblower channel', descAr:'قناة مستقلة (بريد + هاتف + نموذج ويب) لتلقي البلاغات بسرية تامة.', descEn:'Independent channel (email + hotline + web form) receiving reports confidentially.', owner:'ARC + GC', critical:false, deliverables:'قناة مفعّلة + دليل استخدام' },
-      { id:'M7.4', titleAr:'تدريب إلزامي على الحوكمة والامتثال', titleEn:'Mandatory governance & compliance training', descAr:'جميع الإدارات الوسطى — AML، COI، سلوك مهني، حماية بيانات (PDPL).', descEn:'All middle management — AML, COI, professional conduct, data protection (PDPL).', owner:'CHRO + GC', critical:false, deliverables:'سجل تدريب كامل' },
-      { id:'M7.5', titleAr:'أول مراجعة داخلية', titleEn:'First Internal Audit cycle', descAr:'خطة مراجعة سنوية، تنفيذ 3 مراجعات (مالية، مشتريات، عقود).', descEn:'Annual audit plan, execute 3 audits (finance, procurement, contracts).', owner:'Internal Audit', critical:false, deliverables:'3 تقارير IA' },
-      { id:'M7.6', titleAr:'تحديث التراخيص القطاعية', titleEn:'Update sector licenses', descAr:'SCE (Superstruct)، MIM (HACFI)، MISA (mQsala)، SAIP (Art Craft).', descEn:'SCE (Superstruct), MIM (HACFI), MISA (mQsala), SAIP (Art Craft).', owner:'GC', critical:false, deliverables:'4 تراخيص سارية' },
-    ]
-  },
-  {
-    id: 'P8', num: '8', weeks: 'M6+',
-    titleAr: 'الاستقرار والنمو المؤسسي',
-    titleEn: 'Stabilization & Institutional Growth',
-    descAr: 'بعد 6 أشهر — المجموعة تعمل كنظام مؤسسي، جاهزة للمراحل الكبرى (IPO، شراكات، توسّع).',
-    descEn: 'After 6 months — the group operates as an institution, ready for major moves (IPO, partnerships, expansion).',
-    milestones: [
-      { id:'M8.1', titleAr:'القوائم المالية السنوية الموحّدة الأولى', titleEn:'First consolidated annual financials', descAr:'قوائم موحّدة للقابضة + التابعات، معايير IFRS، موقّعة من المراجع الخارجي.', descEn:'Holding + subsidiaries consolidated, IFRS, external auditor sign-off.', owner:'CFO + ARC', critical:true, deliverables:'تقرير مالي سنوي موقّع' },
-      { id:'M8.2', titleAr:'إتمام المراجعة الخارجية السنوية', titleEn:'Complete external audit', descAr:'رأي مراجع بدون تحفظات — مؤشر صحة مالية.', descEn:'Unqualified auditor opinion — financial health marker.', owner:'External Auditor', critical:true, deliverables:'تقرير مراجعة نظيف' },
-      { id:'M8.3', titleAr:'مراجعة استراتيجية شاملة', titleEn:'Strategic review', descAr:'تقييم أداء المجموعة مقابل الخطة، تعديل الاستراتيجية لـ 5 سنوات قادمة.', descEn:'Group performance vs plan, adjust 5-year strategy.', owner:'Board + I&S Committee', critical:false, deliverables:'خطة 5 سنوات جديدة' },
-      { id:'M8.4', titleAr:'تقييم IPO Readiness', titleEn:'IPO Readiness assessment', descAr:'هل المجموعة جاهزة لطرح عام؟ تقييم الحوكمة والقوائم والسيولة (للمستقبل).', descEn:'Is the Group IPO-ready? Assess governance, statements, liquidity (future option).', owner:'CFO + GC', critical:false, deliverables:'IPO Readiness Report' },
-      { id:'M8.5', titleAr:'الأرشفة النهائية للدراسة والتنفيذ', titleEn:'Final archival of study & execution', descAr:'حفظ كل الوثائق والمحاضر والقرارات في Data Room دائم للأجيال القادمة.', descEn:'Archive all documents, minutes, decisions in a permanent Data Room for future generations.', owner:'GC + Co. Sec.', critical:false, deliverables:'Data Room دائم + وثيقة تسليم' },
-    ]
-  },
+ {
+ id: 'P5', num: '5', weeks: 'W12-W14',
+ titleAr: 'إطلاق الحوكمة',
+ titleEn: 'Governance Rollout',
+ descAr: 'تفعيل النظام الذي يربط كل هذا ويمنعه من الانهيار — المجلس، اللجان، DOA، السياسات.',
+ descEn: 'Activate the system that binds it all — Board, committees, DOA, policies.',
+ milestones: [
+ { id:'M5.1', titleAr:'اعتماد ميثاق المجلس', titleEn:'Adopt Board Charter', descAr:'9 أبواب، 25 مادة، تعريف الأدوار وصلاحيات المجلس.', descEn:'9 chapters, 25 articles, roles and Board powers.', owner:'Board', critical:true, deliverables:'محضر اعتماد + نسخة موقّعة' },
+ { id:'M5.2', titleAr:'تشكيل اللجان الأربع', titleEn:'Form 4 Committees', descAr:'ExCom، ARC (المراجعة والمخاطر)، N&R (الترشيحات)، I&S (الاستثمار والاستراتيجية).', descEn:'ExCom, ARC (Audit & Risk), N&R (Nom. & Rem.), I&S (Investment & Strategy).', owner:'Board', critical:true, deliverables:'4 قرارات تشكيل' },
+ { id:'M5.3', titleAr:'تفعيل مصفوفة الصلاحيات (DOA)', titleEn:'Activate DOA matrix', descAr:'DOA معتمدة + تعميم على جميع الإدارات + تنفيذ في ERP (إن وُجد).', descEn:'Approved DOA + circulation to all functions + ERP enforcement (if any).', owner:'GC + CFO', critical:true, deliverables:'DOA منشورة ومعتمدة' },
+ { id:'M5.4', titleAr:'اعتماد السياسات الحرجة', titleEn:'Approve critical policies', descAr:'COI، سياسة التوقيع، الأطراف ذات العلاقة، الخزينة، المشتريات، القانونية.', descEn:'COI, Signature, Related-Party, Treasury, Procurement, Legal.', owner:'Board', critical:true, deliverables:'6 سياسات معتمدة' },
+ { id:'M5.5', titleAr:'أول اجتماع رسمي للمجلس', titleEn:'First formal Board meeting', descAr:'اعتماد الاستراتيجية السنوية، الموازنة، KPIs للإدارة التنفيذية.', descEn:'Approve annual strategy, budget, KPIs for executives.', owner:'Board', critical:true, deliverables:'محضر الاجتماع الأول' },
+ { id:'M5.6', titleAr:'جمع إقرارات COI السنوية', titleEn:'Collect annual COI declarations', descAr:'كل عضو مجلس + تنفيذي + مسؤول شراء يوقّع إفصاح تعارض المصالح.', descEn:'Each Director + Executive + Procurement signs COI disclosure.', owner:'GC', critical:false, deliverables:'ملف إقرارات COI' },
+ ]
+ },
+ {
+ id: 'P6', num: '6', weeks: 'W14-W16',
+ titleAr: 'مركز الخدمات المشتركة والضرائب',
+ titleEn: 'Shared Services Center & Tax',
+ descAr: 'توفير 20-30% من التكاليف عبر تمركز الخدمات + تحسين الوضع الضريبي.',
+ descEn: 'Save 20-30% via centralized services + optimize tax posture.',
+ milestones: [
+ { id:'M6.1', titleAr:'تأسيس SSC في القابضة', titleEn:'Establish SSC at Holding', descAr:'وحدة داخلية تخدم جميع التابعات (مالية/قانونية/HR/IT/مشتريات/استراتيجية/مراجعة داخلية).', descEn:'Internal unit serving all subsidiaries (Finance/Legal/HR/IT/Procurement/Strategy/IA).', owner:'CEO + COO', critical:false, deliverables:'هيكل تنظيمي + تعيينات' },
+ { id:'M6.2', titleAr:'توقيع اتفاقيات الخدمات المشتركة', titleEn:'Sign Shared Services Agreements', descAr:'عقد موحد بين SSC وكل تابعة — 7 خدمات + SLA + 5 ملاحق.', descEn:'Unified contract between SSC and each subsidiary — 7 services + SLA + 5 annexes.', owner:'GC', critical:true, deliverables:'4 اتفاقيات SSC موقّعة' },
+ { id:'M6.3', titleAr:'تفعيل Cost Allocation Framework', titleEn:'Activate Cost Allocation Framework', descAr:'Cost-Plus 5-7%، CUP، Cost Sharing — 5 مفاتيح توزيع معتمدة.', descEn:'Cost-Plus 5-7%, CUP, Cost Sharing — 5 approved allocation keys.', owner:'CFO', critical:true, deliverables:'Framework + أول فوترة بينية' },
+ { id:'M6.4', titleAr:'تسجيل VAT Group في ZATCA', titleEn:'Register ZATCA VAT Group', descAr:'إعفاء المعاملات البينية من VAT — توفير كبير للسيولة.', descEn:'Exempt intercompany transactions from VAT — major cash flow savings.', owner:'CFO + GC', critical:false, deliverables:'موافقة ZATCA' },
+ { id:'M6.5', titleAr:'إعداد ملف Transfer Pricing', titleEn:'Prepare Transfer Pricing file', descAr:'Master File + 5 Local Files + Benchmarking — إلزامي ZATCA.', descEn:'Master File + 5 Local Files + Benchmarking — ZATCA mandatory.', owner:'CFO + Tax Advisor', critical:true, deliverables:'TP File كامل' },
+ ]
+ },
+ {
+ id: 'P7', num: '7', weeks: 'W16-W18',
+ titleAr: 'التشغيل الأول والامتثال الدوري',
+ titleEn: 'First Operations & Periodic Compliance',
+ descAr: 'بدء الدورة التشغيلية الفعلية مع التقارير والامتثال المستمر.',
+ descEn: 'Kick off the real operating cycle with reporting and ongoing compliance.',
+ milestones: [
+ { id:'M7.1', titleAr:'إطلاق التقارير الشهرية', titleEn:'Launch monthly reporting', descAr:'كل MD يرفع تقرير شهر (6 أقسام: ملخص، مالي، عمليات، HR، مخاطر، نظرة مستقبلية).', descEn:'Each MD submits monthly report (6 sections: summary, finance, ops, HR, risk, forward look).', owner:'CEO', critical:false, deliverables:'4 تقارير شهرية' },
+ { id:'M7.2', titleAr:'تفعيل Risk Register', titleEn:'Activate Risk Register', descAr:'سجل موحد للمخاطر الاستراتيجية والتشغيلية، يُراجع ربع سنوياً من ARC.', descEn:'Unified register of strategic/operational risks, quarterly ARC review.', owner:'ARC + CRO', critical:false, deliverables:'Risk Register منشور' },
+ { id:'M7.3', titleAr:'إطلاق قناة البلاغات (Whistleblower)', titleEn:'Launch Whistleblower channel', descAr:'قناة مستقلة (بريد + هاتف + نموذج ويب) لتلقي البلاغات بسرية تامة.', descEn:'Independent channel (email + hotline + web form) receiving reports confidentially.', owner:'ARC + GC', critical:false, deliverables:'قناة مفعّلة + دليل استخدام' },
+ { id:'M7.4', titleAr:'تدريب إلزامي على الحوكمة والامتثال', titleEn:'Mandatory governance & compliance training', descAr:'جميع الإدارات الوسطى — AML، COI، سلوك مهني، حماية بيانات (PDPL).', descEn:'All middle management — AML, COI, professional conduct, data protection (PDPL).', owner:'CHRO + GC', critical:false, deliverables:'سجل تدريب كامل' },
+ { id:'M7.5', titleAr:'أول مراجعة داخلية', titleEn:'First Internal Audit cycle', descAr:'خطة مراجعة سنوية، تنفيذ 3 مراجعات (مالية، مشتريات، عقود).', descEn:'Annual audit plan, execute 3 audits (finance, procurement, contracts).', owner:'Internal Audit', critical:false, deliverables:'3 تقارير IA' },
+ { id:'M7.6', titleAr:'تحديث التراخيص القطاعية', titleEn:'Update sector licenses', descAr:'SCE (Superstruct)، MIM (HACFI)، MISA ()، SAIP (Art Craft).', descEn:'SCE (Superstruct), MIM (HACFI), MISA (), SAIP (Art Craft).', owner:'GC', critical:false, deliverables:'4 تراخيص سارية' },
+ ]
+ },
+ {
+ id: 'P8', num: '8', weeks: 'M6+',
+ titleAr: 'الاستقرار والنمو المؤسسي',
+ titleEn: 'Stabilization & Institutional Growth',
+ descAr: 'بعد 6 أشهر — المجموعة تعمل كنظام مؤسسي، جاهزة للمراحل الكبرى (IPO، شراكات، توسّع).',
+ descEn: 'After 6 months — the group operates as an institution, ready for major moves (IPO, partnerships, expansion).',
+ milestones: [
+ { id:'M8.1', titleAr:'القوائم المالية السنوية الموحّدة الأولى', titleEn:'First consolidated annual financials', descAr:'قوائم موحّدة للقابضة + التابعات، معايير IFRS، موقّعة من المراجع الخارجي.', descEn:'Holding + subsidiaries consolidated, IFRS, external auditor sign-off.', owner:'CFO + ARC', critical:true, deliverables:'تقرير مالي سنوي موقّع' },
+ { id:'M8.2', titleAr:'إتمام المراجعة الخارجية السنوية', titleEn:'Complete external audit', descAr:'رأي مراجع بدون تحفظات — مؤشر صحة مالية.', descEn:'Unqualified auditor opinion — financial health marker.', owner:'External Auditor', critical:true, deliverables:'تقرير مراجعة نظيف' },
+ { id:'M8.3', titleAr:'مراجعة استراتيجية شاملة', titleEn:'Strategic review', descAr:'تقييم أداء المجموعة مقابل الخطة، تعديل الاستراتيجية لـ 5 سنوات قادمة.', descEn:'Group performance vs plan, adjust 5-year strategy.', owner:'Board + I&S Committee', critical:false, deliverables:'خطة 5 سنوات جديدة' },
+ { id:'M8.4', titleAr:'تقييم IPO Readiness', titleEn:'IPO Readiness assessment', descAr:'هل المجموعة جاهزة لطرح عام؟ تقييم الحوكمة والقوائم والسيولة (للمستقبل).', descEn:'Is the Group IPO-ready? Assess governance, statements, liquidity (future option).', owner:'CFO + GC', critical:false, deliverables:'IPO Readiness Report' },
+ { id:'M8.5', titleAr:'الأرشفة النهائية للدراسة والتنفيذ', titleEn:'Final archival of study & execution', descAr:'حفظ كل الوثائق والمحاضر والقرارات في Data Room دائم للأجيال القادمة.', descEn:'Archive all documents, minutes, decisions in a permanent Data Room for future generations.', owner:'GC + Co. Sec.', critical:false, deliverables:'Data Room دائم + وثيقة تسليم' },
+ ]
+ },
 ];
 
 /* ============== RENDERING ============== */
@@ -546,143 +546,143 @@ function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
 
 function totalMilestones() { return PHASES.reduce((n,p) => n + p.milestones.length, 0); }
 function doneCount() {
-    const p = loadProgress(); let n = 0;
-    PHASES.forEach(ph => ph.milestones.forEach(m => { if (p[m.id]) n++; }));
-    return n;
+ const p = loadProgress(); let n = 0;
+ PHASES.forEach(ph => ph.milestones.forEach(m => { if (p[m.id]) n++; }));
+ return n;
 }
 function phasesCompleted() {
-    const p = loadProgress();
-    return PHASES.filter(ph => ph.milestones.every(m => p[m.id])).length;
+ const p = loadProgress();
+ return PHASES.filter(ph => ph.milestones.every(m => p[m.id])).length;
 }
 
 function renderAll() {
-    const isRtl = document.body.getAttribute('dir') === 'rtl';
-    const progress = loadProgress();
-    const total = totalMilestones();
-    const done = doneCount();
-    const pct = total ? Math.round((done / total) * 100) : 0;
+ const isRtl = document.body.getAttribute('dir') === 'rtl';
+ const progress = loadProgress();
+ const total = totalMilestones();
+ const done = doneCount();
+ const pct = total ? Math.round((done / total) * 100) : 0;
 
-    // Progress bar
-    document.getElementById('overall-pct').textContent = pct + '%';
-    document.getElementById('overall-fill').style.width = pct + '%';
-    document.getElementById('meta-done').textContent = done;
-    document.getElementById('meta-total').textContent = total;
-    document.getElementById('meta-phase').textContent = phasesCompleted() + '/' + PHASES.length;
-    document.querySelector('.rm-timeline').style.setProperty('--progress', pct + '%');
+ // Progress bar
+ document.getElementById('overall-pct').textContent = pct + '%';
+ document.getElementById('overall-fill').style.width = pct + '%';
+ document.getElementById('meta-done').textContent = done;
+ document.getElementById('meta-total').textContent = total;
+ document.getElementById('meta-phase').textContent = phasesCompleted() + '/' + PHASES.length;
+ document.querySelector('.rm-timeline').style.setProperty('--progress', pct + '%');
 
-    // Timeline
-    const box = document.getElementById('rm-timeline');
-    box.innerHTML = PHASES.map(ph => {
-        const phDone = ph.milestones.every(m => progress[m.id]);
-        const phAny = ph.milestones.some(m => progress[m.id]);
-        const phClass = phDone ? 'done' : (phAny ? 'active' : '');
+ // Timeline
+ const box = document.getElementById('rm-timeline');
+ box.innerHTML = PHASES.map(ph => {
+ const phDone = ph.milestones.every(m => progress[m.id]);
+ const phAny = ph.milestones.some(m => progress[m.id]);
+ const phClass = phDone ? 'done' : (phAny ? 'active' : '');
 
-        // Filter phase visibility
-        if (currentFilter !== 'all' && currentFilter !== 'todo' && currentFilter !== 'done' && currentFilter !== ph.id) {
-            return '';
-        }
+ // Filter phase visibility
+ if (currentFilter !== 'all' && currentFilter !== 'todo' && currentFilter !== 'done' && currentFilter !== ph.id) {
+ return '';
+ }
 
-        const msItems = ph.milestones.map(m => {
-            const checked = !!progress[m.id];
-            if (currentFilter === 'todo' && checked) return '';
-            if (currentFilter === 'done' && !checked) return '';
-            const state = checked ? 'done' : '';
-            return `
-                <div class="milestone ${state}">
-                    <div class="m-checkbox ${checked?'checked':''}" onclick="toggleMilestone('${m.id}')" role="checkbox" aria-checked="${checked}"></div>
-                    <div class="m-body">
-                        <div class="m-top-row">
-                            <span class="m-num">${m.id}</span>
-                            <span class="m-title"><span class="lang-ar">${m.titleAr}</span><span class="lang-en">${m.titleEn}</span></span>
-                        </div>
-                        <div class="m-desc"><span class="lang-ar">${m.descAr}</span><span class="lang-en">${m.descEn}</span></div>
-                        <div class="m-tags">
-                            <span class="m-tag owner">👤 ${m.owner}</span>
-                            ${m.critical ? '<span class="m-tag crit">🔴 <span class="lang-ar">مسار حرج</span><span class="lang-en">Critical</span></span>' : ''}
-                        </div>
-                        <div class="m-deliver">
-                            📦 <strong><span class="lang-ar">المخرج:</span><span class="lang-en">Deliverable:</span></strong> ${m.deliverables}
-                        </div>
-                    </div>
-                </div>`;
-        }).filter(Boolean).join('');
+ const msItems = ph.milestones.map(m => {
+ const checked = !!progress[m.id];
+ if (currentFilter === 'todo' && checked) return '';
+ if (currentFilter === 'done' && !checked) return '';
+ const state = checked ? 'done' : '';
+ return `
+ <div class="milestone ${state}">
+ <div class="m-checkbox ${checked?'checked':''}" onclick="toggleMilestone('${m.id}')" role="checkbox" aria-checked="${checked}"></div>
+ <div class="m-body">
+ <div class="m-top-row">
+ <span class="m-num">${m.id}</span>
+ <span class="m-title"><span class="lang-ar">${m.titleAr}</span><span class="lang-en">${m.titleEn}</span></span>
+ </div>
+ <div class="m-desc"><span class="lang-ar">${m.descAr}</span><span class="lang-en">${m.descEn}</span></div>
+ <div class="m-tags">
+ <span class="m-tag owner">👤 ${m.owner}</span>
+ ${m.critical ? '<span class="m-tag crit">🔴 <span class="lang-ar">مسار حرج</span><span class="lang-en">Critical</span></span>' : ''}
+ </div>
+ <div class="m-deliver">
+ 📦 <strong><span class="lang-ar">المخرج:</span><span class="lang-en">Deliverable:</span></strong> ${m.deliverables}
+ </div>
+ </div>
+ </div>`;
+ }).filter(Boolean).join('');
 
-        if (!msItems) return '';
+ if (!msItems) return '';
 
-        return `
-            <section class="phase ${phClass}" data-phase="${ph.id}">
-                <div class="phase-marker">${ph.num}</div>
-                <div class="phase-head">
-                    <div class="phase-eyebrow"><span class="lang-ar">المرحلة ${ph.num}</span><span class="lang-en">Phase ${ph.num}</span> · ${ph.weeks}</div>
-                    <div class="phase-title"><span class="lang-ar">${ph.titleAr}</span><span class="lang-en">${ph.titleEn}</span></div>
-                    <div class="phase-desc"><span class="lang-ar">${ph.descAr}</span><span class="lang-en">${ph.descEn}</span></div>
-                    <div class="phase-meta">
-                        <span>${ph.milestones.filter(m => progress[m.id]).length}/${ph.milestones.length} <span class="lang-ar">منجزة</span><span class="lang-en">done</span></span>
-                        <span>⏱ ${ph.weeks}</span>
-                    </div>
-                </div>
-                <div class="milestones">${msItems}</div>
-            </section>`;
-    }).join('');
+ return `
+ <section class="phase ${phClass}" data-phase="${ph.id}">
+ <div class="phase-marker">${ph.num}</div>
+ <div class="phase-head">
+ <div class="phase-eyebrow"><span class="lang-ar">المرحلة ${ph.num}</span><span class="lang-en">Phase ${ph.num}</span> · ${ph.weeks}</div>
+ <div class="phase-title"><span class="lang-ar">${ph.titleAr}</span><span class="lang-en">${ph.titleEn}</span></div>
+ <div class="phase-desc"><span class="lang-ar">${ph.descAr}</span><span class="lang-en">${ph.descEn}</span></div>
+ <div class="phase-meta">
+ <span>${ph.milestones.filter(m => progress[m.id]).length}/${ph.milestones.length} <span class="lang-ar">منجزة</span><span class="lang-en">done</span></span>
+ <span>⏱ ${ph.weeks}</span>
+ </div>
+ </div>
+ <div class="milestones">${msItems}</div>
+ </section>`;
+ }).join('');
 }
 
 function toggleMilestone(id) {
-    const p = loadProgress();
-    p[id] = !p[id];
-    if (!p[id]) delete p[id];
-    saveProgress(p);
-    renderAll();
+ const p = loadProgress();
+ p[id] = !p[id];
+ if (!p[id]) delete p[id];
+ saveProgress(p);
+ renderAll();
 }
 
 // Filter buttons
 document.querySelectorAll('.rm-filter-chip').forEach(b => {
-    b.addEventListener('click', () => {
-        document.querySelectorAll('.rm-filter-chip').forEach(x => x.classList.remove('active'));
-        b.classList.add('active');
-        currentFilter = b.dataset.filter;
-        renderAll();
-    });
+ b.addEventListener('click', () => {
+ document.querySelectorAll('.rm-filter-chip').forEach(x => x.classList.remove('active'));
+ b.classList.add('active');
+ currentFilter = b.dataset.filter;
+ renderAll();
+ });
 });
 
 window.toggleMilestone = toggleMilestone;
 
 window.rmExport = function() {
-    const data = {
-        progress: loadProgress(),
-        exportedAt: new Date().toISOString(),
-        completionPercent: Math.round((doneCount() / totalMilestones()) * 100),
-        version: '1.0'
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `nusrath-roadmap-progress-${new Date().toISOString().split('T')[0]}.json`;
-    a.click();
+ const data = {
+ progress: loadProgress(),
+ exportedAt: new Date().toISOString(),
+ completionPercent: Math.round((doneCount() / totalMilestones()) * 100),
+ version: '1.0'
+ };
+ const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+ const a = document.createElement('a');
+ a.href = URL.createObjectURL(blob);
+ a.download = `nusrath-roadmap-progress-${new Date().toISOString().split('T')[0]}.json`;
+ a.click();
 };
 
 window.rmImport = function() {
-    const inp = document.createElement('input'); inp.type='file'; inp.accept='application/json';
-    inp.onchange = (e) => {
-        const file = e.target.files[0]; if (!file) return;
-        const r = new FileReader();
-        r.onload = (ev) => {
-            try {
-                const data = JSON.parse(ev.target.result);
-                if (data.progress) saveProgress(data.progress);
-                renderAll();
-                alert('✅ Imported');
-            } catch(e) { alert('❌ Invalid file'); }
-        };
-        r.readAsText(file);
-    };
-    inp.click();
+ const inp = document.createElement('input'); inp.type='file'; inp.accept='application/json';
+ inp.onchange = (e) => {
+ const file = e.target.files[0]; if (!file) return;
+ const r = new FileReader();
+ r.onload = (ev) => {
+ try {
+ const data = JSON.parse(ev.target.result);
+ if (data.progress) saveProgress(data.progress);
+ renderAll();
+ alert('✅ Imported');
+ } catch(e) { alert('❌ Invalid file'); }
+ };
+ r.readAsText(file);
+ };
+ inp.click();
 };
 
 window.rmReset = function() {
-    const isRtl = document.body.getAttribute('dir') === 'rtl';
-    if (!confirm(isRtl ? 'سيتم مسح كل التقدّم. متأكد؟' : 'All progress will be reset. Sure?')) return;
-    localStorage.removeItem(STORAGE_KEY);
-    renderAll();
+ const isRtl = document.body.getAttribute('dir') === 'rtl';
+ if (!confirm(isRtl ? 'سيتم مسح كل التقدّم. متأكد؟' : 'All progress will be reset. Sure?')) return;
+ localStorage.removeItem(STORAGE_KEY);
+ renderAll();
 };
 
 document.addEventListener('DOMContentLoaded', renderAll);

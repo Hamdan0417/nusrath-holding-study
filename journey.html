@@ -6,246 +6,246 @@
 <title>خاطرة الطريق | A Reflection on the Journey</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-    /* Journey page — editorial, contemplative design */
-    .journey-hero {
-        background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 50%, #0a1e3f 100%);
-        color: #fff;
-        padding: 100px 24px 80px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-    .journey-hero::before {
-        content: ''; position: absolute; inset: 0;
-        background: radial-gradient(ellipse at top, rgba(201,169,97,0.15), transparent 60%);
-        pointer-events: none;
-    }
-    .journey-hero .eyebrow {
-        color: #c9a961; letter-spacing: 6px; font-size: 13px;
-        text-transform: uppercase; margin-bottom: 20px;
-        opacity: 0.9;
-    }
-    .journey-hero h1 {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: clamp(36px, 5vw, 64px);
-        font-weight: 700; margin: 0 0 24px;
-        line-height: 1.1; color: #fff;
-    }
-    .journey-hero .tagline {
-        font-size: 18px; font-style: italic; opacity: 0.85;
-        max-width: 640px; margin: 0 auto;
-        line-height: 1.7;
-    }
-    .journey-hero .author-line {
-        margin-top: 40px; padding-top: 24px;
-        border-top: 1px solid rgba(201,169,97,0.3);
-        display: inline-block;
-        font-size: 14px; color: #c9a961;
-        letter-spacing: 2px;
-    }
+ /* Journey page — editorial, contemplative design */
+ .journey-hero {
+ background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 50%, #0a1e3f 100%);
+ color: #fff;
+ padding: 100px 24px 80px;
+ text-align: center;
+ position: relative;
+ overflow: hidden;
+ }
+ .journey-hero::before {
+ content: ''; position: absolute; inset: 0;
+ background: radial-gradient(ellipse at top, rgba(201,169,97,0.15), transparent 60%);
+ pointer-events: none;
+ }
+ .journey-hero .eyebrow {
+ color: #c9a961; letter-spacing: 6px; font-size: 13px;
+ text-transform: uppercase; margin-bottom: 20px;
+ opacity: 0.9;
+ }
+ .journey-hero h1 {
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: clamp(36px, 5vw, 64px);
+ font-weight: 700; margin: 0 0 24px;
+ line-height: 1.1; color: #fff;
+ }
+ .journey-hero .tagline {
+ font-size: 18px; font-style: italic; opacity: 0.85;
+ max-width: 640px; margin: 0 auto;
+ line-height: 1.7;
+ }
+ .journey-hero .author-line {
+ margin-top: 40px; padding-top: 24px;
+ border-top: 1px solid rgba(201,169,97,0.3);
+ display: inline-block;
+ font-size: 14px; color: #c9a961;
+ letter-spacing: 2px;
+ }
 
-    .journey-body { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+ .journey-body { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
 
-    .chapter {
-        margin-bottom: 72px;
-        opacity: 0; transform: translateY(20px);
-        animation: fadeUp 0.8s ease forwards;
-    }
-    .chapter:nth-child(1) { animation-delay: 0.1s; }
-    .chapter:nth-child(2) { animation-delay: 0.2s; }
-    .chapter:nth-child(3) { animation-delay: 0.3s; }
-    .chapter:nth-child(4) { animation-delay: 0.4s; }
-    .chapter:nth-child(5) { animation-delay: 0.5s; }
-    .chapter:nth-child(6) { animation-delay: 0.6s; }
-    .chapter:nth-child(7) { animation-delay: 0.7s; }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+ .chapter {
+ margin-bottom: 72px;
+ opacity: 0; transform: translateY(20px);
+ animation: fadeUp 0.8s ease forwards;
+ }
+ .chapter:nth-child(1) { animation-delay: 0.1s; }
+ .chapter:nth-child(2) { animation-delay: 0.2s; }
+ .chapter:nth-child(3) { animation-delay: 0.3s; }
+ .chapter:nth-child(4) { animation-delay: 0.4s; }
+ .chapter:nth-child(5) { animation-delay: 0.5s; }
+ .chapter:nth-child(6) { animation-delay: 0.6s; }
+ .chapter:nth-child(7) { animation-delay: 0.7s; }
+ @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    .chapter-num {
-        display: inline-block;
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 14px; color: #c9a961;
-        letter-spacing: 4px; text-transform: uppercase;
-        margin-bottom: 12px;
-    }
-    .chapter h2 {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: clamp(26px, 3vw, 38px);
-        color: #0a1e3f; margin: 0 0 24px;
-        line-height: 1.2;
-        font-weight: 700;
-    }
-    body.dark-mode .chapter h2 { color: #f5c977; }
-    .chapter p {
-        font-size: 18px; line-height: 1.9; color: #2d3748;
-        margin: 0 0 20px;
-        font-family: 'Tajawal', 'Inter', sans-serif;
-    }
-    body.dark-mode .chapter p { color: #d4d8e0; }
-    body[dir="ltr"] .chapter p { font-family: 'Inter', 'Tajawal', sans-serif; }
+ .chapter-num {
+ display: inline-block;
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: 14px; color: #c9a961;
+ letter-spacing: 4px; text-transform: uppercase;
+ margin-bottom: 12px;
+ }
+ .chapter h2 {
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: clamp(26px, 3vw, 38px);
+ color: #0a1e3f; margin: 0 0 24px;
+ line-height: 1.2;
+ font-weight: 700;
+ }
+ body.dark-mode .chapter h2 { color: #f5c977; }
+ .chapter p {
+ font-size: 18px; line-height: 1.9; color: #2d3748;
+ margin: 0 0 20px;
+ font-family: 'Tajawal', 'Inter', sans-serif;
+ }
+ body.dark-mode .chapter p { color: #d4d8e0; }
+ body[dir="ltr"] .chapter p { font-family: 'Inter', 'Tajawal', sans-serif; }
 
-    .drop-cap::first-letter {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 72px; float: right;
-        line-height: 0.9; margin: 6px 0 0 12px;
-        color: #c9a961; font-weight: 700;
-    }
-    body[dir="ltr"] .drop-cap::first-letter { float: left; margin: 6px 12px 0 0; }
+ .drop-cap::first-letter {
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: 72px; float: right;
+ line-height: 0.9; margin: 6px 0 0 12px;
+ color: #c9a961; font-weight: 700;
+ }
+ body[dir="ltr"] .drop-cap::first-letter { float: left; margin: 6px 12px 0 0; }
 
-    blockquote.inline-quote {
-        border-inline-start: 4px solid #c9a961;
-        padding: 4px 24px;
-        margin: 32px 0;
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 22px; font-style: italic;
-        color: #0a1e3f; line-height: 1.5;
-    }
-    body.dark-mode blockquote.inline-quote { color: #f5c977; }
+ blockquote.inline-quote {
+ border-inline-start: 4px solid #c9a961;
+ padding: 4px 24px;
+ margin: 32px 0;
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: 22px; font-style: italic;
+ color: #0a1e3f; line-height: 1.5;
+ }
+ body.dark-mode blockquote.inline-quote { color: #f5c977; }
 
-    .divider-ornament {
-        text-align: center; margin: 60px 0;
-        color: #c9a961; font-size: 20px;
-        letter-spacing: 20px;
-    }
+ .divider-ornament {
+ text-align: center; margin: 60px 0;
+ color: #c9a961; font-size: 20px;
+ letter-spacing: 20px;
+ }
 
-    .milestones {
-        background: linear-gradient(135deg, #fafaf5, #f5f0e4);
-        border: 1px solid #e8ddc0;
-        border-radius: 20px;
-        padding: 40px 36px;
-        margin: 40px 0;
-    }
-    body.dark-mode .milestones {
-        background: linear-gradient(135deg, #1a1f2e, #252b3d);
-        border-color: #3a3f55;
-    }
-    .milestones h3 {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        color: #0a1e3f; margin: 0 0 24px; text-align: center;
-        font-size: 22px;
-    }
-    body.dark-mode .milestones h3 { color: #f5c977; }
-    .milestone-row {
-        display: grid; grid-template-columns: auto 1fr;
-        gap: 20px; padding: 14px 0;
-        border-bottom: 1px dashed #d4c79a;
-        align-items: baseline;
-    }
-    body.dark-mode .milestone-row { border-bottom-color: #3a3f55; }
-    .milestone-row:last-child { border-bottom: none; }
-    .milestone-row .date {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        color: #c9a961; font-weight: 700; font-size: 14px;
-        white-space: nowrap; min-width: 90px;
-    }
-    .milestone-row .what { font-size: 15px; color: #2d3748; line-height: 1.6; }
-    body.dark-mode .milestone-row .what { color: #d4d8e0; }
+ .milestones {
+ background: linear-gradient(135deg, #fafaf5, #f5f0e4);
+ border: 1px solid #e8ddc0;
+ border-radius: 20px;
+ padding: 40px 36px;
+ margin: 40px 0;
+ }
+ body.dark-mode .milestones {
+ background: linear-gradient(135deg, #1a1f2e, #252b3d);
+ border-color: #3a3f55;
+ }
+ .milestones h3 {
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ color: #0a1e3f; margin: 0 0 24px; text-align: center;
+ font-size: 22px;
+ }
+ body.dark-mode .milestones h3 { color: #f5c977; }
+ .milestone-row {
+ display: grid; grid-template-columns: auto 1fr;
+ gap: 20px; padding: 14px 0;
+ border-bottom: 1px dashed #d4c79a;
+ align-items: baseline;
+ }
+ body.dark-mode .milestone-row { border-bottom-color: #3a3f55; }
+ .milestone-row:last-child { border-bottom: none; }
+ .milestone-row .date {
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ color: #c9a961; font-weight: 700; font-size: 14px;
+ white-space: nowrap; min-width: 90px;
+ }
+ .milestone-row .what { font-size: 15px; color: #2d3748; line-height: 1.6; }
+ body.dark-mode .milestone-row .what { color: #d4d8e0; }
 
-    .closing-signature {
-        margin: 80px auto 40px; max-width: 560px;
-        text-align: center; padding: 48px 32px;
-        border-top: 2px solid #c9a961;
-        border-bottom: 2px solid #c9a961;
-    }
-    .closing-signature .sig-name {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 24px; color: #0a1e3f; font-weight: 700;
-        margin: 16px 0 4px;
-    }
-    body.dark-mode .closing-signature .sig-name { color: #f5c977; }
-    .closing-signature .sig-title {
-        font-size: 13px; color: #718096; letter-spacing: 3px;
-        text-transform: uppercase;
-    }
-    .closing-signature .sig-date {
-        font-size: 13px; color: #c9a961; margin-top: 16px;
-        font-style: italic;
-    }
+ .closing-signature {
+ margin: 80px auto 40px; max-width: 560px;
+ text-align: center; padding: 48px 32px;
+ border-top: 2px solid #c9a961;
+ border-bottom: 2px solid #c9a961;
+ }
+ .closing-signature .sig-name {
+ font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: 24px; color: #0a1e3f; font-weight: 700;
+ margin: 16px 0 4px;
+ }
+ body.dark-mode .closing-signature .sig-name { color: #f5c977; }
+ .closing-signature .sig-title {
+ font-size: 13px; color: #718096; letter-spacing: 3px;
+ text-transform: uppercase;
+ }
+ .closing-signature .sig-date {
+ font-size: 13px; color: #c9a961; margin-top: 16px;
+ font-style: italic;
+ }
 
-    .numbers-strip {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 16px; margin: 40px 0;
-    }
-    .num-cell {
-        text-align: center; padding: 24px 16px;
-        background: #fff; border: 1px solid #e5d7a8;
-        border-radius: 14px;
-    }
-    body.dark-mode .num-cell {
-        background: #1a1f2e; border-color: #3a3f55;
-    }
-    .num-cell .n {
-        display: block; font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 36px; font-weight: 700; color: #c9a961;
-        line-height: 1;
-    }
-    .num-cell .l {
-        display: block; font-size: 12px; color: #718096;
-        text-transform: uppercase; letter-spacing: 1.5px;
-        margin-top: 8px;
-    }
+ .numbers-strip {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+ gap: 16px; margin: 40px 0;
+ }
+ .num-cell {
+ text-align: center; padding: 24px 16px;
+ background: #fff; border: 1px solid #e5d7a8;
+ border-radius: 14px;
+ }
+ body.dark-mode .num-cell {
+ background: #1a1f2e; border-color: #3a3f55;
+ }
+ .num-cell .n {
+ display: block; font-family: 'Playfair Display', 'Tajawal', serif;
+ font-size: 36px; font-weight: 700; color: #c9a961;
+ line-height: 1;
+ }
+ .num-cell .l {
+ display: block; font-size: 12px; color: #718096;
+ text-transform: uppercase; letter-spacing: 1.5px;
+ margin-top: 8px;
+ }
 </style>
 </head>
 <body dir="rtl">
 
 <header class="header">
-    <div class="header-content">
-        <div class="logo">THE JOURNEY</div>
-        <h1><span class="lang-ar">خاطرة الطريق</span><span class="lang-en">A Reflection on the Journey</span></h1>
-        <div class="subtitle"><span class="lang-ar">من أول سطر إلى آخر توقيع</span><span class="lang-en">From the first line to the final signature</span></div>
-        <div class="breadcrumb">
-            <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
-            <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span>
-        </div>
-    </div>
+ <div class="header-content">
+ <div class="logo">THE JOURNEY</div>
+ <h1><span class="lang-ar">خاطرة الطريق</span><span class="lang-en">A Reflection on the Journey</span></h1>
+ <div class="subtitle"><span class="lang-ar">من أول سطر إلى آخر توقيع</span><span class="lang-en">From the first line to the final signature</span></div>
+ <div class="breadcrumb">
+ <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
+ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span>
+ </div>
+ </div>
 </header>
 
 <nav class="topnav">
-    <div class="topnav-content">
-        <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
-        <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
-        <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
-        <a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a>
-        <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
-        <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
-        <span class="nav-divider"></span>
-        <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
-        <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
-        <a href="hacfi.html">🏭 HACFI</a>
-        <a href="aret.html">🪵 Art Craft</a>
-        <a href="superstruct.html">🏗 Superstruct</a>
-        <span class="nav-divider"></span>
-        <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
-        <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
-        <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
-        <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
-        <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
-        <span class="nav-divider"></span>
-        <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
-        <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
-        <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
-        <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
-        <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
-        <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
-        <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
-    </div>
+ <div class="topnav-content">
+ <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+ <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
+ <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
+ <a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a>
+ <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
+ <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
+ <span class="nav-divider"></span>
+ <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
+ <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
+ <a href="hacfi.html">🏭 HACFI</a>
+ <a href="aret.html">🪵 Art Craft</a>
+ <a href="superstruct.html">🏗 Superstruct</a>
+ <span class="nav-divider"></span>
+ <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
+ <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
+ <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
+ <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
+ <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
+ <span class="nav-divider"></span>
+ <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
+ <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
+ <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
+ <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
+ <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
+ <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
+ <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
+ </div>
 </nav>
 
 <!-- HERO -->
 <section class="journey-hero">
-    <div class="eyebrow"><span class="lang-ar">خاطرة ختامية</span><span class="lang-en">A Closing Reflection</span></div>
-    <h1>
-        <span class="lang-ar">بين فكرة ومذكرة…<br>هذا ما صنعناه معاً</span>
-        <span class="lang-en">Between an idea and a memorandum,<br>this is what we built together.</span>
-    </h1>
-    <p class="tagline">
-        <span class="lang-ar">قصّةٌ بدأت بسؤال، واكتملت بأربعينَ وثيقة وسبعٍ وأربعين صفحة — عن مجموعةٍ تستحقُّ أن تُبنى على نظام.</span>
-        <span class="lang-en">A story that began with a question, and became forty documents across fifty-one pages — about a group that deserves to stand on a proper system.</span>
-    </p>
-    <div class="author-line">
-        <span class="lang-ar">بقلم: حمدان الغامدي — المستشار العام</span>
-        <span class="lang-en">By: Hamdan Al-Ghamdi — General Counsel</span>
-    </div>
+ <div class="eyebrow"><span class="lang-ar">خاطرة ختامية</span><span class="lang-en">A Closing Reflection</span></div>
+ <h1>
+ <span class="lang-ar">بين فكرة ومذكرة…<br>هذا ما صنعناه معاً</span>
+ <span class="lang-en">Between an idea and a memorandum,<br>this is what we built together.</span>
+ </h1>
+ <p class="tagline">
+ <span class="lang-ar">قصّةٌ بدأت بسؤال، واكتملت بأربعينَ وثيقة وسبعٍ وأربعين صفحة — عن مجموعةٍ تستحقُّ أن تُبنى على نظام.</span>
+ <span class="lang-en">A story that began with a question, and became twenty-eight documents across 48 pages — about a group that deserves to stand on a proper system.</span>
+ </p>
+ <div class="author-line">
+ <span class="lang-ar">بقلم: حمدان الغامدي — المستشار العام</span>
+ <span class="lang-en">By: Hamdan Al-Ghamdi — General Counsel</span>
+ </div>
 </section>
 
 <!-- BODY -->
@@ -253,193 +253,187 @@
 
 <!-- CHAPTER 1: THE BEGINNING -->
 <article class="chapter">
-    <div class="chapter-num"><span class="lang-ar">الفصل الأول</span><span class="lang-en">Chapter One</span></div>
-    <h2><span class="lang-ar">البداية — سؤالٌ واحد</span><span class="lang-en">The Beginning — A Single Question</span></h2>
-    <p class="drop-cap">
-        <span class="lang-ar">في لحظةٍ ما، جاء السؤال الذي يسبق كل رحلةٍ جدية: <em>"كيف نُعيد ترتيب ما بُنيَ بعرق السنين؟"</em>. لم يكن سؤالاً عن أرقامٍ أو هياكل فقط، بل عن إرثٍ صُنع بأيدٍ تعِبت، ومشاريعَ حملت اسم رجلٍ واحد، عن حديدٍ ذاب في الأفران وخشبٍ نُحت بعنايةٍ، وعن أحلامٍ لا تزال طريّة.</span>
-        <span class="lang-en">At some moment, the question that precedes every serious journey arrived: <em>"How do we reorder what was built by years of sweat?"</em>. It wasn't a question about numbers or structures alone, but about a legacy forged by weary hands, projects bearing one man's name, iron melted in furnaces and wood carved with care, and dreams still tender.</span>
-    </p>
-    <p>
-        <span class="lang-ar">كان الأمر يبدو بسيطاً من الخارج: مجموعةٌ من الشركات ترغب في تنظيم حوكمتها. ولكن كلما اقتربنا، كشفت التفاصيل عن نفسها — تشابكاتُ ملكيّة، أدوارٌ مزدوجة، علامةٌ تجاريّة تعمل تحت شركةٍ أخرى، فرعُ نجارةٍ يحتاج إلى كيانٍ مستقل، وشراكةٌ تقنية بمخاطرَ أقل ما يُقال عنها إنها دقيقة.</span>
-        <span class="lang-en">From the outside it seemed simple: a group of companies wanting to organize its governance. But the closer we looked, the more the details revealed themselves — entangled ownerships, dual roles, a trademark operating under another company's umbrella, a carpentry branch in need of its own entity, and a tech partnership whose risks were, to put it mildly, delicate.</span>
-    </p>
-    <blockquote class="inline-quote">
-        <span class="lang-ar">"الشركة ليست أوراقاً في سجلٍ تجاري — هي اتفاقٌ بين عقلٍ وضميرٍ ونظام."</span>
-        <span class="lang-en">"A company is not paperwork in a commercial register — it is a pact between mind, conscience, and law."</span>
-    </blockquote>
+ <div class="chapter-num"><span class="lang-ar">الفصل الأول</span><span class="lang-en">Chapter One</span></div>
+ <h2><span class="lang-ar">البداية — سؤالٌ واحد</span><span class="lang-en">The Beginning — A Single Question</span></h2>
+ <p class="drop-cap">
+ <span class="lang-ar">في لحظةٍ ما، جاء السؤال الذي يسبق كل رحلةٍ جدية: <em>"كيف نُعيد ترتيب ما بُنيَ بعرق السنين؟"</em>. لم يكن سؤالاً عن أرقامٍ أو هياكل فقط، بل عن إرثٍ صُنع بأيدٍ تعِبت، ومشاريعَ حملت اسم رجلٍ واحد، عن حديدٍ ذاب في الأفران وخشبٍ نُحت بعنايةٍ، وعن أحلامٍ لا تزال طريّة.</span>
+ <span class="lang-en">At some moment, the question that precedes every serious journey arrived: <em>"How do we reorder what was built by years of sweat?"</em>. It wasn't a question about numbers or structures alone, but about a legacy forged by weary hands, projects bearing one man's name, iron melted in furnaces and wood carved with care, and dreams still tender.</span>
+ </p>
+ <p>
+ <span class="lang-ar">كان الأمر يبدو بسيطاً من الخارج: مجموعةٌ من الشركات ترغب في تنظيم حوكمتها. ولكن كلما اقتربنا، كشفت التفاصيل عن نفسها — تشابكاتُ ملكيّة، أدوارٌ مزدوجة، علامةٌ تجاريّة تعمل تحت شركةٍ أخرى، فرعُ نجارةٍ يحتاج إلى كيانٍ مستقل، وشراكةٌ تقنية بمخاطرَ أقل ما يُقال عنها إنها دقيقة.</span>
+ <span class="lang-en">From the outside it seemed simple: a group of companies wanting to organize its governance. But the closer we looked, the more the details revealed themselves — entangled ownerships, dual roles, a trademark operating under another company's umbrella, a carpentry branch in need of its own entity, and a tech partnership whose risks were, to put it mildly, delicate.</span>
+ </p>
+ <blockquote class="inline-quote">
+ <span class="lang-ar">"الشركة ليست أوراقاً في سجلٍ تجاري — هي اتفاقٌ بين عقلٍ وضميرٍ ونظام."</span>
+ <span class="lang-en">"A company is not paperwork in a commercial register — it is a pact between mind, conscience, and law."</span>
+ </blockquote>
 </article>
 
 <div class="divider-ornament">❖ ❖ ❖</div>
 
 <!-- CHAPTER 2: UNDERSTANDING -->
 <article class="chapter">
-    <div class="chapter-num"><span class="lang-ar">الفصل الثاني</span><span class="lang-en">Chapter Two</span></div>
-    <h2><span class="lang-ar">الفهم — قبل أن نكتب سطراً</span><span class="lang-en">Understanding — Before a Single Line Was Written</span></h2>
-    <p>
-        <span class="lang-ar">قبل أن نفتح مستنداً، فتحنا السجلات التجارية. أربعةُ كيانات، كلٌّ منها بنسيجه الخاص: HACFI الصناعية بفرع النجارة "Art Craft" الذي كبُر حتى صار يستحق الانفصال، Superstruct التي تحمل ثقل المقاولات، وأفق العالم الريادي — mQsala — المغسلة الذكية برائحة المستقبل. ووراءها كلّها، اسمٌ واحد تكرر في كل الصفحات: <strong>محمد نصرت ديلوار</strong>.</span>
-        <span class="lang-en">Before we opened a document, we opened the commercial registers. Four entities, each with its own fabric: HACFI industrial with its carpentry branch "Art Craft" — grown enough to deserve its own life — Superstruct shouldering the weight of contracting, and Ufuq Al-Aalam (mQsala) — the smart laundry with a whiff of the future. And behind them all, one name repeated on every page: <strong>Mohammed Nusrath Dilawar</strong>.</span>
-    </p>
-    <p>
-        <span class="lang-ar">كان الاكتشاف الأول — والأكثر صدقاً — أن الهيكل الحالي ليس خاطئاً؛ بل هو نتاج نمو طبيعي. لكنه لم يعد يتّسع. الشركات كَبِرت على أدواتها القديمة، والعائلة كبرت على أدوار بدأت شخصيّة وانتهت مؤسسيّة. الحاجة لم تكن لتغيير الناس، بل لتغيير <em>الإطار</em> الذي يعملون فيه.</span>
-        <span class="lang-en">The first — and most honest — discovery was that the current structure isn't wrong; it's the product of natural growth. But it no longer fits. Companies had outgrown their old tools, and the family had outgrown roles that began personal and ended institutional. The need wasn't to change people, but to change the <em>frame</em> they work in.</span>
-    </p>
+ <div class="chapter-num"><span class="lang-ar">الفصل الثاني</span><span class="lang-en">Chapter Two</span></div>
+ <h2><span class="lang-ar">الفهم — قبل أن نكتب سطراً</span><span class="lang-en">Understanding — Before a Single Line Was Written</span></h2>
+ 
+ <p>
+ <span class="lang-ar">كان الاكتشاف الأول — والأكثر صدقاً — أن الهيكل الحالي ليس خاطئاً؛ بل هو نتاج نمو طبيعي. لكنه لم يعد يتّسع. الشركات كَبِرت على أدواتها القديمة، والعائلة كبرت على أدوار بدأت شخصيّة وانتهت مؤسسيّة. الحاجة لم تكن لتغيير الناس، بل لتغيير <em>الإطار</em> الذي يعملون فيه.</span>
+ <span class="lang-en">The first — and most honest — discovery was that the current structure isn't wrong; it's the product of natural growth. But it no longer fits. Companies had outgrown their old tools, and the family had outgrown roles that began personal and ended institutional. The need wasn't to change people, but to change the <em>frame</em> they work in.</span>
+ </p>
 </article>
 
 <div class="divider-ornament">❖ ❖ ❖</div>
 
 <!-- CHAPTER 3: BUILDING -->
 <article class="chapter">
-    <div class="chapter-num"><span class="lang-ar">الفصل الثالث</span><span class="lang-en">Chapter Three</span></div>
-    <h2><span class="lang-ar">البناء — مذكرةً مذكرة</span><span class="lang-en">The Build — Memo by Memo</span></h2>
-    <p>
-        <span class="lang-ar">بدأنا بالقابضة، لأن البيت يبدأ بالأساس. اخترنا الشركة المساهمة المبسّطة (SJSC) لا عن تفاخرٍ، بل لأنها القالبُ الأمثل لما نريد: مساهمٌ واحدٌ يبقى مسؤولاً، ومرونةٌ كافية لاستقبال مساهمين آخرين يوماً ما، وحوكمةٌ تُرضي البنوك والمستشارين والمستقبل.</span>
-        <span class="lang-en">We began with the Holding, because every house begins with its foundation. We chose the Simplified Joint-Stock Company (SJSC) — not for prestige, but because it is the ideal vessel for what we wanted: a single shareholder who remains accountable, flexibility to welcome others one day, and governance that satisfies banks, advisors, and the future.</span>
-    </p>
-    <p>
-        <span class="lang-ar">ثم جاءت التوائم: النظام الأساس، قرار المؤسس، سجل المساهمين، تعيين أول إدارة. وبعدها دخلنا في التفاصيل التي لا يحبّها إلا من يؤمن بأن الشياطين تسكن فيها: اتفاقية نقل الحصص، تعديل عقود التأسيس الأربعة، خطة فصل Art Craft في خمس مراحل، اتفاقية نقل الأصول، اتفاقية التوريد المتبادل. كل وثيقةٍ منها مخلوقٌ يتنفس — له عنوانه، وأطرافه، وشروطه الدقيقة.</span>
-        <span class="lang-en">Then came the twins: Articles of Association, Founder's Resolution, Shareholders Register, First Management Appointment. After that we entered the details only those who believe the devil lives in them truly love: the Share Transfer Agreement, four AoA amendments, a five-phase Art Craft split plan, Asset Transfer Agreement, Mutual Supply Agreement. Each is a breathing creature — with its title, its parties, its precise terms.</span>
-    </p>
-    <blockquote class="inline-quote">
-        <span class="lang-ar">"العقد الجيد لا يمنع النزاع — بل يجعله محتملاً ومُدارَاً ومُحلَّلاً سلفاً."</span>
-        <span class="lang-en">"A good contract doesn't prevent conflict — it makes it foreseeable, manageable, and pre-resolved."</span>
-    </blockquote>
-    <p>
-        <span class="lang-ar">وبين الوثائق، نسجنا الحوكمة: ميثاق المجلس، أربع لجان (التنفيذية، المراجعة، الترشيحات، الاستراتيجية)، مصفوفة الصلاحيات، سياسة التوقيع، سياسة تعارض المصالح بسبعة أنواع وأربعة مستويات تنحٍّ، وسياسة الأطراف ذات العلاقة بمصفوفة اعتمادٍ وخمس طرق تسعير. ليست هذه ترفاً — بل درعٌ يحمي من أن يُصبح النجاح سبباً في الخسارة.</span>
-        <span class="lang-en">Between the documents, we wove the governance: Board Charter, four committees (Executive, Audit & Risk, Nominations & Remuneration, Strategy), DOA matrix, Signature Policy, Conflict-of-Interest Policy with seven conflict types and four recusal tiers, and Related-Party Policy with an approval matrix and five pricing methods. None of this is luxury — it is armor to keep success from becoming the cause of loss.</span>
-    </p>
+ <div class="chapter-num"><span class="lang-ar">الفصل الثالث</span><span class="lang-en">Chapter Three</span></div>
+ <h2><span class="lang-ar">البناء — مذكرةً مذكرة</span><span class="lang-en">The Build — Memo by Memo</span></h2>
+ <p>
+ <span class="lang-ar">بدأنا بالقابضة، لأن البيت يبدأ بالأساس. اخترنا الشركة المساهمة المبسّطة (SJSC) لا عن تفاخرٍ، بل لأنها القالبُ الأمثل لما نريد: مساهمٌ واحدٌ يبقى مسؤولاً، ومرونةٌ كافية لاستقبال مساهمين آخرين يوماً ما، وحوكمةٌ تُرضي البنوك والمستشارين والمستقبل.</span>
+ <span class="lang-en">We began with the Holding, because every house begins with its foundation. We chose the Simplified Joint-Stock Company (SJSC) — not for prestige, but because it is the ideal vessel for what we wanted: a single shareholder who remains accountable, flexibility to welcome others one day, and governance that satisfies banks, advisors, and the future.</span>
+ </p>
+ <p>
+ <span class="lang-ar">ثم جاءت التوائم: النظام الأساس، قرار المؤسس، سجل المساهمين، تعيين أول إدارة. وبعدها دخلنا في التفاصيل التي لا يحبّها إلا من يؤمن بأن الشياطين تسكن فيها: اتفاقية نقل الحصص، تعديل عقود التأسيس الأربعة، خطة فصل Art Craft في خمس مراحل، اتفاقية نقل الأصول، اتفاقية التوريد المتبادل. كل وثيقةٍ منها مخلوقٌ يتنفس — له عنوانه، وأطرافه، وشروطه الدقيقة.</span>
+ <span class="lang-en">Then came the twins: Articles of Association, Founder's Resolution, Shareholders Register, First Management Appointment. After that we entered the details only those who believe the devil lives in them truly love: the Share Transfer Agreement, four AoA amendments, a five-phase Art Craft split plan, Asset Transfer Agreement, Mutual Supply Agreement. Each is a breathing creature — with its title, its parties, its precise terms.</span>
+ </p>
+ <blockquote class="inline-quote">
+ <span class="lang-ar">"العقد الجيد لا يمنع النزاع — بل يجعله محتملاً ومُدارَاً ومُحلَّلاً سلفاً."</span>
+ <span class="lang-en">"A good contract doesn't prevent conflict — it makes it foreseeable, manageable, and pre-resolved."</span>
+ </blockquote>
+ <p>
+ <span class="lang-ar">وبين الوثائق، نسجنا الحوكمة: ميثاق المجلس، أربع لجان (التنفيذية، المراجعة، الترشيحات، الاستراتيجية)، مصفوفة الصلاحيات، سياسة التوقيع، سياسة تعارض المصالح بسبعة أنواع وأربعة مستويات تنحٍّ، وسياسة الأطراف ذات العلاقة بمصفوفة اعتمادٍ وخمس طرق تسعير. ليست هذه ترفاً — بل درعٌ يحمي من أن يُصبح النجاح سبباً في الخسارة.</span>
+ <span class="lang-en">Between the documents, we wove the governance: Board Charter, four committees (Executive, Audit & Risk, Nominations & Remuneration, Strategy), DOA matrix, Signature Policy, Conflict-of-Interest Policy with seven conflict types and four recusal tiers, and Related-Party Policy with an approval matrix and five pricing methods. None of this is luxury — it is armor to keep success from becoming the cause of loss.</span>
+ </p>
 </article>
 
 <div class="divider-ornament">❖ ❖ ❖</div>
 
 <!-- CHAPTER 4: DIFFICULT MOMENTS -->
 <article class="chapter">
-    <div class="chapter-num"><span class="lang-ar">الفصل الرابع</span><span class="lang-en">Chapter Four</span></div>
-    <h2><span class="lang-ar">اللحظات الصعبة — حين يتكلّم الواقع</span><span class="lang-en">The Hard Moments — When Reality Speaks</span></h2>
-    <p>
-        <span class="lang-ar">ليس كلّ شيءٍ سارَ على الورق. كانت هناك لحظاتٌ تصحيح: اكتشفنا أن Art Craft ليست تحت Superstruct بل تحت HACFI، فأعدنا كل الصفحات. وأن Metallica ليست شركةً بل علامة تجاريّة — فأعدنا التصنيف. وأن الأدوار المزدوجة (المستشار العام للقابضة + الرئيس التنفيذي لـ mQsala) ليست خطأً، بل واقعٌ يحتاج وثيقةً خاصّةً بحدود واضحة وتنحٍّ تلقائي.</span>
-        <span class="lang-en">Not everything went smoothly on paper. There were moments of correction: we discovered Art Craft is not under Superstruct but under HACFI — so we redid every page. That Metallica is not a company but a trademark — so we reclassified it. That the dual roles (Group General Counsel + mQsala CEO) aren't an error but a reality requiring a dedicated document with clear boundaries and automatic recusal.</span>
-    </p>
-    <p>
-        <span class="lang-ar">وكان التحدي الأعمق: كيف نوازن بين <strong>السيطرة العائلية</strong> التي تحفظ الرؤية، و<strong>الحوكمة المؤسسية</strong> التي تحمي من الخطأ البشري؟ الجواب لم يكن في الاختيار بينهما، بل في <em>هندستهما</em> معاً: مساهمٌ يحكم من القمة، مجلسٌ يُنفّذ، ومستشارٌ عام لا يتبع إلا رئيس المجلس — ليبقى صوت النظام مسموعاً حين تعلو أصوات اللحظة.</span>
-        <span class="lang-en">And the deepest challenge: how do we balance <strong>family control</strong> that preserves vision with <strong>institutional governance</strong> that protects from human error? The answer wasn't in choosing between them, but in <em>engineering</em> them together: a shareholder who rules from the top, a Board that executes, and a General Counsel who reports only to the Chairman — so the voice of the system stays audible when the voices of the moment grow loud.</span>
-    </p>
+ <div class="chapter-num"><span class="lang-ar">الفصل الرابع</span><span class="lang-en">Chapter Four</span></div>
+ <h2><span class="lang-ar">اللحظات الصعبة — حين يتكلّم الواقع</span><span class="lang-en">The Hard Moments — When Reality Speaks</span></h2>
+ 
+ <p>
+ <span class="lang-ar">وكان التحدي الأعمق: كيف نوازن بين <strong>السيطرة العائلية</strong> التي تحفظ الرؤية، و<strong>الحوكمة المؤسسية</strong> التي تحمي من الخطأ البشري؟ الجواب لم يكن في الاختيار بينهما، بل في <em>هندستهما</em> معاً: مساهمٌ يحكم من القمة، مجلسٌ يُنفّذ، ومستشارٌ عام لا يتبع إلا رئيس المجلس — ليبقى صوت النظام مسموعاً حين تعلو أصوات اللحظة.</span>
+ <span class="lang-en">And the deepest challenge: how do we balance <strong>family control</strong> that preserves vision with <strong>institutional governance</strong> that protects from human error? The answer wasn't in choosing between them, but in <em>engineering</em> them together: a shareholder who rules from the top, a Board that executes, and a General Counsel who reports only to the Chairman — so the voice of the system stays audible when the voices of the moment grow loud.</span>
+ </p>
 </article>
 
 <div class="divider-ornament">❖ ❖ ❖</div>
 
 <!-- CHAPTER 5: THE NUMBERS -->
 <article class="chapter">
-    <div class="chapter-num"><span class="lang-ar">الفصل الخامس</span><span class="lang-en">Chapter Five</span></div>
-    <h2><span class="lang-ar">الأرقام — حين تصمت الكلمات</span><span class="lang-en">The Numbers — When Words Fall Silent</span></h2>
-    <p><span class="lang-ar">قد يظنُّ القارئ أن الأرقام جافّة. لكنها هنا لها قصة:</span>
-    <span class="lang-en">The reader might think numbers are dry. But here, they tell a story:</span></p>
+ <div class="chapter-num"><span class="lang-ar">الفصل الخامس</span><span class="lang-en">Chapter Five</span></div>
+ <h2><span class="lang-ar">الأرقام — حين تصمت الكلمات</span><span class="lang-en">The Numbers — When Words Fall Silent</span></h2>
+ <p><span class="lang-ar">قد يظنُّ القارئ أن الأرقام جافّة. لكنها هنا لها قصة:</span>
+ <span class="lang-en">The reader might think numbers are dry. But here, they tell a story:</span></p>
 
-    <div class="numbers-strip">
-        <div class="num-cell"><span class="n">32</span><span class="l"><span class="lang-ar">وثيقة قانونية</span><span class="lang-en">Legal Documents</span></span></div>
-        <div class="num-cell"><span class="n">47</span><span class="l"><span class="lang-ar">صفحة ويب</span><span class="lang-en">Web Pages</span></span></div>
-        <div class="num-cell"><span class="n">16</span><span class="l"><span class="lang-ar">انفوجرافيك</span><span class="lang-en">Infographics</span></span></div>
-        <div class="num-cell"><span class="n">7</span><span class="l"><span class="lang-ar">حزم وثائق</span><span class="lang-en">Document Packages</span></span></div>
-        <div class="num-cell"><span class="n">4</span><span class="l"><span class="lang-ar">شركات شقيقة</span><span class="lang-en">Sibling Cos.</span></span></div>
-        <div class="num-cell"><span class="n">2</span><span class="l"><span class="lang-ar">لغتان</span><span class="lang-en">Languages</span></span></div>
-    </div>
+ <div class="numbers-strip">
+ <div class="num-cell"><span class="n">32</span><span class="l"><span class="lang-ar">وثيقة قانونية</span><span class="lang-en">Legal Documents</span></span></div>
+ <div class="num-cell"><span class="n">47</span><span class="l"><span class="lang-ar">صفحة ويب</span><span class="lang-en">Web Pages</span></span></div>
+ <div class="num-cell"><span class="n">16</span><span class="l"><span class="lang-ar">انفوجرافيك</span><span class="lang-en">Infographics</span></span></div>
+ <div class="num-cell"><span class="n">7</span><span class="l"><span class="lang-ar">حزم وثائق</span><span class="lang-en">Document Packages</span></span></div>
+ <div class="num-cell"><span class="n">4</span><span class="l"><span class="lang-ar">شركات شقيقة</span><span class="lang-en">Sibling Cos.</span></span></div>
+ <div class="num-cell"><span class="n">2</span><span class="l"><span class="lang-ar">لغتان</span><span class="lang-en">Languages</span></span></div>
+ </div>
 
-    <p>
-        <span class="lang-ar">خلف كل رقمٍ منها ليلةٌ من المراجعة، وصباحٌ من إعادة الصياغة، وقرارٌ صغير بين "هذا يكفي" و"هذا هو المطلوب". اخترنا الثاني دائماً.</span>
-        <span class="lang-en">Behind every number is a night of review, a morning of rewriting, and a small decision between "this is enough" and "this is what it needs to be." We chose the latter, always.</span>
-    </p>
+ <p>
+ <span class="lang-ar">خلف كل رقمٍ منها ليلةٌ من المراجعة، وصباحٌ من إعادة الصياغة، وقرارٌ صغير بين "هذا يكفي" و"هذا هو المطلوب". اخترنا الثاني دائماً.</span>
+ <span class="lang-en">Behind every number is a night of review, a morning of rewriting, and a small decision between "this is enough" and "this is what it needs to be." We chose the latter, always.</span>
+ </p>
 </article>
 
 <div class="divider-ornament">❖ ❖ ❖</div>
 
 <!-- CHAPTER 6: MILESTONES -->
 <article class="chapter">
-    <h2 style="text-align: center;"><span class="lang-ar">معالم الطريق</span><span class="lang-en">Milestones Along the Way</span></h2>
+ <h2 style="text-align: center;"><span class="lang-ar">معالم الطريق</span><span class="lang-en">Milestones Along the Way</span></h2>
 
-    <div class="milestones">
-        <h3>✨ <span class="lang-ar">محطات لا تُنسى</span><span class="lang-en">Moments That Mattered</span></h3>
+ <div class="milestones">
+ <h3>✨ <span class="lang-ar">محطات لا تُنسى</span><span class="lang-en">Moments That Mattered</span></h3>
 
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 1</span><span class="lang-en">Week 1</span></span>
-            <span class="what"><span class="lang-ar">فحص السجلات التجارية الأربعة — اكتشاف أن التعيينات المزدوجة موثقة رسمياً.</span><span class="lang-en">Reviewed the four CRs — discovered that dual appointments were already officially registered.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 2</span><span class="lang-en">Week 2</span></span>
-            <span class="what"><span class="lang-ar">اختيار SJSC كشكل القابضة وصياغة النظام الأساس المكوّن من 46 مادة.</span><span class="lang-en">Selected SJSC as the Holding form and drafted the 46-article AoA.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 3</span><span class="lang-en">Week 3</span></span>
-            <span class="what"><span class="lang-ar">التصحيح التاريخي: فصل Art Craft من Superstruct إلى HACFI — وإعادة 30 صفحة.</span><span class="lang-en">The historic correction: moving Art Craft from Superstruct to HACFI — and re-writing 30 pages.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 4</span><span class="lang-en">Week 4</span></span>
-            <span class="what"><span class="lang-ar">إنجاز ميثاق المجلس (9 أبواب) ولوائح اللجان الأربع.</span><span class="lang-en">Completed the Board Charter (9 chapters) and all four committee charters.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 5</span><span class="lang-en">Week 5</span></span>
-            <span class="what"><span class="lang-ar">صياغة عقد شركاء mQsala (SHA) بـ 28 مادة — ROFR، Tag/Drag، Shootout، SCCA Arbitration.</span><span class="lang-en">Drafted the mQsala SHA — 28 articles including ROFR, Tag/Drag, Shootout, SCCA Arbitration.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 6</span><span class="lang-en">Week 6</span></span>
-            <span class="what"><span class="lang-ar">ولادة الانفوجرافيك الستة عشر — كلٌّ منها HTML/CSS خالص، قابلٌ للطباعة.</span><span class="lang-en">Birth of the 16 infographics — each one pure HTML/CSS, print-ready.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 7</span><span class="lang-en">Week 7</span></span>
-            <span class="what"><span class="lang-ar">التحول إلى تجربة فاخرة: Playfair Display، ذهبيّ ملَكي، وضع داكن، اختصارات كيبورد، جولة ترحيبية.</span><span class="lang-en">Transition to a premium experience: Playfair Display, royal gold, dark mode, keyboard shortcuts, welcome tour.</span></span>
-        </div>
-        <div class="milestone-row">
-            <span class="date"><span class="lang-ar">الأسبوع 8</span><span class="lang-en">Week 8</span></span>
-            <span class="what"><span class="lang-ar">إتمام الأربعين وثيقة، وضبط اللغتين، وتنظيف التداخلات البصرية. اليوم الأخير.</span><span class="lang-en">Completed all forty documents, verified both languages, cleaned visual conflicts. The final day.</span></span>
-        </div>
-    </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 1</span><span class="lang-en">Week 1</span></span>
+ <span class="what"><span class="lang-ar">فحص السجلات التجارية الأربعة — اكتشاف أن التعيينات المزدوجة موثقة رسمياً.</span><span class="lang-en">Reviewed the four CRs — discovered that dual appointments were already officially registered.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 2</span><span class="lang-en">Week 2</span></span>
+ <span class="what"><span class="lang-ar">اختيار SJSC كشكل القابضة وصياغة النظام الأساس المكوّن من 46 مادة.</span><span class="lang-en">Selected SJSC as the Holding form and drafted the 46-article AoA.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 3</span><span class="lang-en">Week 3</span></span>
+ <span class="what"><span class="lang-ar">التصحيح التاريخي: فصل Art Craft من Superstruct إلى HACFI — وإعادة 30 صفحة.</span><span class="lang-en">The historic correction: moving Art Craft from Superstruct to HACFI — and re-writing 30 pages.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 4</span><span class="lang-en">Week 4</span></span>
+ <span class="what"><span class="lang-ar">إنجاز ميثاق المجلس (9 أبواب) ولوائح اللجان الأربع.</span><span class="lang-en">Completed the Board Charter (9 chapters) and all four committee charters.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 5</span><span class="lang-en">Week 5</span></span>
+ <span class="what"><span class="lang-ar">صياغة عقد شركاء (SHA) بـ 28 مادة — ROFR، Tag/Drag، Shootout، SCCA Arbitration.</span><span class="lang-en">Drafted the SHA — 28 articles including ROFR, Tag/Drag, Shootout, SCCA Arbitration.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 6</span><span class="lang-en">Week 6</span></span>
+ <span class="what"><span class="lang-ar">ولادة الانفوجرافيك الستة عشر — كلٌّ منها HTML/CSS خالص، قابلٌ للطباعة.</span><span class="lang-en">Birth of the 16 infographics — each one pure HTML/CSS, print-ready.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 7</span><span class="lang-en">Week 7</span></span>
+ <span class="what"><span class="lang-ar">التحول إلى تجربة فاخرة: Playfair Display، ذهبيّ ملَكي، وضع داكن، اختصارات كيبورد، جولة ترحيبية.</span><span class="lang-en">Transition to a premium experience: Playfair Display, royal gold, dark mode, keyboard shortcuts, welcome tour.</span></span>
+ </div>
+ <div class="milestone-row">
+ <span class="date"><span class="lang-ar">الأسبوع 8</span><span class="lang-en">Week 8</span></span>
+ <span class="what"><span class="lang-ar">إتمام الثمانٍ وعشرين وثيقة، وضبط اللغتين، وتنظيف التداخلات البصرية. اليوم الأخير.</span><span class="lang-en">Completed all twenty-eight documents, verified both languages, cleaned visual conflicts. The final day.</span></span>
+ </div>
+ </div>
 </article>
 
 <div class="divider-ornament">❖ ❖ ❖</div>
 
 <!-- CHAPTER 7: CLOSING -->
 <article class="chapter">
-    <div class="chapter-num"><span class="lang-ar">الفصل الأخير</span><span class="lang-en">The Final Chapter</span></div>
-    <h2><span class="lang-ar">الختام — ما الذي يبقى بعد آخر سطر؟</span><span class="lang-en">The Ending — What Remains After the Last Line?</span></h2>
-    <p>
-        <span class="lang-ar">حين أغلقت آخر مستند، لم يكن شعوري أن العمل انتهى — بل أن عملاً آخر بدأ. المستندات ليست نهاية، هي البداية الحقيقية. إنها الجسر الذي سيمشي عليه <strong>المهندس نصرت</strong> وفريقه في السنوات القادمة: حين يوقّعون صفقةً كبرى، حين يمرّون بضريبةٍ معقدة، حين يأتي شريكٌ جديد، أو حين يقف جيلٌ قادم أمام ميراثٍ منظَّم بدلاً من ميراثٍ متشابك.</span>
-        <span class="lang-en">When I closed the last document, I didn't feel the work was over — I felt another work had begun. Documents aren't an end, they are the real beginning. They are the bridge <strong>Eng. Nusrath</strong> and his team will walk across in the years ahead: when they sign a major deal, when they face a complex tax matter, when a new partner joins, or when a future generation stands before an inheritance that is organized rather than tangled.</span>
-    </p>
-    <p>
-        <span class="lang-ar">إلى المهندس نصرت: قمتَ ببناءٍ في سنواتٍ، واليوم نضع لبناتك في إطارٍ يحفظها. إلى Akmal و Liaqath و Aman و Mohammed Ali و Masarrat: أنتم الرواة الحقيقيون لهذه المجموعة — نحن فقط دوّنّا بعض ما ترويه أعمالكم كل يوم. وإلى القارئ: إن كنتَ مستشاراً مثلي، أو مؤسساً، أو شريكاً، أو وارثاً — فخذ من هذه الصفحات ما يلزمك، وأضف إليها ما ينقصها، واحفظ ما يستحق أن يُحفظ.</span>
-        <span class="lang-en">To Eng. Nusrath: you built across years, and today we place your bricks within a frame that preserves them. To Akmal, Liaqath, Aman, Mohammed Ali, and Masarrat: you are the true narrators of this group — we merely recorded a fraction of what your work tells every day. And to the reader: if you are a counsel like me, a founder, a partner, or an heir — take from these pages what you need, add what is missing, and preserve what is worth preserving.</span>
-    </p>
-    <blockquote class="inline-quote">
-        <span class="lang-ar">"ليس كل ما بُني قابلاً للبقاء — إلا ما بُني على نظامٍ يفهمه من أسَّسه ومن سيخلفه."</span>
-        <span class="lang-en">"Not all that is built will endure — only what rests on a system understood by both its founder and its successor."</span>
-    </blockquote>
-    <p>
-        <span class="lang-ar">شكراً للصبر الذي قرأ حتى هنا. وشكراً أكبر للثقة التي سمحت لهذه الرحلة بأن تبدأ. هذا المشروع ليس موقعاً، وليس ملفاً — هو <em>وعدٌ</em> بأن يبقى ما بنيتم، وأن يكبر بطريقةٍ تليق بمن بناه.</span>
-        <span class="lang-en">Thank you for the patience that read this far. And a deeper thank-you for the trust that allowed this journey to begin. This project is not a website, nor a file — it is a <em>promise</em> that what you built will endure, and grow in a manner worthy of those who built it.</span>
-    </p>
+ <div class="chapter-num"><span class="lang-ar">الفصل الأخير</span><span class="lang-en">The Final Chapter</span></div>
+ <h2><span class="lang-ar">الختام — ما الذي يبقى بعد آخر سطر؟</span><span class="lang-en">The Ending — What Remains After the Last Line?</span></h2>
+ <p>
+ <span class="lang-ar">حين أغلقت آخر مستند، لم يكن شعوري أن العمل انتهى — بل أن عملاً آخر بدأ. المستندات ليست نهاية، هي البداية الحقيقية. إنها الجسر الذي سيمشي عليه <strong>المهندس نصرت</strong> وفريقه في السنوات القادمة: حين يوقّعون صفقةً كبرى، حين يمرّون بضريبةٍ معقدة، حين يأتي شريكٌ جديد، أو حين يقف جيلٌ قادم أمام ميراثٍ منظَّم بدلاً من ميراثٍ متشابك.</span>
+ <span class="lang-en">When I closed the last document, I didn't feel the work was over — I felt another work had begun. Documents aren't an end, they are the real beginning. They are the bridge <strong>Eng. Nusrath</strong> and his team will walk across in the years ahead: when they sign a major deal, when they face a complex tax matter, when a new partner joins, or when a future generation stands before an inheritance that is organized rather than tangled.</span>
+ </p>
+ <p>
+ <span class="lang-ar">إلى المهندس نصرت: قمتَ ببناءٍ في سنواتٍ، واليوم نضع لبناتك في إطارٍ يحفظها. إلى Akmal و Liaqath و Aman و Mohammed Ali و : أنتم الرواة الحقيقيون لهذه المجموعة — نحن فقط دوّنّا بعض ما ترويه أعمالكم كل يوم. وإلى القارئ: إن كنتَ مستشاراً مثلي، أو مؤسساً، أو شريكاً، أو وارثاً — فخذ من هذه الصفحات ما يلزمك، وأضف إليها ما ينقصها، واحفظ ما يستحق أن يُحفظ.</span>
+ <span class="lang-en">To Eng. Nusrath: you built across years, and today we place your bricks within a frame that preserves them. To Akmal, Liaqath, Aman, Mohammed Ali, and : you are the true narrators of this group — we merely recorded a fraction of what your work tells every day. And to the reader: if you are a counsel like me, a founder, a partner, or an heir — take from these pages what you need, add what is missing, and preserve what is worth preserving.</span>
+ </p>
+ <blockquote class="inline-quote">
+ <span class="lang-ar">"ليس كل ما بُني قابلاً للبقاء — إلا ما بُني على نظامٍ يفهمه من أسَّسه ومن سيخلفه."</span>
+ <span class="lang-en">"Not all that is built will endure — only what rests on a system understood by both its founder and its successor."</span>
+ </blockquote>
+ <p>
+ <span class="lang-ar">شكراً للصبر الذي قرأ حتى هنا. وشكراً أكبر للثقة التي سمحت لهذه الرحلة بأن تبدأ. هذا المشروع ليس موقعاً، وليس ملفاً — هو <em>وعدٌ</em> بأن يبقى ما بنيتم، وأن يكبر بطريقةٍ تليق بمن بناه.</span>
+ <span class="lang-en">Thank you for the patience that read this far. And a deeper thank-you for the trust that allowed this journey to begin. This project is not a website, nor a file — it is a <em>promise</em> that what you built will endure, and grow in a manner worthy of those who built it.</span>
+ </p>
 </article>
 
 <!-- SIGNATURE -->
 <div class="closing-signature">
-    <div style="font-family: 'Playfair Display', 'Tajawal', serif; font-size: 44px; color: #c9a961; line-height: 1;">❦</div>
-    <div class="sig-name">
-        <span class="lang-ar">حمدان محمد بن مشعل الغامدي</span>
-        <span class="lang-en">Hamdan Mohammed M. Al-Ghamdi</span>
-    </div>
-    <div class="sig-title">
-        <span class="lang-ar">المستشار العام — نصرت القابضة</span>
-        <span class="lang-en">General Counsel — Nusrath Holding</span>
-    </div>
-    <div class="sig-date">
-        <span class="lang-ar">✦ هنا انتهت الكلمات، وبدأ التنفيذ ✦</span>
-        <span class="lang-en">✦ Here words end, and execution begins ✦</span>
-    </div>
+ <div style="font-family: 'Playfair Display', 'Tajawal', serif; font-size: 44px; color: #c9a961; line-height: 1;">❦</div>
+ <div class="sig-name">
+ <span class="lang-ar">حمدان محمد بن مشعل الغامدي</span>
+ <span class="lang-en">Hamdan Mohammed M. Al-Ghamdi</span>
+ </div>
+ <div class="sig-title">
+ <span class="lang-ar">المستشار العام — نصرت القابضة</span>
+ <span class="lang-en">General Counsel — Nusrath Holding</span>
+ </div>
+ <div class="sig-date">
+ <span class="lang-ar">✦ هنا انتهت الكلمات، وبدأ التنفيذ ✦</span>
+ <span class="lang-en">✦ Here words end, and execution begins ✦</span>
+ </div>
 </div>
 
 </main>
 
 <footer>
-    <div class="footer-content">
-        <p><span class="lang-ar">© خاطرة الطريق — مجموعة نصرت القابضة — وثيقة ختامية</span><span class="lang-en">© The Journey — Nusrath Holding Group — Closing Reflection</span></p>
-    </div>
+ <div class="footer-content">
+ <p><span class="lang-ar">© خاطرة الطريق — مجموعة نصرت القابضة — وثيقة ختامية</span><span class="lang-en">© The Journey — Nusrath Holding Group — Closing Reflection</span></p>
+ </div>
 </footer>
 
 <script src="script.js"></script>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مذكرة هيكل الملكية | Ownership Structure Memo</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.legal-doc { background: white; padding: 50px; border-radius: 10px; margin: 20px 0; font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif; line-height: 1.9; }
+.legal-doc h3.section-h { background: var(--primary); color: white; padding: 10px 20px; border-radius: 6px; margin: 30px 0 15px; font-size: 18px; border: none; }
+.legal-doc h4.sub-h { color: var(--accent); margin: 20px 0 10px; font-weight: bold; font-size: 16px; border-bottom: 1px dashed var(--border); padding-bottom: 5px; }
+.legal-doc .preamble { background: var(--light); padding: 25px; border-radius: 8px; margin-bottom: 30px; border-right: 4px solid var(--secondary); }
+body[dir="ltr"] .legal-doc .preamble { border-right: none; border-left: 4px solid var(--secondary); }
+.legal-doc .placeholder { background: #fff9e6; padding: 2px 6px; border-radius: 3px; color: #b8860b; font-weight: bold; }
+.struct-diagram { background: var(--light); padding: 30px; border-radius: 10px; text-align: center; margin: 25px 0; }
+.struct-level { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 10px 0; }
+.struct-box { background: white; border: 2px solid var(--primary); padding: 12px 20px; border-radius: 8px; font-weight: 600; color: var(--primary); min-width: 170px; font-size: 13px; }
+.struct-box.owner { background: var(--secondary); color: var(--primary); font-size: 14px; }
+.struct-box.holding { background: var(--primary); color: white; font-size: 15px; padding: 15px 30px; }
+.struct-box.sub { background: var(--accent); color: white; }
+.struct-box.grand { background: var(--success); color: white; }
+.struct-box.external { background: #ccc; color: #333; border-color: #999; }
+.struct-arrow { font-size: 22px; color: var(--primary); margin: 5px 0; }
+.struct-box small { display: block; font-weight: normal; opacity: 0.9; font-size: 11px; margin-top: 3px; }
+</style>
+</head>
+<body dir="rtl">
+
+<header class="header">
+    <div class="header-content">
+        <div class="logo">DOCUMENT 08 — OWNERSHIP MEMO</div>
+        <h1><span class="lang-ar">مذكرة هيكل الملكية</span><span class="lang-en">Ownership Structure Memo</span></h1>
+        <div class="subtitle"><span class="lang-ar">قبل وبعد إعادة الهيكلة</span><span class="lang-en">Before & After Restructuring</span></div>
+        <div class="breadcrumb">
+            <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
+            <a href="documents.html"><span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a> /
+            <span class="lang-ar">وثيقة 8</span><span class="lang-en">Doc 8</span>
+        </div>
+    </div>
+</header>
+
+<nav class="topnav">
+    <div class="topnav-content">
+        <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+
+        <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
+        <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
+        <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
+        <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
+
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
+        <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
+        <a href="hacfi.html">🏭 HACFI</a>
+        <a href="aret.html">🪵 Art Craft</a>
+        <a href="superstruct.html">🏗 Superstruct</a>
+        <a href="mqsala.html">💻 mQsala</a>
+
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
+        <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
+        <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
+        <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
+
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
+        <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
+        <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
+        <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
+        <a href="implementation.html">🚀 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
+        <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
+        <a href="comments.html" class="nav-action-gold">💬 <span class="lang-ar">الكلمات</span><span class="lang-en">Voices</span></a>
+    </div>
+</nav>
+
+<div class="container">
+
+<div class="legal-doc">
+
+<div class="preamble">
+<p class="lang-ar"><strong>وثيقة مرجعية:</strong> هذه المذكرة ليست وثيقة تسجيل قانونية، لكنها المرجع التشغيلي والقانوني المعتمد عند مراجعة وثائق إعادة الهيكلة.</p>
+<p class="lang-en"><strong>Reference Document:</strong> This memo is not a registration filing but the approved operational and legal reference when reviewing restructuring documents.</p>
+<p><strong><span class="lang-ar">التاريخ:</span><span class="lang-en">Date:</span></strong> <span class="placeholder">[•]</span> &nbsp;|&nbsp; <strong><span class="lang-ar">الإعداد:</span><span class="lang-en">Prepared by:</span></strong> <span class="lang-ar">حمدان الغامدي، المستشار العام</span><span class="lang-en">Hamdan Al-Ghamdi, General Counsel</span></p>
+</div>
+
+<h3 class="section-h"><span class="lang-ar">القسم 1: الوضع الحالي (قبل إعادة الهيكلة)</span><span class="lang-en">Section 1: Current State (Before Restructuring)</span></h3>
+
+<h4 class="sub-h"><span class="lang-ar">1.1 المخطط البياني — الهيكل الحالي</span><span class="lang-en">1.1 Diagram — Current Structure</span></h4>
+
+<div class="struct-diagram">
+    <div class="struct-level">
+        <div class="struct-box owner">
+            <span class="lang-ar">م. محمد نصرت دلاور<br><small>مالك فردي</small></span>
+            <span class="lang-en">Eng. M. Nusrath Dilawar<br><small>Individual Owner</small></span>
+        </div>
+    </div>
+    <div class="struct-arrow">↓ 100%</div>
+    <div class="struct-level">
+        <div class="struct-box sub">HACFI<br><small>1010838371<br>100%</small></div>
+        <div class="struct-box sub">Superstruct<br><small>1010647622<br>100%</small></div>
+        <div class="struct-box sub">Art Craft<br><small>1010855117<br>فرع / Branch</small></div>
+        <div class="struct-box grand">mQsala<br><small><span class="placeholder">[•]%</span> <span class="lang-ar">+ شركاء</span><span class="lang-en">+ partners</span></small></div>
+    </div>
+    <div class="struct-level" style="margin-top:15px;">
+        <div class="struct-box external" style="font-size:12px;"><span class="lang-ar">Metallica<br><small>علامة تجارية تحت Art Craft</small></span><span class="lang-en">Metallica<br><small>Trademark under Art Craft</small></span></div>
+    </div>
+</div>
+
+<h4 class="sub-h"><span class="lang-ar">1.2 تفاصيل الملكية الحالية</span><span class="lang-en">1.2 Current Ownership Details</span></h4>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+    <th>#</th>
+    <th><span class="lang-ar">الكيان</span><span class="lang-en">Entity</span></th>
+    <th><span class="lang-ar">نوع السجل</span><span class="lang-en">CR Type</span></th>
+    <th><span class="lang-ar">رأس المال</span><span class="lang-en">Capital</span></th>
+    <th><span class="lang-ar">المالك</span><span class="lang-en">Owner</span></th>
+    <th><span class="lang-ar">النسبة</span><span class="lang-en">%</span></th>
+    <th><span class="lang-ar">ملاحظات</span><span class="lang-en">Notes</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>1</td>
+    <td>HACFI</td>
+    <td><span class="lang-ar">رئيسي</span><span class="lang-en">Main</span></td>
+    <td>1,000,000</td>
+    <td><span class="lang-ar">نصرت</span><span class="lang-en">Nusrath</span></td>
+    <td>100%</td>
+    <td><span class="lang-ar">ش.ش.و نشط</span><span class="lang-en">Active SPC</span></td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Superstruct</td>
+    <td><span class="lang-ar">رئيسي</span><span class="lang-en">Main</span></td>
+    <td>1,500,000</td>
+    <td><span class="lang-ar">نصرت</span><span class="lang-en">Nusrath</span></td>
+    <td>100%</td>
+    <td><span class="lang-ar">ش.ش.و نشط</span><span class="lang-en">Active SPC</span></td>
+</tr>
+<tr style="background:#fff9e6;">
+    <td>3</td>
+    <td>Art Craft</td>
+    <td><strong><span class="lang-ar">فرعي</span><span class="lang-en">Branch</span></strong></td>
+    <td>1,000,000</td>
+    <td><span class="lang-ar">نصرت (عبر الكيان الرئيسي)</span><span class="lang-en">Nusrath (via main entity)</span></td>
+    <td>100%</td>
+    <td><span class="lang-ar">سجل فرعي غالباً تحت Superstruct</span><span class="lang-en">Branch CR likely under Superstruct</span></td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>mQsala</td>
+    <td><span class="lang-ar">رئيسي</span><span class="lang-en">Main</span></td>
+    <td>100,000</td>
+    <td><span class="lang-ar">نصرت + شركاء</span><span class="lang-en">Nusrath + partners</span></td>
+    <td><span class="placeholder">[•]%</span></td>
+    <td><span class="lang-ar">ناشئة متعددة الشركاء</span><span class="lang-en">Multi-partner startup</span></td>
+</tr>
+<tr style="background:#f0f0f0;">
+    <td>5</td>
+    <td>Metallica</td>
+    <td>?</td>
+    <td>?</td>
+    <td>?</td>
+    <td>?</td>
+    <td><span class="lang-ar">يحتاج تحقيقاً قانونياً</span><span class="lang-en">Requires legal DD</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="sub-h"><span class="lang-ar">1.3 تحديات الهيكل الحالي</span><span class="lang-en">1.3 Challenges of Current Structure</span></h4>
+
+<ul class="lang-ar">
+    <li><strong>لا فصل بين الملكية والإدارة:</strong> كل الكيانات مملوكة مباشرة للمهندس نصرت شخصياً.</li>
+    <li><strong>لا حوكمة موحدة:</strong> كل كيان يُدار منفرداً دون إطار حوكمي شامل.</li>
+    <li><strong>تعاملات بينية غير موثقة:</strong> بين HACFI و Superstruct و Art Craft كمعاملات أطراف ذات علاقة دون إطار.</li>
+    <li><strong>خطر الستار الشركاتي:</strong> الخلط في الأصول والإدارة يُعرّض كل الكيانات لمخاطر قانونية متشابكة.</li>
+    <li><strong>صعوبة إدخال مستثمرين:</strong> بنية مشتتة بلا قابضة تُصعّب أي صفقة استثمار مستقبلية.</li>
+    <li><strong>Art Craft غير واضحة:</strong> سجل فرعي لم يُوثّق الكيان الرئيسي له رسمياً.</li>
+    <li><strong>أفق العالم مُعرّضة:</strong> وجود شركاء دون SHA حديث يترك القرار عرضة للنزاع.</li>
+</ul>
+<ul class="lang-en">
+    <li><strong>No ownership–management separation:</strong> All entities directly owned by Eng. Nusrath personally.</li>
+    <li><strong>No unified governance:</strong> Each entity managed separately with no overarching framework.</li>
+    <li><strong>Undocumented intercompany transactions:</strong> Between HACFI, Superstruct, and Art Craft as related-party dealings without framework.</li>
+    <li><strong>Corporate veil risk:</strong> Asset and management commingling exposes all entities to intertwined legal risk.</li>
+    <li><strong>Difficulty onboarding investors:</strong> Fragmented structure without a holding complicates any future investment deal.</li>
+    <li><strong>Art Craft unclear:</strong> Branch CR without officially documented main entity.</li>
+    <li><strong>Ufuq Al-Aalam exposed:</strong> Partners without recent SHA leave decisions prone to dispute.</li>
+</ul>
+
+<h3 class="section-h"><span class="lang-ar">القسم 2: الوضع المستهدف (بعد إعادة الهيكلة)</span><span class="lang-en">Section 2: Target State (After Restructuring)</span></h3>
+
+<h4 class="sub-h"><span class="lang-ar">2.1 المخطط البياني — الهيكل المستهدف</span><span class="lang-en">2.1 Diagram — Target Structure</span></h4>
+
+<div class="struct-diagram">
+    <div class="struct-level">
+        <div class="struct-box owner">
+            <span class="lang-ar">م. محمد نصرت دلاور<br><small>مساهم وحيد 100%</small></span>
+            <span class="lang-en">Eng. M. Nusrath Dilawar<br><small>Sole Shareholder 100%</small></span>
+        </div>
+    </div>
+    <div class="struct-arrow">↓ 100%</div>
+    <div class="struct-level">
+        <div class="struct-box holding">
+            <span class="lang-ar">نصرت القابضة للاستثمار (SJSC)</span>
+            <span class="lang-en">Nusrath Investment Holding (SJSC)</span>
+        </div>
+    </div>
+    <div class="struct-arrow">↓</div>
+    <div class="struct-level">
+        <div class="struct-box sub" style="min-width:200px;">
+            <span class="lang-ar">HACFI<br><small>100% مملوكة</small></span>
+            <span class="lang-en">HACFI<br><small>100% owned</small></span>
+        </div>
+        <div class="struct-box sub" style="min-width:200px;">
+            <span class="lang-ar">Superstruct<br><small>100% مملوكة</small></span>
+            <span class="lang-en">Superstruct<br><small>100% owned</small></span>
+        </div>
+        <div class="struct-box sub" style="min-width:200px;">
+            <span class="lang-ar">mQsala<br><small>حصة نصرت فقط + شركاء</small></span>
+            <span class="lang-en">mQsala<br><small>Nusrath's stake + partners</small></span>
+        </div>
+    </div>
+    <div class="struct-arrow">↓</div>
+    <div class="struct-level">
+        <div class="struct-box grand">
+            <span class="lang-ar">Art Craft (حفيدة/فرع ضمن HACFI)</span>
+            <span class="lang-en">Art Craft (grandchild/branch under HACFI)</span>
+        </div>
+    </div>
+</div>
+
+<h4 class="sub-h"><span class="lang-ar">2.2 تفاصيل الملكية المستهدفة</span><span class="lang-en">2.2 Target Ownership Details</span></h4>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+    <th>#</th>
+    <th><span class="lang-ar">الكيان</span><span class="lang-en">Entity</span></th>
+    <th><span class="lang-ar">المالك المباشر</span><span class="lang-en">Direct Owner</span></th>
+    <th><span class="lang-ar">النسبة</span><span class="lang-en">%</span></th>
+    <th><span class="lang-ar">المستفيد النهائي</span><span class="lang-en">Ultimate Beneficiary</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="highlight-row">
+    <td>0</td>
+    <td><strong><span class="lang-ar">نصرت القابضة (SJSC)</span><span class="lang-en">Nusrath Holding (SJSC)</span></strong></td>
+    <td><span class="lang-ar">نصرت</span><span class="lang-en">Nusrath</span></td>
+    <td>100%</td>
+    <td><span class="lang-ar">نصرت</span><span class="lang-en">Nusrath</span></td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>HACFI</td>
+    <td><span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></td>
+    <td>100%</td>
+    <td><span class="lang-ar">نصرت (عبر القابضة)</span><span class="lang-en">Nusrath (via Holding)</span></td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>Superstruct</td>
+    <td><span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></td>
+    <td>100%</td>
+    <td><span class="lang-ar">نصرت (عبر القابضة)</span><span class="lang-en">Nusrath (via Holding)</span></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>Art Craft</td>
+    <td>HACFI</td>
+    <td><span class="lang-ar">فرع تحت HACFI</span><span class="lang-en">branch under HACFI</span></td>
+    <td><span class="lang-ar">نصرت (عبر القابضة → HACFI)</span><span class="lang-en">Nusrath (via Holding → HACFI)</span></td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>mQsala</td>
+    <td><span class="lang-ar">القابضة + شركاء</span><span class="lang-en">Holding + partners</span></td>
+    <td><span class="placeholder">[•]%</span> + <span class="lang-ar">شركاء</span><span class="lang-en">partners</span></td>
+    <td><span class="lang-ar">نصرت (عبر القابضة) + شركاء آخرون</span><span class="lang-en">Nusrath (via Holding) + other partners</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4 class="sub-h"><span class="lang-ar">2.3 مزايا الهيكل المستهدف</span><span class="lang-en">2.3 Target Structure Benefits</span></h4>
+
+<ul class="lang-ar">
+    <li><strong>فصل واضح:</strong> الملكية النهائية (نصرت) منفصلة عن الإدارة التنفيذية للتابعات.</li>
+    <li><strong>حوكمة موحدة:</strong> القابضة تُمارس الرقابة والإشراف على كل التابعات بنظام واحد.</li>
+    <li><strong>حماية الأصول:</strong> كل كيان مستقل قانونياً، الفشل في واحد لا ينتقل للآخرين.</li>
+    <li><strong>قابلية التوسع:</strong> إدخال مستثمرين في القابضة أو تابعة محددة سهل ومرن.</li>
+    <li><strong>التعاملات البينية منظمة:</strong> اتفاقيات خدمات وتوريد بأسعار السوق.</li>
+    <li><strong>تكتل صناعي واضح:</strong> HACFI تضم النجارة (Art) منطقياً في ذراع صناعي واحد.</li>
+    <li><strong>حماية الشركاء:</strong> mQsala تحتفظ بشركائها ومبنية بـ SHA صريح.</li>
+    <li><strong>جاهزية للمستقبل:</strong> قابضة SJSC قابلة للتحول لـ JSC عند الطرح العام.</li>
+</ul>
+<ul class="lang-en">
+    <li><strong>Clear separation:</strong> Ultimate ownership (Nusrath) separated from subsidiary execution.</li>
+    <li><strong>Unified governance:</strong> Holding exercises oversight across all subs via single framework.</li>
+    <li><strong>Asset protection:</strong> Each entity legally independent; failure in one doesn't contaminate others.</li>
+    <li><strong>Scalability:</strong> Admitting investors to Holding or specific sub is easy and flexible.</li>
+    <li><strong>Organized intercompany dealings:</strong> Arm's-length service and supply agreements.</li>
+    <li><strong>Clear industrial cluster:</strong> HACFI logically includes carpentry (Art) within one industrial arm.</li>
+    <li><strong>Partner protection:</strong> mQsala retains its partners built on an explicit SHA.</li>
+    <li><strong>Future-ready:</strong> SJSC Holding convertible to JSC upon IPO.</li>
+</ul>
+
+<h3 class="section-h"><span class="lang-ar">القسم 3: معالجات خاصة لكل كيان</span><span class="lang-en">Section 3: Entity-Specific Treatments</span></h3>
+
+<h4 class="sub-h"><span class="lang-ar">3.1 HACFI</span><span class="lang-en">3.1 HACFI</span></h4>
+<p><strong><span class="lang-ar">الإجراء:</span><span class="lang-en">Action:</span></strong> <span class="lang-ar">نقل 100% من حصص نصرت إلى القابضة بموجب اتفاقية نقل الحصص (الوثيقة 5).</span><span class="lang-en">Transfer 100% of Nusrath's shares to Holding per Share Transfer Agreement (Doc 5).</span></p>
+<p><strong><span class="lang-ar">الخطوات:</span><span class="lang-en">Steps:</span></strong></p>
+<ol class="lang-ar">
+    <li>قرار مساهم HACFI بالموافقة على نقل الحصص.</li>
+    <li>تعديل عقد تأسيس HACFI (تغيير المالك من نصرت الفرد إلى القابضة).</li>
+    <li>تحديث السجل التجاري لـ HACFI.</li>
+    <li>تحديث ملفات ZATCA و GOSI و MIMR.</li>
+    <li>إشعار البنوك والموردين الجوهريين.</li>
+</ol>
+<ol class="lang-en">
+    <li>HACFI shareholder resolution approving transfer.</li>
+    <li>Amend HACFI AoA (change owner from Nusrath individual to Holding).</li>
+    <li>Update HACFI CR.</li>
+    <li>Update ZATCA, GOSI, and MIMR files.</li>
+    <li>Notify banks and material suppliers.</li>
+</ol>
+
+<h4 class="sub-h"><span class="lang-ar">3.2 Superstruct</span><span class="lang-en">3.2 Superstruct</span></h4>
+<p><strong><span class="lang-ar">الإجراء:</span><span class="lang-en">Action:</span></strong> <span class="lang-ar">مماثل لـ HACFI — لكن مع معالجة خاصة لشروط تغيير السيطرة في عقود Superstruct الحكومية.</span><span class="lang-en">Similar to HACFI — with special handling of change-of-control clauses in Superstruct's government contracts.</span></p>
+<p><strong><span class="lang-ar">تحذير حرج:</span><span class="lang-en">Critical Warning:</span></strong> <span class="lang-ar">قبل أي نقل، يجب مراجعة كل عقد حكومي وكل ضمان بنكي قائم، لأن النقل قد يُفعّل شرط التسريع (Acceleration) أو فقدان التأهيل.</span><span class="lang-en">Before any transfer, every government contract and existing bank guarantee must be reviewed, as transfer may trigger acceleration clauses or qualification loss.</span></p>
+<p><strong><span class="lang-ar">الجهات المختصة التي يجب إشعارها:</span><span class="lang-en">Authorities to Notify:</span></strong></p>
+<ul class="lang-ar">
+    <li>وزارة الشؤون البلدية (MoMRAH) — تأهيل المقاول</li>
+    <li>منصة "اعتماد" (ETIMAD)</li>
+    <li>الجهات الحكومية التي لدى Superstruct عقود معها</li>
+    <li>البنوك التي أصدرت ضمانات بنكية</li>
+</ul>
+<ul class="lang-en">
+    <li>MoMRAH — contractor qualification</li>
+    <li>ETIMAD platform</li>
+    <li>Government entities with existing Superstruct contracts</li>
+    <li>Banks that issued guarantees</li>
+</ul>
+
+<h4 class="sub-h"><span class="lang-ar">3.3 Art Craft (المعالجة الخاصة للسجل الفرعي)</span><span class="lang-en">3.3 Art Craft (Special Branch CR Handling)</span></h4>
+<div class="callout warning">
+    <strong>⚠ <span class="lang-ar">معالجة قانونية خاصة</span><span class="lang-en">Special Legal Treatment</span></strong>
+    <p class="lang-ar">Art Craft سجل فرعي (Branch CR) وليس كياناً مستقلاً. لا يمكن "نقل ملكيتها" كحصص، لأن الملكية ليست لها بل للكيان الرئيسي.</p>
+    <p class="lang-en">Art Craft is a Branch CR, not an independent entity. Its "ownership" cannot be transferred as shares, because ownership rests with the main entity, not it.</p>
+</div>
+
+<p><strong><span class="lang-ar">الخيارات الثلاثة:</span><span class="lang-en">Three Options:</span></strong></p>
+
+<div class="cards">
+    <div class="card">
+        <h4><span class="lang-ar">خيار أ: إبقاء Art تحت الكيان الرئيسي الحالي</span><span class="lang-en">Option A: Keep Art Under Current Main Entity</span></h4>
+        <p class="lang-ar">إذا كان الكيان الرئيسي Superstruct، تبقى Art فرعاً لـ Superstruct بعد نقل Superstruct للقابضة. غير منطقي تجارياً (نجارة تحت مقاولات).</p>
+        <p class="lang-en">If main entity is Superstruct, Art remains Superstruct's branch after Superstruct's transfer to Holding. Commercially illogical (carpentry under contracting).</p>
+    </div>
+    <div class="card" style="border-top-color: var(--success); background: #e8f5e9;">
+        <h4>⭐ <span class="lang-ar">خيار ب: نقل الفرع إلى HACFI</span><span class="lang-en">Option B: Transfer Branch to HACFI</span></h4>
+        <p class="lang-ar">تعديل السجل الرئيسي لـ Art بتحويله من Superstruct إلى HACFI. يتطلب: (1) إغلاق الفرع الحالي، (2) فتح فرع جديد تحت HACFI بنفس الاسم والنشاط.</p>
+        <p class="lang-en">Amend Art's main CR to switch from Superstruct to HACFI. Requires: (1) close current branch, (2) open new branch under HACFI with same name/activity.</p>
+    </div>
+    <div class="card">
+        <h4><span class="lang-ar">خيار ج: تحويل Art لسجل رئيسي مستقل</span><span class="lang-en">Option C: Convert to Main CR</span></h4>
+        <p class="lang-ar">تأسيس ش.ش.و مستقلة باسم Art Craft مملوكة لـ HACFI (كحفيدة حقيقية). مكلف وطويل.</p>
+        <p class="lang-en">Incorporate an independent SPC named Art Craft, owned by HACFI (as true grandchild). Costly and slow.</p>
+    </div>
+</div>
+
+<p><strong><span class="lang-ar">التوصية:</span><span class="lang-en">Recommendation:</span></strong> <span class="lang-ar">الخيار ب — أقل تكلفة ويحقق التبعية الصناعية المنطقية.</span><span class="lang-en">Option B — lowest cost, achieves logical industrial subordination.</span></p>
+
+<h4 class="sub-h"><span class="lang-ar">3.4 mQsala (أفق العالم الريادي)</span><span class="lang-en">3.4 mQsala (Ufuq Al-Aalam)</span></h4>
+
+<p><strong><span class="lang-ar">المرحلة الأولى:</span><span class="lang-en">Phase 1:</span></strong></p>
+<ol class="lang-ar">
+    <li>التفاوض مع الشركاء على SHA جديد.</li>
+    <li>موافقة MISA الكتابية على تغيير هيكل المساهمة.</li>
+    <li>نقل حصة نصرت فقط (وليس حصص الشركاء) إلى القابضة.</li>
+    <li>تحديث السجل التجاري لـ mQsala.</li>
+    <li>الإبقاء على <span class="lang-ar">حمدان الغامدي</span><span class="lang-en">Hamdan Al-Ghamdi</span> كـ نائب رئيس مجلس مديرين + مدير تنفيذي (مسجل رسمياً).</li>
+</ol>
+<ol class="lang-en">
+    <li>Negotiate new SHA with partners.</li>
+    <li>MISA written approval of shareholding change.</li>
+    <li>Transfer only Nusrath's stake (not partners') to Holding.</li>
+    <li>Update mQsala CR.</li>
+    <li>Retain Hamdan Al-Ghamdi as Vice Chairman + Executive Director (officially registered).</li>
+</ol>
+
+<p><strong><span class="lang-ar">المرحلة الثانية (لاحقة):</span><span class="lang-en">Phase 2 (later):</span></strong></p>
+<ul class="lang-ar">
+    <li>زيادة رأس المال من 100K إلى 500K-1M.</li>
+    <li>تعديل بنود الحوكمة وفق مرحلة النمو.</li>
+    <li>الاستعداد لجولة تمويل Seed.</li>
+</ul>
+<ul class="lang-en">
+    <li>Capital increase from 100K to 500K-1M.</li>
+    <li>Adjust governance provisions for growth stage.</li>
+    <li>Prepare for Seed funding round.</li>
+</ul>
+
+<h4 class="sub-h"><span class="lang-ar">3.5 Metallica — علامة تجارية تحت Art Craft</span><span class="lang-en">3.5 Metallica — Trademark under Art Craft</span></h4>
+
+<p><span class="lang-ar"><strong>معلومة مؤكدة:</strong> Metallica <strong>ليست شركة مستقلة</strong> ولا كياناً قانونياً، بل هي <strong>علامة تجارية (Brand)</strong> تعمل تحت مظلة Art Craft. لا تحتاج إلى معالجة قانونية منفصلة.</span><span class="lang-en"><strong>Confirmed:</strong> Metallica is <strong>NOT an independent company</strong> nor a legal entity — it is a <strong>trademark (brand)</strong> operating under Art Craft's umbrella. No separate legal treatment is needed.</span></p>
+
+<ol class="lang-ar">
+    <li><strong>الإجراء المطلوب:</strong> تسجيل العلامة التجارية "Metallica" باسم Art Craft LLC بعد فصلها.</li>
+    <li><strong>الحماية:</strong> حماية حقوق الملكية الفكرية للعلامة مع الهيئة السعودية للملكية الفكرية (SAIP).</li>
+    <li><strong>الاستخدام:</strong> توثيق خطوط الإنتاج التي تُسوَّق تحت علامة Metallica.</li>
+    <li><strong>الإشراف:</strong> تُدار من إدارة Art Craft LLC ضمن قطاع منتجاتها.</li>
+</ol>
+<ol class="lang-en">
+    <li><strong>Required Action:</strong> Register the "Metallica" trademark in the name of Art Craft LLC post-split.</li>
+    <li><strong>Protection:</strong> Protect IP rights with the Saudi Authority for Intellectual Property (SAIP).</li>
+    <li><strong>Use:</strong> Document product lines marketed under the Metallica brand.</li>
+    <li><strong>Oversight:</strong> Managed by Art Craft LLC's product division.</li>
+</ol>
+
+<h3 class="section-h"><span class="lang-ar">القسم 4: التتبع خطوة بخطوة</span><span class="lang-en">Section 4: Step-by-Step Tracking</span></h3>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+    <th><span class="lang-ar">المرحلة</span><span class="lang-en">Phase</span></th>
+    <th><span class="lang-ar">الإجراء</span><span class="lang-en">Action</span></th>
+    <th><span class="lang-ar">المسؤول</span><span class="lang-en">Owner</span></th>
+    <th><span class="lang-ar">المدة</span><span class="lang-en">Duration</span></th>
+    <th><span class="lang-ar">الحالة</span><span class="lang-en">Status</span></th>
+</tr>
+</thead>
+<tbody>
+<tr><td>T0</td><td><span class="lang-ar">تأسيس القابضة SJSC</span><span class="lang-en">Incorporate Holding SJSC</span></td><td>GC + Nusrath</td><td>2-4 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T0+1</td><td><span class="lang-ar">قرار مؤسس</span><span class="lang-en">Founder's resolution</span></td><td>Nusrath + GC</td><td>1 <span class="lang-ar">يوم</span><span class="lang-en">day</span></td><td>⏳</td></tr>
+<tr><td>T0+2</td><td><span class="lang-ar">مراجعة عقود Superstruct</span><span class="lang-en">Review Superstruct contracts</span></td><td>GC + <span class="lang-ar">محاماة خارجية</span><span class="lang-en">external counsel</span></td><td>4-6 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T0+3</td><td><span class="lang-ar">التفاوض مع شركاء mQsala</span><span class="lang-en">Negotiate with mQsala partners</span></td><td>Nusrath + GC</td><td>4-8 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T0+4</td><td><span class="lang-ar">دراسة ضريبية/زكوية</span><span class="lang-en">Tax/zakat study</span></td><td><span class="lang-ar">مستشار ضريبي</span><span class="lang-en">Tax advisor</span></td><td>3-4 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T0+5</td><td><span class="lang-ar">تقييم الحصص</span><span class="lang-en">Share valuation</span></td><td><span class="lang-ar">مكتب معتمد</span><span class="lang-en">Certified firm</span></td><td>2-4 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T1</td><td><span class="lang-ar">توقيع اتفاقية نقل الحصص</span><span class="lang-en">Sign Share Transfer Agreement</span></td><td>Nusrath + GC</td><td>1 <span class="lang-ar">يوم</span><span class="lang-en">day</span></td><td>⏳</td></tr>
+<tr><td>T1+1</td><td><span class="lang-ar">تعديل عقد HACFI</span><span class="lang-en">Amend HACFI AoA</span></td><td>GC</td><td>2 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T1+2</td><td><span class="lang-ar">تعديل عقد Superstruct</span><span class="lang-en">Amend Superstruct AoA</span></td><td>GC</td><td>2 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T1+3</td><td><span class="lang-ar">معالجة Art Craft</span><span class="lang-en">Handle Art Craft</span></td><td>GC</td><td>3-4 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T1+4</td><td><span class="lang-ar">تعديل عقد mQsala (مع SHA)</span><span class="lang-en">Amend mQsala AoA (with SHA)</span></td><td>GC + <span class="lang-ar">شركاء</span><span class="lang-en">partners</span></td><td>3-4 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T2</td><td><span class="lang-ar">إقفال النقل (Closing)</span><span class="lang-en">Transfer Closing</span></td><td>GC + CFO</td><td>1 <span class="lang-ar">يوم</span><span class="lang-en">day</span></td><td>⏳</td></tr>
+<tr><td>T2+1</td><td><span class="lang-ar">تحديث السجلات التجارية</span><span class="lang-en">Update all CRs</span></td><td>GC</td><td>2 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T2+2</td><td><span class="lang-ar">إشعارات ZATCA، GOSI، MISA</span><span class="lang-en">ZATCA, GOSI, MISA notifications</span></td><td>GC + CFO</td><td>2 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T3</td><td><span class="lang-ar">تفعيل لوائح الحوكمة</span><span class="lang-en">Activate governance charters</span></td><td><span class="lang-ar">المجلس</span><span class="lang-en">Board</span></td><td>2 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr><td>T3+1</td><td><span class="lang-ar">توقيع اتفاقيات الخدمات البينية</span><span class="lang-en">Sign intercompany service agmts</span></td><td>GC</td><td>2 <span class="lang-ar">أسابيع</span><span class="lang-en">weeks</span></td><td>⏳</td></tr>
+<tr style="background:#e8f5e9; font-weight:bold;"><td>T4</td><td><span class="lang-ar">اكتمال إعادة الهيكلة</span><span class="lang-en">Restructuring Complete</span></td><td><span class="lang-ar">المجموعة</span><span class="lang-en">Group</span></td><td>—</td><td>🎯</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="section-h"><span class="lang-ar">القسم 5: المؤشرات الكمية</span><span class="lang-en">Section 5: Quantitative Indicators</span></h3>
+
+<div class="cards">
+    <div class="card">
+        <h4><span class="lang-ar">إجمالي رؤوس أموال التابعات</span><span class="lang-en">Total Sub Capital</span></h4>
+        <p style="font-size: 22px; font-weight: bold; color: var(--primary);">3,600,000 <span style="font-size:14px;">ر.س / SAR</span></p>
+    </div>
+    <div class="card">
+        <h4><span class="lang-ar">رأس مال القابضة المقترح</span><span class="lang-en">Proposed Holding Capital</span></h4>
+        <p style="font-size: 22px; font-weight: bold; color: var(--success);">5-10M <span style="font-size:14px;">ر.س / SAR</span></p>
+    </div>
+    <div class="card">
+        <h4><span class="lang-ar">عدد الكيانات</span><span class="lang-en">Entity Count</span></h4>
+        <p style="font-size: 22px; font-weight: bold; color: var(--accent);">4 + 1 <span style="font-size:14px;"><span class="lang-ar">قابضة</span><span class="lang-en">holding</span></span></p>
+    </div>
+    <div class="card">
+        <h4><span class="lang-ar">علامة تجارية</span><span class="lang-en">Trademark</span></h4>
+        <p style="font-size: 22px; font-weight: bold; color: var(--danger);">Metallica</p>
+    </div>
+</div>
+
+<h3 class="section-h"><span class="lang-ar">القسم 6: المخاطر الخاصة بالهيكلة</span><span class="lang-en">Section 6: Restructuring-Specific Risks</span></h3>
+
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+    <th><span class="lang-ar">المخاطرة</span><span class="lang-en">Risk</span></th>
+    <th><span class="lang-ar">الأثر</span><span class="lang-en">Impact</span></th>
+    <th><span class="lang-ar">الاحتمال</span><span class="lang-en">Likelihood</span></th>
+    <th><span class="lang-ar">الإجراء الوقائي</span><span class="lang-en">Mitigation</span></th>
+</tr>
+</thead>
+<tbody>
+<tr><td><span class="lang-ar">رفض شركاء mQsala</span><span class="lang-en">mQsala partners refuse</span></td><td>🔴</td><td>🟡</td><td><span class="lang-ar">تفاوض مبكر + SHA عادل</span><span class="lang-en">Early negotiation + fair SHA</span></td></tr>
+<tr><td><span class="lang-ar">تفعيل تغيير السيطرة</span><span class="lang-en">Change-of-control triggers</span></td><td>🔴</td><td>🔴</td><td><span class="lang-ar">مراجعة كل عقد + إشعار مسبق</span><span class="lang-en">Review every contract + prior notice</span></td></tr>
+<tr><td><span class="lang-ar">فقد تأهيل المقاولين</span><span class="lang-en">Loss of contractor qualification</span></td><td>🔴</td><td>🟡</td><td><span class="lang-ar">إشعار MoMRAH</span><span class="lang-en">Notify MoMRAH</span></td></tr>
+<tr><td><span class="lang-ar">إلغاء رخصة MISA</span><span class="lang-en">MISA license revocation</span></td><td>🔴</td><td>🟡</td><td><span class="lang-ar">تنسيق مسبق + موافقة كتابية</span><span class="lang-en">Prior coordination + written approval</span></td></tr>
+<tr><td><span class="lang-ar">أثر ضريبي/زكوي غير متوقع</span><span class="lang-en">Unexpected tax/zakat impact</span></td><td>🔴</td><td>🔴</td><td><span class="lang-ar">دراسة ZATCA قبل التنفيذ</span><span class="lang-en">ZATCA study pre-execution</span></td></tr>
+<tr><td><span class="lang-ar">Metallica تحتاج تسجيل علامة تجارية</span><span class="lang-en">Metallica needs trademark registration</span></td><td>🟡</td><td>🟡</td><td><span class="lang-ar">تسجيل لدى SAIP باسم Art Craft LLC</span><span class="lang-en">Register at SAIP under Art Craft LLC</span></td></tr>
+<tr><td><span class="lang-ar">Art Craft معقد قانونياً</span><span class="lang-en">Art Craft legally complex</span></td><td>🟡</td><td>🟡</td><td><span class="lang-ar">اتباع الخيار ب (نقل الفرع)</span><span class="lang-en">Follow Option B (branch transfer)</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="section-h"><span class="lang-ar">القسم 7: توصيات تنفيذية</span><span class="lang-en">Section 7: Execution Recommendations</span></h3>
+
+<div class="callout success">
+    <strong><span class="lang-ar">التوصيات النهائية</span><span class="lang-en">Final Recommendations</span></strong>
+    <ol class="lang-ar">
+        <li><strong>لا بدء بدون 3 دراسات مسبقة:</strong> ضريبية، عقود Superstruct، SHA لـ mQsala.</li>
+        <li><strong>ابدأ بـ HACFI:</strong> لأنها الأقل تعقيداً (شخص واحد، لا عقود حكومية).</li>
+        <li><strong>Superstruct بعد الدراسة:</strong> لا قبلها — خطر تغيير السيطرة.</li>
+        <li><strong>Art Craft عبر الخيار ب:</strong> نقل الفرع إلى HACFI.</li>
+        <li><strong>mQsala فقط بعد SHA:</strong> لا تُلمس قبل موافقة الشركاء الكتابية.</li>
+        <li><strong>Metallica كعلامة:</strong> تُسجَّل لدى SAIP باسم Art Craft LLC.</li>
+        <li><strong>رأس مال القابضة 5-10M ر.س:</strong> لضمان الكفاية.</li>
+        <li><strong>توثيق كل خطوة:</strong> المستشار العام يحتفظ بملف كامل.</li>
+    </ol>
+    <ol class="lang-en">
+        <li><strong>No start without 3 prior studies:</strong> tax, Superstruct contracts, mQsala SHA.</li>
+        <li><strong>Start with HACFI:</strong> least complex (SPC, no government contracts).</li>
+        <li><strong>Superstruct after study:</strong> not before — change-of-control risk.</li>
+        <li><strong>Art Craft via Option B:</strong> transfer branch to HACFI.</li>
+        <li><strong>mQsala only after SHA:</strong> do not touch before written partner consent.</li>
+        <li><strong>Metallica as trademark:</strong> registered at SAIP under Art Craft LLC.</li>
+        <li><strong>Holding capital SAR 5-10M:</strong> to ensure sufficiency.</li>
+        <li><strong>Document every step:</strong> GC maintains full file.</li>
+    </ol>
+</div>
+
+<p style="margin-top: 30px; padding: 15px; background: var(--light); border-radius: 6px; font-size: 13px;">
+    <strong><span class="lang-ar">ملاحظة:</span><span class="lang-en">Note:</span></strong>
+    <span class="lang-ar">هذه المذكرة حية (Living Document) تُحدث مع كل مرحلة من التنفيذ، وتكون المرجع التشغيلي لدى المستشار العام والمجلس.</span>
+    <span class="lang-en">This is a living document updated at each phase of execution, serving as operational reference for the GC and Board.</span>
+</p>
+
+</div>
+
+<section class="section">
+    <h2>📍 <span class="lang-ar">التالي</span><span class="lang-en">Next</span></h2>
+    <div class="landing-grid">
+        <a href="doc-09-governance.html" class="landing-card">
+            <div class="icon">⚖</div>
+            <h3><span class="lang-ar">لائحة الحوكمة</span><span class="lang-en">Governance Charter</span></h3>
+        </a>
+        <a href="documents.html" class="landing-card">
+            <div class="icon">📚</div>
+            <h3><span class="lang-ar">فهرس الوثائق</span><span class="lang-en">Documents Index</span></h3>
+        </a>
+        <a href="implementation.html" class="landing-card">
+            <div class="icon">🚀</div>
+            <h3><span class="lang-ar">خطة التنفيذ</span><span class="lang-en">Implementation</span></h3>
+        </a>
+    </div>
+</section>
+
+</div>
+
+<footer class="footer">
+    <div class="signature"><span class="lang-ar">حمدان الغامدي — المستشار العام</span><span class="lang-en">Hamdan Al-Ghamdi — General Counsel</span></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

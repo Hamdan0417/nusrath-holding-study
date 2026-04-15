@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كلمات الفريق | Voices from the Team</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    /* Comments page — warm editorial style */
+    .comments-hero {
+        background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 100%);
+        color: #fff;
+        padding: 80px 24px 60px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .comments-hero::before {
+        content: '"'; position: absolute;
+        font-family: 'Playfair Display', serif;
+        font-size: 400px; line-height: 1;
+        color: rgba(201,169,97,0.08);
+        top: -60px; inset-inline-start: 20px;
+        pointer-events: none;
+    }
+    .comments-hero h1 {
+        font-family: 'Playfair Display', 'Tajawal', serif;
+        font-size: clamp(32px, 4.5vw, 52px);
+        margin: 0 0 16px; font-weight: 700;
+        color: #fff; position: relative;
+    }
+    .comments-hero .tagline {
+        font-size: 17px; opacity: 0.85;
+        max-width: 600px; margin: 0 auto;
+        line-height: 1.7; font-style: italic;
+        position: relative;
+    }
+
+    .comments-body { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+
+    /* Featured testimonial cards */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 28px;
+        margin-bottom: 60px;
+    }
+
+    .testimonial-card {
+        background: #fff;
+        border: 1px solid #e5d7a8;
+        border-radius: 20px;
+        padding: 36px 28px 28px;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(10,30,63,0.06);
+        transition: all 0.3s ease;
+    }
+    body.dark-mode .testimonial-card {
+        background: #1a1f2e; border-color: #3a3f55;
+    }
+    .testimonial-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(10,30,63,0.12);
+        border-color: #c9a961;
+    }
+
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: -10px; inset-inline-start: 20px;
+        background: linear-gradient(135deg, #c9a961, #b8924a);
+        color: #fff; font-family: 'Playfair Display', serif;
+        width: 48px; height: 48px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 52px; line-height: 1;
+        padding-top: 14px;
+        box-shadow: 0 6px 16px rgba(201,169,97,0.4);
+    }
+
+    .tcard-person {
+        display: flex; align-items: center; gap: 16px;
+        margin-bottom: 20px; padding-bottom: 20px;
+        border-bottom: 2px solid #f5f0e4;
+    }
+    body.dark-mode .tcard-person { border-bottom-color: #3a3f55; }
+
+    .tcard-avatar {
+        width: 56px; height: 56px; border-radius: 50%;
+        background: linear-gradient(135deg, #0a1e3f, #162b5e);
+        color: #c9a961;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Playfair Display', 'Tajawal', serif;
+        font-size: 22px; font-weight: 700;
+        flex-shrink: 0;
+        border: 3px solid #c9a961;
+    }
+
+    .tcard-who { flex: 1; }
+    .tcard-name {
+        font-family: 'Playfair Display', 'Tajawal', serif;
+        font-size: 18px; font-weight: 700;
+        color: #0a1e3f; line-height: 1.3;
+    }
+    body.dark-mode .tcard-name { color: #f5c977; }
+    .tcard-role {
+        font-size: 12px; color: #718096;
+        letter-spacing: 1px; text-transform: uppercase;
+        margin-top: 2px;
+    }
+
+    .tcard-quote {
+        font-size: 16px; line-height: 1.8; color: #2d3748;
+        font-family: 'Tajawal', 'Inter', sans-serif;
+        min-height: 120px;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px dashed transparent;
+        cursor: text;
+        transition: all 0.2s ease;
+    }
+    body.dark-mode .tcard-quote { color: #d4d8e0; }
+    .tcard-quote:hover {
+        border-color: #c9a961;
+        background: rgba(201,169,97,0.03);
+    }
+    .tcard-quote:focus {
+        outline: none;
+        border-color: #c9a961;
+        border-style: solid;
+        background: rgba(201,169,97,0.08);
+    }
+
+    .tcard-foot {
+        display: flex; justify-content: space-between;
+        align-items: center; margin-top: 20px;
+        padding-top: 16px; border-top: 1px dashed #e5d7a8;
+        font-size: 12px; color: #a0a0a0;
+    }
+    body.dark-mode .tcard-foot { border-top-color: #3a3f55; }
+
+    .save-btn {
+        background: #c9a961; color: #0a1e3f;
+        border: none; padding: 6px 14px; border-radius: 20px;
+        font-size: 12px; font-weight: 600; cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .save-btn:hover { background: #0a1e3f; color: #c9a961; }
+    .save-btn.saved { background: #10b981; color: #fff; }
+
+    /* Public comments section */
+    .public-section {
+        margin-top: 60px;
+        background: linear-gradient(135deg, #fafaf5 0%, #f5f0e4 100%);
+        border-radius: 24px; padding: 48px 36px;
+        border: 1px solid #e5d7a8;
+    }
+    body.dark-mode .public-section {
+        background: linear-gradient(135deg, #1a1f2e 0%, #252b3d 100%);
+        border-color: #3a3f55;
+    }
+    .public-section h2 {
+        font-family: 'Playfair Display', 'Tajawal', serif;
+        text-align: center; color: #0a1e3f; font-size: 28px;
+        margin: 0 0 8px;
+    }
+    body.dark-mode .public-section h2 { color: #f5c977; }
+    .public-section .sub {
+        text-align: center; color: #718096; font-size: 14px;
+        margin-bottom: 32px; font-style: italic;
+    }
+
+    /* Comment form */
+    .comment-form {
+        max-width: 680px; margin: 0 auto 40px;
+        background: #fff; border-radius: 16px;
+        padding: 28px; border: 1px solid #e5d7a8;
+        box-shadow: 0 4px 16px rgba(10,30,63,0.06);
+    }
+    body.dark-mode .comment-form {
+        background: #1a1f2e; border-color: #3a3f55;
+    }
+    .comment-form .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px; margin-bottom: 12px;
+    }
+    .comment-form input, .comment-form textarea {
+        width: 100%; padding: 12px 14px;
+        border: 1px solid #d4c79a; border-radius: 10px;
+        font-family: inherit; font-size: 14px;
+        background: #fafaf5; color: #2d3748;
+        transition: all 0.2s ease; box-sizing: border-box;
+    }
+    body.dark-mode .comment-form input,
+    body.dark-mode .comment-form textarea {
+        background: #252b3d; color: #d4d8e0; border-color: #3a3f55;
+    }
+    .comment-form input:focus, .comment-form textarea:focus {
+        outline: none; border-color: #c9a961;
+        box-shadow: 0 0 0 3px rgba(201,169,97,0.15);
+    }
+    .comment-form textarea { min-height: 100px; resize: vertical; }
+    .comment-form .post-btn {
+        background: linear-gradient(135deg, #0a1e3f, #162b5e);
+        color: #c9a961; border: 2px solid #c9a961;
+        padding: 14px 36px; border-radius: 999px;
+        font-size: 14px; font-weight: 700; cursor: pointer;
+        transition: all 0.3s ease; margin-top: 8px;
+        width: 100%;
+    }
+    .comment-form .post-btn:hover {
+        background: linear-gradient(135deg, #c9a961, #b8924a);
+        color: #0a1e3f; transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(201,169,97,0.4);
+    }
+
+    /* Public comment list */
+    .public-list {
+        max-width: 800px; margin: 0 auto;
+        display: flex; flex-direction: column; gap: 16px;
+    }
+    .public-item {
+        background: #fff; border-radius: 14px;
+        padding: 20px 24px; border: 1px solid #e5d7a8;
+        display: grid; grid-template-columns: auto 1fr;
+        gap: 16px; align-items: flex-start;
+        animation: slideIn 0.4s ease;
+    }
+    body.dark-mode .public-item {
+        background: #1a1f2e; border-color: #3a3f55;
+    }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .pi-avatar {
+        width: 42px; height: 42px; border-radius: 50%;
+        background: linear-gradient(135deg, #c9a961, #b8924a);
+        color: #0a1e3f; display: flex;
+        align-items: center; justify-content: center;
+        font-weight: 700; font-size: 16px;
+        font-family: 'Playfair Display', 'Tajawal', serif;
+    }
+    .pi-content { flex: 1; min-width: 0; }
+    .pi-head {
+        display: flex; justify-content: space-between;
+        gap: 12px; flex-wrap: wrap; margin-bottom: 6px;
+    }
+    .pi-name {
+        font-weight: 700; color: #0a1e3f;
+        font-family: 'Playfair Display', 'Tajawal', serif;
+    }
+    body.dark-mode .pi-name { color: #f5c977; }
+    .pi-role-date { font-size: 12px; color: #a0a0a0; }
+    .pi-body {
+        color: #2d3748; line-height: 1.7; font-size: 15px;
+        word-wrap: break-word;
+    }
+    body.dark-mode .pi-body { color: #d4d8e0; }
+    .pi-delete {
+        background: transparent; border: none; color: #a0a0a0;
+        cursor: pointer; font-size: 14px; padding: 4px 8px;
+        border-radius: 6px; transition: all 0.2s ease;
+        margin-top: 4px;
+    }
+    .pi-delete:hover { background: #fde8e8; color: #dc2626; }
+
+    .empty-state {
+        text-align: center; padding: 40px 20px;
+        color: #a0a0a0; font-style: italic;
+    }
+
+    .export-bar {
+        max-width: 800px; margin: 24px auto 0;
+        display: flex; gap: 12px; justify-content: center;
+        flex-wrap: wrap;
+    }
+    .export-bar button {
+        background: transparent; color: #0a1e3f;
+        border: 1px solid #c9a961; padding: 8px 18px;
+        border-radius: 20px; font-size: 13px; cursor: pointer;
+        font-weight: 600; transition: all 0.2s ease;
+    }
+    body.dark-mode .export-bar button { color: #f5c977; }
+    .export-bar button:hover { background: #c9a961; color: #0a1e3f; }
+
+    @media (max-width: 600px) {
+        .comment-form .row { grid-template-columns: 1fr; }
+        .testimonials-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body dir="rtl">
+
+<header class="header">
+    <div class="header-content">
+        <div class="logo">VOICES</div>
+        <h1><span class="lang-ar">كلمات الفريق</span><span class="lang-en">Voices from the Team</span></h1>
+        <div class="subtitle"><span class="lang-ar">تعليقات أصحاب الرحلة — ومساحة لكلمتك</span><span class="lang-en">Comments from the journey's authors — and space for your own</span></div>
+        <div class="breadcrumb">
+            <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
+            <span class="lang-ar">كلمات الفريق</span><span class="lang-en">Voices</span>
+        </div>
+    </div>
+</header>
+
+<nav class="topnav">
+    <div class="topnav-content">
+        <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+        <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
+        <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
+        <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
+        <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
+        <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
+        <a href="hacfi.html">🏭 HACFI</a>
+        <a href="aret.html">🪵 Art Craft</a>
+        <a href="superstruct.html">🏗 Superstruct</a>
+        <a href="mqsala.html">💻 mQsala</a>
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
+        <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
+        <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
+        <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
+        <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
+        <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
+        <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
+        <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
+        <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
+        <a href="comments.html" class="nav-action-gold">💬 <span class="lang-ar">الكلمات</span><span class="lang-en">Voices</span></a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="comments-hero">
+    <h1><span class="lang-ar">كلماتٌ تبقى بعد أن تُطوى الصفحات</span><span class="lang-en">Words That Remain After the Pages Close</span></h1>
+    <p class="tagline">
+        <span class="lang-ar">هنا يترك كل من رافق هذه الرحلة أثراً — تعليقاً، اقتراحاً، تقديراً، أو ببساطةً توقيعاً. انقر على أي بطاقة لكتابة كلمتك.</span>
+        <span class="lang-en">Here, everyone who accompanied this journey leaves a trace — a comment, a suggestion, an acknowledgment, or simply a signature. Click any card to write your words.</span>
+    </p>
+</section>
+
+<main class="comments-body">
+
+<!-- FEATURED TESTIMONIALS -->
+<div class="testimonials-grid">
+
+    <!-- NUSRATH -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">MN</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">م. محمد نصرت ديلوار</span><span class="lang-en">Eng. Mohammed Nusrath Dilawar</span></div>
+                <div class="tcard-role"><span class="lang-ar">المؤسس والرئيس</span><span class="lang-en">Founder & Chairman</span></div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="nusrath" data-placeholder="اكتب تعليق المهندس نصرت هنا... | Nusrath's comment here...">
+            <span class="lang-ar">ما بنيناه في سنوات، تحوّل اليوم إلى نظامٍ يحمله من بعدنا. الحمد لله على البداية، والتوفيق لكل من ساهم في صياغة هذا الإطار.</span>
+            <span class="lang-en">What we built over years has now become a system that will carry on after us. Praise be to God for the start, and thanks to all who helped shape this framework.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">📍 نصرت القابضة</span><span class="lang-en">📍 Nusrath Holding</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- HAMDAN -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">HG</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">حمدان الغامدي</span><span class="lang-en">Hamdan Al-Ghamdi</span></div>
+                <div class="tcard-role"><span class="lang-ar">المستشار العام</span><span class="lang-en">General Counsel</span></div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="hamdan" data-placeholder="اكتب تعليق حمدان هنا... | Hamdan's comment here...">
+            <span class="lang-ar">لم أرَ عملاً يُشبه البناء إلا هذا. كل وثيقةٍ لبنة، وكل توقيعٍ إسمنت. الفخر ليس بما كُتب، بل بأنه كُتب بضمير.</span>
+            <span class="lang-en">I've never seen work that resembles construction more than this. Each document a brick, each signature a mortar. The pride is not in what was written, but that it was written with conscience.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">⚖ قانوني وحوكمة</span><span class="lang-en">⚖ Legal & Governance</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- LIAQATH -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">LA</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">لياقة علي</span><span class="lang-en">Liaqath Ali</span></div>
+                <div class="tcard-role">COO · Superstruct MD</div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="liaqath" data-placeholder="اكتب تعليق لياقة هنا... | Liaqath's comment here...">
+            <span class="lang-ar">في الميدان نعرف قيمة النظام. هذه الوثائق ليست ترفاً إدارياً — هي خريطة تُجنّبنا أخطاء كلّفتنا في الماضي وقتاً وعقوداً. شكراً لكل من صبر على التفاصيل.</span>
+            <span class="lang-en">In the field, we know the value of a system. These documents aren't administrative luxury — they are a map that spares us mistakes that once cost us time and contracts. Thanks to all who had patience for the details.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">🏗 العمليات والمقاولات</span><span class="lang-en">🏗 Operations & Contracting</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- AKMAL -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">AK</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">أكمل</span><span class="lang-en">Akmal</span></div>
+                <div class="tcard-role">HACFI Managing Director</div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="akmal" data-placeholder="اكتب تعليق أكمل هنا... | Akmal's comment here...">
+            <span class="lang-ar">فصل Art Craft عن HACFI قرارٌ كان يجب أن يأتي منذ سنوات. المجموعة تُكبِر حين تُحترم حدود كل شركة. جاهز للمرحلة القادمة.</span>
+            <span class="lang-en">Separating Art Craft from HACFI is a decision that should have come years ago. A group grows when each company's boundaries are respected. Ready for the next phase.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">🏭 الصناعة والتصنيع</span><span class="lang-en">🏭 Industry & Manufacturing</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- AMAN -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">AM</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">أمان</span><span class="lang-en">Aman</span></div>
+                <div class="tcard-role">Art Craft MD</div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="aman" data-placeholder="اكتب تعليق أمان هنا... | Aman's comment here...">
+            <span class="lang-ar">Art Craft لم تكن مجرد فرع — كانت حكاية خشبٍ وأيدٍ ماهرة. اليوم تصبح كياناً مستقلاً، وعلامة Metallica تحتاج إلى ما يستحقّها من اهتمام. هنا تبدأ الحكاية الجديدة.</span>
+            <span class="lang-en">Art Craft was never just a branch — it was a story of wood and skilled hands. Today it becomes an independent entity, and the Metallica brand deserves the attention it is owed. Here begins the new story.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">🪵 النجارة والأثاث</span><span class="lang-en">🪵 Carpentry & Furniture</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- MOHAMMED ALI -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">MA</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">محمد علي</span><span class="lang-en">Mohammed Ali</span></div>
+                <div class="tcard-role">CFO · Group</div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="mohammed-ali" data-placeholder="اكتب تعليق محمد علي... | Mohammed Ali's comment...">
+            <span class="lang-ar">الأرقام تصبح معنىً حين تُبنى على نظام. اليوم، كل ريال سيجد طريقه الصحيح في القوائم — من المنشأ إلى الموطن الضريبي. هذا ما كنا نحتاجه.</span>
+            <span class="lang-en">Numbers acquire meaning when built on a system. Today, every riyal will find its correct path in the statements — from origin to tax residence. This is what we needed.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">💰 المالية والضرائب</span><span class="lang-en">💰 Finance & Tax</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- MASARRAT -->
+    <div class="testimonial-card">
+        <div class="tcard-person">
+            <div class="tcard-avatar">MS</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">مسرّت</span><span class="lang-en">Masarrat</span></div>
+                <div class="tcard-role">CTO · mQsala</div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="masarrat" data-placeholder="اكتب تعليق مسرّت... | Masarrat's comment...">
+            <span class="lang-ar">التقنية لا تزدهر إلا تحت حوكمةٍ ذكيّة. عقد الشركاء الجديد (SHA) ليس عبئاً بل درعٌ يسمح لنا بأن نركّز على ما نحبّه: بناء المنتج.</span>
+            <span class="lang-en">Technology thrives only under smart governance. The new SHA isn't a burden but a shield that lets us focus on what we love: building the product.</span>
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">💻 التقنية والمنتج</span><span class="lang-en">💻 Tech & Product</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+    <!-- EMPTY SLOT -->
+    <div class="testimonial-card" style="border-style: dashed; background: transparent;">
+        <div class="tcard-person">
+            <div class="tcard-avatar" style="background: transparent; color: #c9a961; border-color: #c9a961;">+</div>
+            <div class="tcard-who">
+                <div class="tcard-name"><span class="lang-ar">عضو جديد</span><span class="lang-en">New Member</span></div>
+                <div class="tcard-role"><span class="lang-ar">أضف اسمك وتعليقك</span><span class="lang-en">Add your name & comment</span></div>
+            </div>
+        </div>
+        <div class="tcard-quote" contenteditable="true" data-person="custom" data-placeholder="اكتب اسمك وكلمتك هنا... | Write your name and words here...">
+        </div>
+        <div class="tcard-foot">
+            <span class="lang-ar">✍ مساحة حرّة</span><span class="lang-en">✍ Free space</span>
+            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
+        </div>
+    </div>
+
+</div>
+
+<!-- PUBLIC COMMENTS SECTION -->
+<section class="public-section">
+    <h2><span class="lang-ar">💬 دفتر الزوّار</span><span class="lang-en">💬 Visitors' Guestbook</span></h2>
+    <p class="sub"><span class="lang-ar">اترك كلمة • ملاحظة • تقدير — تبقى هنا محفوظة</span><span class="lang-en">Leave a word • a note • an acknowledgment — it stays here</span></p>
+
+    <div class="comment-form">
+        <div class="row">
+            <input type="text" id="ci-name" placeholder="الاسم / Name" maxlength="60">
+            <input type="text" id="ci-role" placeholder="الصفة (اختياري) / Role (optional)" maxlength="60">
+        </div>
+        <textarea id="ci-body" placeholder="كلمتك... / Your message..." maxlength="800"></textarea>
+        <button class="post-btn" onclick="addComment()">
+            <span class="lang-ar">✨ نشر التعليق</span><span class="lang-en">✨ Post Comment</span>
+        </button>
+    </div>
+
+    <div class="public-list" id="public-list"></div>
+
+    <div class="export-bar">
+        <button onclick="exportComments()">📥 <span class="lang-ar">تصدير</span><span class="lang-en">Export</span></button>
+        <button onclick="importComments()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button>
+        <button onclick="clearComments()">🗑 <span class="lang-ar">مسح الكل</span><span class="lang-en">Clear All</span></button>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p><span class="lang-ar">© كلمات الفريق — مجموعة نصرت القابضة</span><span class="lang-en">© Voices from the Team — Nusrath Holding Group</span></p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+/* Comments page specific logic */
+(function() {
+    const KEY_TESTIMONIALS = 'nh_testimonials';
+    const KEY_COMMENTS = 'nh_public_comments';
+
+    // Load saved testimonials
+    function loadTestimonials() {
+        const saved = JSON.parse(localStorage.getItem(KEY_TESTIMONIALS) || '{}');
+        document.querySelectorAll('[data-person]').forEach(el => {
+            const id = el.dataset.person;
+            if (saved[id]) el.innerHTML = saved[id];
+            // Show placeholder if empty
+            if (!el.textContent.trim()) {
+                el.innerHTML = '<span style="color:#c9a961; font-style:italic; opacity:0.6;">' + (el.dataset.placeholder || '') + '</span>';
+            }
+        });
+    }
+
+    window.saveTestimonial = function(btn) {
+        const card = btn.closest('.testimonial-card');
+        const quote = card.querySelector('[data-person]');
+        const id = quote.dataset.person;
+        const saved = JSON.parse(localStorage.getItem(KEY_TESTIMONIALS) || '{}');
+        saved[id] = quote.innerHTML;
+        localStorage.setItem(KEY_TESTIMONIALS, JSON.stringify(saved));
+        btn.classList.add('saved');
+        btn.innerHTML = '✓ <span class="lang-ar">محفوظ</span><span class="lang-en">Saved</span>';
+        setTimeout(() => {
+            btn.classList.remove('saved');
+            btn.innerHTML = '💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span>';
+        }, 2000);
+    };
+
+    // Public comments
+    function loadComments() {
+        const list = document.getElementById('public-list');
+        const comments = JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]');
+        if (!comments.length) {
+            list.innerHTML = '<div class="empty-state"><span class="lang-ar">لا توجد تعليقات بعد — كن الأول!</span><span class="lang-en">No comments yet — be the first!</span></div>';
+            return;
+        }
+        list.innerHTML = '';
+        comments.forEach((c, i) => {
+            const initials = (c.name || '?').split(' ').map(s => s[0]).slice(0,2).join('').toUpperCase();
+            const date = new Date(c.ts).toLocaleString();
+            const item = document.createElement('div');
+            item.className = 'public-item';
+            item.innerHTML = `
+                <div class="pi-avatar">${initials}</div>
+                <div class="pi-content">
+                    <div class="pi-head">
+                        <div>
+                            <span class="pi-name">${escapeHTML(c.name)}</span>
+                            ${c.role ? '<span class="pi-role-date"> • ' + escapeHTML(c.role) + '</span>' : ''}
+                        </div>
+                        <span class="pi-role-date">${date}</span>
+                    </div>
+                    <div class="pi-body">${escapeHTML(c.body).replace(/\n/g, '<br>')}</div>
+                </div>
+                <button class="pi-delete" onclick="deleteComment(${i})" title="Delete">🗑</button>
+            `;
+            list.appendChild(item);
+        });
+    }
+
+    function escapeHTML(s) {
+        const d = document.createElement('div');
+        d.textContent = s || '';
+        return d.innerHTML;
+    }
+
+    window.addComment = function() {
+        const name = document.getElementById('ci-name').value.trim();
+        const role = document.getElementById('ci-role').value.trim();
+        const body = document.getElementById('ci-body').value.trim();
+        if (!name || !body) {
+            alert(document.body.getAttribute('dir') === 'rtl'
+                ? 'الرجاء كتابة الاسم والرسالة'
+                : 'Please enter name and message');
+            return;
+        }
+        const comments = JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]');
+        comments.unshift({ name, role, body, ts: Date.now() });
+        localStorage.setItem(KEY_COMMENTS, JSON.stringify(comments));
+        document.getElementById('ci-name').value = '';
+        document.getElementById('ci-role').value = '';
+        document.getElementById('ci-body').value = '';
+        loadComments();
+    };
+
+    window.deleteComment = function(idx) {
+        if (!confirm(document.body.getAttribute('dir') === 'rtl' ? 'حذف هذا التعليق؟' : 'Delete this comment?')) return;
+        const comments = JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]');
+        comments.splice(idx, 1);
+        localStorage.setItem(KEY_COMMENTS, JSON.stringify(comments));
+        loadComments();
+    };
+
+    window.exportComments = function() {
+        const data = {
+            testimonials: JSON.parse(localStorage.getItem(KEY_TESTIMONIALS) || '{}'),
+            comments: JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]'),
+            exportedAt: new Date().toISOString()
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `nusrath-voices-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+    };
+
+    window.importComments = function() {
+        const inp = document.createElement('input');
+        inp.type = 'file'; inp.accept = 'application/json';
+        inp.onchange = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                try {
+                    const data = JSON.parse(ev.target.result);
+                    if (data.testimonials) localStorage.setItem(KEY_TESTIMONIALS, JSON.stringify(data.testimonials));
+                    if (data.comments) localStorage.setItem(KEY_COMMENTS, JSON.stringify(data.comments));
+                    loadTestimonials();
+                    loadComments();
+                    alert('✅ تم الاستيراد / Imported successfully');
+                } catch(e) { alert('❌ Invalid file'); }
+            };
+            reader.readAsText(file);
+        };
+        inp.click();
+    };
+
+    window.clearComments = function() {
+        if (!confirm(document.body.getAttribute('dir') === 'rtl'
+            ? 'سيتم مسح جميع التعليقات. متأكد؟'
+            : 'All comments will be deleted. Sure?')) return;
+        localStorage.removeItem(KEY_COMMENTS);
+        loadComments();
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTestimonials();
+        loadComments();
+    });
+})();
+</script>
+</body>
+</html>

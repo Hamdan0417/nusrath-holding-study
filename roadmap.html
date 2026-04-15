@@ -324,7 +324,6 @@ body.dark-mode .export-bar button { color: #f5c977; }
         <a href="hacfi.html">🏭 HACFI</a>
         <a href="aret.html">🪵 Art Craft</a>
         <a href="superstruct.html">🏗 Superstruct</a>
-        <a href="mqsala.html">💻 mQsala</a>
         <span class="nav-divider"></span>
         <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
         <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
@@ -345,8 +344,8 @@ body.dark-mode .export-bar button { color: #f5c977; }
 <section class="rm-hero">
     <h1><span class="lang-ar">من البدء حتى الاكتمال</span><span class="lang-en">From Launch to Completion</span></h1>
     <p class="tagline">
-        <span class="lang-ar">9 مراحل • 53 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
-        <span class="lang-en">9 phases • 53 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
+        <span class="lang-ar">8 مراحل • 48 محطة • مرجعٌ نعود إليه لنتأكد أننا نسير في الطريق الصحيح. علّم المحطات بعد تنفيذها — التقدّم يُحفظ تلقائياً.</span>
+        <span class="lang-en">8 phases • 48 milestones • a reference to verify we're on the right track. Check off each milestone after completion — progress is saved automatically.</span>
     </p>
 </section>
 
@@ -363,8 +362,8 @@ body.dark-mode .export-bar button { color: #f5c977; }
     </div>
     <div class="rm-meta">
         <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-done">0</div><div class="rm-meta-label"><span class="lang-ar">منجزة</span><span class="lang-en">Done</span></div></div>
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">53</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
-        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/9</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div>
+        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-total">48</div><div class="rm-meta-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
+        <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-phase">0/8</div><div class="rm-meta-label"><span class="lang-ar">المراحل</span><span class="lang-en">Phases</span></div></div>
         <div class="rm-meta-cell"><div class="rm-meta-num" id="meta-weeks">~18</div><div class="rm-meta-label"><span class="lang-ar">أسبوع متوقع</span><span class="lang-en">Est. Weeks</span></div></div>
     </div>
 </section>
@@ -376,7 +375,6 @@ body.dark-mode .export-bar button { color: #f5c977; }
     <button class="rm-filter-chip" data-filter="P1">P1</button>
     <button class="rm-filter-chip" data-filter="P2">P2</button>
     <button class="rm-filter-chip" data-filter="P3">P3</button>
-    <button class="rm-filter-chip" data-filter="P4">P4</button>
     <button class="rm-filter-chip" data-filter="P5">P5</button>
     <button class="rm-filter-chip" data-filter="P6">P6</button>
     <button class="rm-filter-chip" data-filter="P7">P7</button>
@@ -454,7 +452,7 @@ const PHASES = [
     descAr: 'انتقال الحصص من نصرت الشخصي إلى القابضة — قلب عملية إعادة الهيكلة.',
     descEn: 'Shift shares from Nusrath personally to the Holding — the heart of the restructuring.',
     milestones: [
-      { id:'M2.1', titleAr:'تقييم الشركات الأربع', titleEn:'Valuation of 4 entities', descAr:'تقييم مستقل من مكتب معتمد للاستخدام في نقل الحصص + ZATCA.', descEn:'Independent valuation from certified firm for share transfer + ZATCA.', owner:'CFO + External Valuer', critical:true, deliverables:'4 تقارير تقييم' },
+      { id:'M2.1', titleAr:'تقييم الشركات الثلاث', titleEn:'Valuation of 3 entities', descAr:'تقييم مستقل من مكتب معتمد للاستخدام في نقل الحصص + ZATCA.', descEn:'Independent valuation from certified firm for share transfer + ZATCA.', owner:'CFO + External Valuer', critical:true, deliverables:'4 تقارير تقييم' },
       { id:'M2.2', titleAr:'توقيع اتفاقيات نقل الحصص (×4)', titleEn:'Sign Share Transfer Agreements (x4)', descAr:'HACFI + Superstruct + Art Craft (الفرع حالياً) + حصة mQsala.', descEn:'HACFI + Superstruct + Art Craft (currently branch) + mQsala stake.', owner:'GC + Shareholder', critical:true, deliverables:'4 اتفاقيات موقّعة' },
       { id:'M2.3', titleAr:'تعديل عقود تأسيس التابعات', titleEn:'Amend subsidiary AoAs', descAr:'تحديث المالك الجديد (القابضة)، خط الإدارة، المسائل المحجوزة.', descEn:'New owner (Holding), management line, reserved matters.', owner:'GC', critical:true, deliverables:'4 ملاحق تعديلية موثّقة' },
       { id:'M2.4', titleAr:'الإيداع في MoC لكل كيان', titleEn:'MoC filings per entity', descAr:'تحديث السجلات التجارية وإصدار سجلات جديدة بالمالك الجديد.', descEn:'Update CRs and issue new ones reflecting new owner.', owner:'GC', critical:true, deliverables:'4 سجلات تجارية محدّثة' },
@@ -478,20 +476,7 @@ const PHASES = [
       { id:'M3.7', titleAr:'تعديل نشاط HACFI (حذف النجارة)', titleEn:'Amend HACFI activity (remove carpentry)', descAr:'تحديث السجل التجاري لـ HACFI لتبقى فقط أنشطة الصناعة والمعدن.', descEn:'Update HACFI CR to keep only industrial/metal activities.', owner:'GC', critical:false, deliverables:'سجل HACFI معدّل' },
     ]
   },
-  {
-    id: 'P4', num: '4', weeks: 'W10-W12',
-    titleAr: 'هيكلة mQsala (الشركة الوحيدة بشركاء)',
-    titleEn: 'mQsala Restructuring (the only one with partners)',
-    descAr: 'الحالة الأكثر تعقيداً — تفاوض مع شركاء آخرين وحماية حقوق الأقلية + السيطرة.',
-    descEn: 'Most complex scenario — partner negotiations + minority rights and control.',
-    milestones: [
-      { id:'M4.1', titleAr:'التفاوض مع الشركاء الآخرين', titleEn:'Negotiate with other partners', descAr:'شرح نقل حصة نصرت للقابضة، والوصول لموقف متفق عليه.', descEn:'Explain transfer of Nusrath\'s stake to Holding, reach agreement.', owner:'Shareholder + GC', critical:true, deliverables:'MoU أو محضر تفاهم' },
-      { id:'M4.2', titleAr:'توقيع عقد الشركاء (SHA)', titleEn:'Execute Shareholders Agreement (SHA)', descAr:'28 مادة — ROFR، Tag/Drag، Shootout، SCCA Arbitration، Lock-in 3 سنوات.', descEn:'28 articles — ROFR, Tag/Drag, Shootout, SCCA Arbitration, 3-year Lock-in.', owner:'GC + All Partners', critical:true, deliverables:'SHA موقّع من الجميع' },
-      { id:'M4.3', titleAr:'تعديل عقد تأسيس mQsala', titleEn:'Amend mQsala AoA', descAr:'تعديل الشركاء (القابضة تحل محل نصرت الشخصي) + إضافة المسائل المحجوزة.', descEn:'Partner amendment (Holding replaces Nusrath personally) + add reserved matters.', owner:'GC', critical:true, deliverables:'AoA معدّل موثّق' },
-      { id:'M4.4', titleAr:'تحديث ترخيص MISA', titleEn:'Update MISA license', descAr:'تعديل بيانات الشركاء والرأسمال في منصة MISA.', descEn:'Update partners and capital info on MISA platform.', owner:'GC', critical:false, deliverables:'ترخيص MISA محدّث' },
-      { id:'M4.5', titleAr:'وثيقة حدود الأدوار المزدوجة', titleEn:'Dual-Roles Boundaries Document', descAr:'تنحي حمدان تلقائياً من دور GC القابضة في أي قرار يخص mQsala.', descEn:'Hamdan auto-recuses from Holding-GC role on any mQsala matter.', owner:'GC + ARC', critical:false, deliverables:'وثيقة معتمدة' },
-    ]
-  },
+
   {
     id: 'P5', num: '5', weeks: 'W12-W14',
     titleAr: 'إطلاق الحوكمة',

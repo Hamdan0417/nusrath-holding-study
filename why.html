@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لماذا؟ | Why? — Decision Rationale</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.why-hero {
+    background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 100%);
+    color: #fff; padding: 70px 24px 50px; text-align: center;
+    position: relative; overflow: hidden;
+}
+.why-hero::before {
+    content: '?'; position: absolute;
+    font-family: 'Playfair Display',serif;
+    font-size: 380px; line-height: 1;
+    color: rgba(201,169,97,0.08);
+    top: -40px; inset-inline-end: 40px;
+    font-weight: 900; pointer-events: none;
+}
+.why-hero h1 {
+    font-family: 'Playfair Display','Tajawal',serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    margin: 0 0 14px; color: #fff; position: relative;
+}
+.why-hero .tagline {
+    font-size: 16px; opacity: 0.88; max-width: 700px;
+    margin: 0 auto; line-height: 1.7; position: relative;
+}
+
+.why-body { max-width: 1080px; margin: 0 auto; padding: 40px 24px; }
+
+.why-intro {
+    background: linear-gradient(135deg, rgba(201,169,97,0.08), rgba(201,169,97,0.02));
+    border: 1px dashed #c9a961; border-radius: 14px;
+    padding: 20px 24px; margin-bottom: 32px;
+    font-size: 15px; line-height: 1.8;
+}
+
+/* TOC / Quick jumps */
+.why-toc {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px; margin-bottom: 40px;
+}
+.why-toc a {
+    background: #fff; color: #0a1e3f;
+    border: 1px solid #e5d7a8; border-radius: 10px;
+    padding: 12px 16px; font-size: 13px; font-weight: 600;
+    text-decoration: none; display: flex; align-items: center;
+    gap: 8px; transition: all 0.2s ease;
+}
+body.dark-mode .why-toc a { background: #1a1f2e; color: #f5c977; border-color: #3a3f55; }
+.why-toc a:hover {
+    background: linear-gradient(135deg, #0a1e3f, #162b5e);
+    color: #c9a961; transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(10,30,63,0.2);
+}
+.why-toc a .num {
+    background: #c9a961; color: #0a1e3f;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display',serif; font-weight: 700;
+    font-size: 13px; flex-shrink: 0;
+}
+
+/* Why cards */
+.why-card {
+    background: #fff; border: 1px solid #e5d7a8;
+    border-radius: 18px; padding: 0;
+    margin-bottom: 24px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(10,30,63,0.05);
+    transition: all 0.3s ease;
+    scroll-margin-top: 80px;
+}
+body.dark-mode .why-card { background: #1a1f2e; border-color: #3a3f55; }
+.why-card:hover {
+    box-shadow: 0 12px 32px rgba(10,30,63,0.1);
+    border-color: #c9a961;
+}
+
+.why-head {
+    background: linear-gradient(135deg, #0a1e3f, #162b5e);
+    color: #fff; padding: 22px 26px;
+    display: flex; align-items: center; gap: 16px;
+}
+.why-head .q-num {
+    background: #c9a961; color: #0a1e3f;
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display','Tajawal',serif;
+    font-size: 22px; font-weight: 700; flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(201,169,97,0.3);
+}
+.why-head h2 {
+    margin: 0; font-family: 'Playfair Display','Tajawal',serif;
+    color: #fff; font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 700; line-height: 1.3;
+    border-bottom: none; padding: 0; background: none !important;
+}
+
+.why-content { padding: 24px 28px; }
+
+.answer-box {
+    background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+    border-inline-start: 4px solid #10b981;
+    border-radius: 10px; padding: 16px 20px;
+    margin-bottom: 20px;
+}
+.answer-box .lbl {
+    font-size: 11px; font-weight: 700; color: #059669;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 8px; display: block;
+}
+.answer-box p {
+    margin: 0; line-height: 1.8; color: #065f46;
+    font-size: 15px;
+}
+body.dark-mode .answer-box p { color: #86efac; }
+body.dark-mode .answer-box { background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.04)); }
+
+/* Comparison table */
+.comp-table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    border-radius: 12px; overflow: hidden; margin: 16px 0;
+    border: 1px solid #e5d7a8; font-size: 13px;
+}
+body.dark-mode .comp-table { border-color: #3a3f55; }
+.comp-table th {
+    padding: 12px 14px; text-align: start;
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+}
+.comp-table th:first-child {
+    background: #4b5563; color: #fff;
+}
+.comp-table th:nth-child(2) {
+    background: linear-gradient(135deg, #dc2626, #b91c1c); color: #fff;
+}
+.comp-table th:nth-child(3) {
+    background: linear-gradient(135deg, #10b981, #059669); color: #fff;
+}
+.comp-table td {
+    padding: 12px 14px; border-bottom: 1px solid rgba(201,169,97,0.15);
+    vertical-align: top; line-height: 1.6;
+}
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:nth-child(even) td { background: rgba(201,169,97,0.03); }
+body.dark-mode .comp-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+.comp-table td:first-child { font-weight: 700; background: rgba(10,30,63,0.04); }
+body.dark-mode .comp-table td:first-child { background: rgba(201,169,97,0.08); }
+
+/* Pros/Cons */
+.pc-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin-top: 16px;
+}
+@media (max-width: 640px) { .pc-grid { grid-template-columns: 1fr; } }
+
+.pc-box {
+    border-radius: 12px; padding: 16px 20px;
+    border: 1px solid;
+}
+.pc-box.pro {
+    background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+    border-color: rgba(16,185,129,0.3);
+}
+.pc-box.con {
+    background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+    border-color: rgba(245,158,11,0.3);
+}
+.pc-box h4 {
+    margin: 0 0 10px; font-family: 'Playfair Display','Tajawal',serif;
+    font-size: 15px; display: flex; align-items: center; gap: 8px;
+}
+.pc-box.pro h4 { color: #065f46; }
+.pc-box.con h4 { color: #92400e; }
+body.dark-mode .pc-box.pro h4 { color: #6ee7b7; }
+body.dark-mode .pc-box.con h4 { color: #fcd34d; }
+.pc-box ul { margin: 0; padding-inline-start: 20px; font-size: 13px; line-height: 1.7; }
+.pc-box.pro ul li { color: #064e3b; }
+.pc-box.con ul li { color: #78350f; }
+body.dark-mode .pc-box.pro ul li { color: #a7f3d0; }
+body.dark-mode .pc-box.con ul li { color: #fde68a; }
+
+.verdict {
+    background: linear-gradient(135deg, #0a1e3f, #162b5e);
+    color: #c9a961; border-radius: 10px;
+    padding: 14px 20px; margin-top: 16px;
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 600; font-size: 14px;
+}
+.verdict .check {
+    background: #c9a961; color: #0a1e3f;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-weight: 700;
+}
+</style>
+</head>
+<body dir="rtl">
+
+<header class="header">
+    <div class="header-content">
+        <div class="logo">WHY?</div>
+        <h1><span class="lang-ar">لماذا؟</span><span class="lang-en">Why?</span></h1>
+        <div class="subtitle"><span class="lang-ar">صفحة صنع القرار — كل الأسئلة التي ستطرأ، مع الإجابة والمقارنة</span><span class="lang-en">The decision-making page — every question you'll have, answered and compared</span></div>
+        <div class="breadcrumb">
+            <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
+            <span class="lang-ar">لماذا؟</span><span class="lang-en">Why?</span>
+        </div>
+    </div>
+</header>
+
+<nav class="topnav">
+    <div class="topnav-content">
+        <a href="index.html" class="topnav-home">🏠 <span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a>
+        <a href="why.html" class="nav-action-gold">❓ <span class="lang-ar">لماذا؟</span><span class="lang-en">Why?</span></a>
+        <span class="nav-group-label"><span class="lang-ar">اعتماد</span><span class="lang-en">Action</span></span>
+        <a href="checklist.html" class="nav-action-success">✅ <span class="lang-ar">القائمة</span><span class="lang-en">Checklist</span></a>
+        <a href="roadmap.html" class="nav-action-gold">🗺 <span class="lang-ar">خارطة الطريق</span><span class="lang-en">Roadmap</span></a>
+        <a href="infographics.html" class="nav-action-gold">🎨 <span class="lang-ar">عرض بصري</span><span class="lang-en">Visuals</span></a>
+        <a href="documents.html">📚 <span class="lang-ar">الوثائق</span><span class="lang-en">Documents</span></a>
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">الشركات</span><span class="lang-en">Entities</span></span>
+        <a href="holding.html">🏛 <span class="lang-ar">القابضة</span><span class="lang-en">Holding</span></a>
+        <a href="hacfi.html">🏭 HACFI</a>
+        <a href="aret.html">🪵 Art Craft</a>
+        <a href="superstruct.html">🏗 Superstruct</a>
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">حوكمة</span><span class="lang-en">Governance</span></span>
+        <a href="shared-management.html">🔗 <span class="lang-ar">إدارة مشتركة</span><span class="lang-en">Shared Mgmt</span></a>
+        <a href="matrices.html">📊 <span class="lang-ar">الصلاحيات</span><span class="lang-en">Matrices</span></a>
+        <a href="dual-roles.html">🔄 <span class="lang-ar">أدوار مزدوجة</span><span class="lang-en">Dual Roles</span></a>
+        <a href="legal-function.html" class="nav-action-gold">⚖ <span class="lang-ar">الوظيفة القانونية</span><span class="lang-en">Legal Function</span></a>
+        <span class="nav-divider"></span>
+        <span class="nav-group-label"><span class="lang-ar">مراجع</span><span class="lang-en">Reference</span></span>
+        <a href="cr-registry.html">📋 <span class="lang-ar">السجلات</span><span class="lang-en">Registers</span></a>
+        <a href="comparison.html">⚖ <span class="lang-ar">المقارنة</span><span class="lang-en">Comparison</span></a>
+        <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
+        <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
+        <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
+        <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
+    </div>
+</nav>
+
+<section class="why-hero">
+    <h1><span class="lang-ar">لماذا نفعل هذا أصلاً؟</span><span class="lang-en">Why are we doing this at all?</span></h1>
+    <p class="tagline">
+        <span class="lang-ar">15 سؤالاً استراتيجياً قد تدور في ذهن المهندس نصرت — كلٌّ منها بإجابة واضحة ومقارنة مباشرة بين "الوضع الحالي" و"الحل المقترح" ومزايا وعيوب وتوصية نهائية.</span>
+        <span class="lang-en">15 strategic questions that may cross Eng. Nusrath's mind — each with a clear answer, direct comparison between "current state" and "proposed solution", pros/cons, and a final recommendation.</span>
+    </p>
+</section>
+
+<main class="why-body">
+
+<div class="why-intro">
+    <span class="lang-ar">💡 <strong>طريقة القراءة:</strong> كل سؤال مستقل. تصفّح من القائمة أدناه للوصول مباشرة. كل بطاقة تحتوي على (1) الإجابة المختصرة، (2) جدول مقارنة، (3) الإيجابيات والسلبيات، (4) التوصية.</span>
+    <span class="lang-en">💡 <strong>How to read:</strong> Each question stands alone. Use the TOC below to jump. Each card has (1) short answer, (2) comparison table, (3) pros & cons, (4) recommendation.</span>
+</div>
+
+<!-- QUICK TOC -->
+<div class="why-toc">
+    <a href="#q1"><span class="num">1</span><span class="lang-ar">القابضة؟</span><span class="lang-en">Holding?</span></a>
+    <a href="#q2"><span class="num">2</span><span class="lang-ar">SJSC؟</span><span class="lang-en">SJSC?</span></a>
+    <a href="#q3"><span class="num">3</span><span class="lang-ar">فصل Art Craft؟</span><span class="lang-en">Split Art Craft?</span></a>
+    <a href="#q4"><span class="num">4</span><span class="lang-ar">مجلس إدارة؟</span><span class="lang-en">Board?</span></a>
+    <a href="#q5"><span class="num">5</span><span class="lang-ar">لجان؟</span><span class="lang-en">Committees?</span></a>
+    <a href="#q6"><span class="num">6</span><span class="lang-ar">مستشار عام؟</span><span class="lang-en">GC?</span></a>
+    <a href="#q7"><span class="num">7</span><span class="lang-ar">خدمات مشتركة؟</span><span class="lang-en">Shared Services?</span></a>
+    <a href="#q8"><span class="num">8</span><span class="lang-ar">صلاحيات DOA؟</span><span class="lang-en">DOA?</span></a>
+    <a href="#q9"><span class="num">9</span><span class="lang-ar">سياسات حوكمة؟</span><span class="lang-en">Policies?</span></a>
+    <a href="#q10"><span class="num">10</span><span class="lang-ar">الآن؟</span><span class="lang-en">Now?</span></a>
+    <a href="#q11"><span class="num">11</span><span class="lang-ar">كل هذه الوثائق؟</span><span class="lang-en">Documents?</span></a>
+    <a href="#q12"><span class="num">12</span><span class="lang-ar">Transfer Pricing؟</span><span class="lang-en">TP?</span></a>
+    <a href="#q13"><span class="num">13</span><span class="lang-ar">VAT Group؟</span><span class="lang-en">VAT Group?</span></a>
+    <a href="#q14"><span class="num">14</span><span class="lang-ar">مراجع موحّد؟</span><span class="lang-en">Unified Auditor?</span></a>
+    <a href="#q15"><span class="num">15</span><span class="lang-ar">هل أفقد السيطرة؟</span><span class="lang-en">Lose control?</span></a>
+</div>
+
+<!-- Q1: WHY HOLDING? -->
+<article class="why-card" id="q1">
+    <header class="why-head">
+        <div class="q-num">1</div>
+        <h2><span class="lang-ar">لماذا شركة قابضة (Holding) أصلاً؟</span><span class="lang-en">Why a Holding Company at all?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">لأنك تملك 3 شركات بأنشطة مختلفة باسمك الشخصي. القابضة تُحوِّلها إلى <strong>مجموعة مؤسسية موحّدة</strong> — تحمي أصولك، تفصلها عن مخاطرك الشخصية، توحّد القرار، وتفتح باب النمو (شراكات، إرث، IPO مستقبلي).</span>
+            <span class="lang-en">Because you own 3 companies across different sectors under your personal name. A Holding transforms them into a <strong>unified corporate group</strong> — protects assets, separates them from personal risk, unifies decisions, and opens growth paths (partnerships, inheritance, future IPO).</span></p>
+        </div>
+
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">المحور</span><span class="lang-en">Dimension</span></th>
+                <th>🔴 <span class="lang-ar">الوضع الحالي</span><span class="lang-en">Current State</span></th>
+                <th>🟢 <span class="lang-ar">مع القابضة</span><span class="lang-en">With Holding</span></th>
+            </tr>
+            <tr><td><span class="lang-ar">الملكية</span><span class="lang-en">Ownership</span></td><td><span class="lang-ar">3 سجلات باسمك الشخصي</span><span class="lang-en">3 CRs in personal name</span></td><td><span class="lang-ar">كيان واحد يملك الكل</span><span class="lang-en">One entity owns all</span></td></tr>
+            <tr><td><span class="lang-ar">فصل المخاطر</span><span class="lang-en">Risk isolation</span></td><td><span class="lang-ar">مخاطر أي شركة = مخاطرك</span><span class="lang-en">Any company's risk = yours</span></td><td><span class="lang-ar">حماية قانونية</span><span class="lang-en">Legal shield</span></td></tr>
+            <tr><td><span class="lang-ar">الإرث والتوريث</span><span class="lang-en">Inheritance</span></td><td><span class="lang-ar">معقّد — تقسيم شركة شركة</span><span class="lang-en">Complex — entity by entity</span></td><td><span class="lang-ar">أسهم موحّدة قابلة للتوريث</span><span class="lang-en">Unified inheritable shares</span></td></tr>
+            <tr><td><span class="lang-ar">استقطاب شركاء</span><span class="lang-en">Bringing partners</span></td><td><span class="lang-ar">بيع حصّة = بيع شركة كاملة</span><span class="lang-en">Selling a stake = selling a whole company</span></td><td><span class="lang-ar">بيع أسهم بنسب مرنة</span><span class="lang-en">Sell shares at flexible %</span></td></tr>
+            <tr><td><span class="lang-ar">الضرائب</span><span class="lang-en">Taxes</span></td><td><span class="lang-ar">كل كيان يحسب منفرداً</span><span class="lang-en">Each entity separately</span></td><td><span class="lang-ar">تحسين: خسائر تعوّض أرباحاً</span><span class="lang-en">Optimization: losses offset profits</span></td></tr>
+            <tr><td><span class="lang-ar">التمويل البنكي</span><span class="lang-en">Bank financing</span></td><td><span class="lang-ar">ضمانات شخصية</span><span class="lang-en">Personal guarantees</span></td><td><span class="lang-ar">ضمانات مؤسسية بحجم أكبر</span><span class="lang-en">Institutional, larger facilities</span></td></tr>
+            <tr><td><span class="lang-ar">القرار</span><span class="lang-en">Decision-making</span></td><td><span class="lang-ar">مركزي ولكن غير موثّق</span><span class="lang-en">Centralized but undocumented</span></td><td><span class="lang-ar">مركزي وموثّق بحوكمة</span><span class="lang-en">Centralized and governed</span></td></tr>
+        </table>
+
+        <div class="pc-grid">
+            <div class="pc-box pro">
+                <h4>✅ <span class="lang-ar">الإيجابيات</span><span class="lang-en">Pros</span></h4>
+                <ul>
+                    <li><span class="lang-ar">فصل الأصول عن الذمة المالية الشخصية</span><span class="lang-en">Asset-liability separation from personal wealth</span></li>
+                    <li><span class="lang-ar">توريث سلس وقانوني للأجيال القادمة</span><span class="lang-en">Smooth legal inheritance to next generations</span></li>
+                    <li><span class="lang-ar">قدرة التفاوض البنكي تتضاعف</span><span class="lang-en">Bank negotiation power multiplies</span></li>
+                    <li><span class="lang-ar">مرونة دخول شركاء/مستثمرين</span><span class="lang-en">Flexibility to admit partners/investors</span></li>
+                    <li><span class="lang-ar">جاهزية لأي طرح عام مستقبلي</span><span class="lang-en">Readiness for future IPO</span></li>
+                </ul>
+            </div>
+            <div class="pc-box con">
+                <h4>⚠️ <span class="lang-ar">السلبيات / التحديات</span><span class="lang-en">Cons / Challenges</span></h4>
+                <ul>
+                    <li><span class="lang-ar">تكلفة تأسيس (رسوم + استشارات)</span><span class="lang-en">Setup cost (fees + advisors)</span></li>
+                    <li><span class="lang-ar">زيادة التعقيد الإداري في البداية</span><span class="lang-en">Initial admin complexity</span></li>
+                    <li><span class="lang-ar">حاجة لالتزام بحوكمة أكثر صرامة</span><span class="lang-en">Requires stricter governance discipline</span></li>
+                    <li><span class="lang-ar">تقارير دورية إلزامية</span><span class="lang-en">Mandatory periodic reporting</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> القابضة ضرورة استراتيجية. الإيجابيات طويلة الأمد تفوق السلبيات القصيرة بفارق كبير.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> The Holding is a strategic necessity. Long-term pros vastly outweigh short-term cons.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q2: WHY SJSC? -->
+<article class="why-card" id="q2">
+    <header class="why-head">
+        <div class="q-num">2</div>
+        <h2><span class="lang-ar">لماذا SJSC تحديداً (وليس LLC أو JSC)؟</span><span class="lang-en">Why SJSC specifically (not LLC or JSC)?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">SJSC (شركة مساهمة مبسّطة) = مزايا المساهمة بدون تعقيداتها. تسمح بمساهم واحد (أنت)، رأسمال مرن، مجلس إدارة احترافي، وسهولة دخول شركاء لاحقاً دون إعادة هيكلة.</span>
+            <span class="lang-en">SJSC (Simplified Joint-Stock) = benefits of JSC without its complexity. Allows a single shareholder (you), flexible capital, professional Board, and easy future partner admission without restructuring.</span></p>
+        </div>
+
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">المعيار</span><span class="lang-en">Criterion</span></th>
+                <th>LLC <span class="lang-ar">(ذ.م.م)</span><span class="lang-en">(Limited)</span></th>
+                <th>⭐ SJSC <span class="lang-ar">(مساهمة مبسطة)</span><span class="lang-en">(Simplified JSC)</span></th>
+            </tr>
+            <tr><td><span class="lang-ar">الحد الأدنى للمساهمين</span><span class="lang-en">Min shareholders</span></td><td>1</td><td>1 ⭐</td></tr>
+            <tr><td><span class="lang-ar">رأس المال</span><span class="lang-en">Capital</span></td><td><span class="lang-ar">مرن</span><span class="lang-en">Flexible</span></td><td><span class="lang-ar">مرن + أسهم قابلة للتداول</span><span class="lang-en">Flexible + tradable shares</span></td></tr>
+            <tr><td><span class="lang-ar">المجلس الإداري</span><span class="lang-en">Board</span></td><td><span class="lang-ar">مدير(ون)</span><span class="lang-en">Manager(s)</span></td><td><span class="lang-ar">مجلس إدارة رسمي + لجان</span><span class="lang-en">Formal Board + committees</span></td></tr>
+            <tr><td><span class="lang-ar">الحوكمة</span><span class="lang-en">Governance</span></td><td><span class="lang-ar">بسيطة</span><span class="lang-en">Simple</span></td><td><span class="lang-ar">احترافية ومرنة</span><span class="lang-en">Professional & flexible</span></td></tr>
+            <tr><td><span class="lang-ar">دخول شركاء لاحقاً</span><span class="lang-en">Future partners</span></td><td><span class="lang-ar">يحتاج تعديل عقد</span><span class="lang-en">Requires AoA amendment</span></td><td><span class="lang-ar">إصدار أسهم جديدة — سهل</span><span class="lang-en">Issue new shares — easy</span></td></tr>
+            <tr><td><span class="lang-ar">IPO جاهز؟</span><span class="lang-en">IPO-ready?</span></td><td><span class="lang-ar">لا — يحتاج تحويل</span><span class="lang-en">No — needs conversion</span></td><td><span class="lang-ar">نعم — تحويل بسيط</span><span class="lang-en">Yes — simple conversion</span></td></tr>
+            <tr><td><span class="lang-ar">مسؤولية المساهم</span><span class="lang-en">Liability</span></td><td><span class="lang-ar">محدودة</span><span class="lang-en">Limited</span></td><td><span class="lang-ar">محدودة</span><span class="lang-en">Limited</span></td></tr>
+            <tr><td><span class="lang-ar">الكلفة الإدارية</span><span class="lang-en">Admin cost</span></td><td><span class="lang-ar">منخفضة</span><span class="lang-en">Low</span></td><td><span class="lang-ar">متوسطة</span><span class="lang-en">Moderate</span></td></tr>
+        </table>
+
+        <div class="pc-grid">
+            <div class="pc-box pro">
+                <h4>✅ <span class="lang-ar">الإيجابيات</span><span class="lang-en">Pros</span></h4>
+                <ul>
+                    <li><span class="lang-ar">الأنسب للقابضات العائلية الكبيرة</span><span class="lang-en">Best fit for large family holdings</span></li>
+                    <li><span class="lang-ar">مساهم واحد مسموح (لا شركاء إجبارياً)</span><span class="lang-en">Single-shareholder allowed (no forced partners)</span></li>
+                    <li><span class="lang-ar">حوكمة جاهزة من اليوم الأول</span><span class="lang-en">Governance-ready from day one</span></li>
+                    <li><span class="lang-ar">مرونة في توزيع الأرباح والإصدارات</span><span class="lang-en">Flexibility in dividends and issuances</span></li>
+                </ul>
+            </div>
+            <div class="pc-box con">
+                <h4>⚠️ <span class="lang-ar">السلبيات</span><span class="lang-en">Cons</span></h4>
+                <ul>
+                    <li><span class="lang-ar">كلفة إدارية أعلى قليلاً من LLC</span><span class="lang-en">Slightly higher admin cost than LLC</span></li>
+                    <li><span class="lang-ar">متطلبات حوكمة أكثر انضباطاً</span><span class="lang-en">Stricter governance requirements</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> SJSC هي الشكل الأنسب لوضع مجموعة نصرت. متوافق مع قرار المهندس نصرت المعتمد.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> SJSC is the best fit for Nusrath Group. Aligned with Eng. Nusrath's approved decision.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q3: WHY SPLIT ART CRAFT? -->
+<article class="why-card" id="q3">
+    <header class="why-head">
+        <div class="q-num">3</div>
+        <h2><span class="lang-ar">لماذا نفصل Art Craft عن HACFI؟</span><span class="lang-en">Why split Art Craft from HACFI?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">Art Craft (النجارة الفاخرة) كبرت داخل HACFI (الصناعة المعدنية) حتى اختلط نشاطها وماليتها وعلامتها التجارية Metallica. الفصل يُظهر قيمتها الحقيقية، يحمي علامتها، ويسمح لكل شركة بالتميّز في مجالها.</span>
+            <span class="lang-en">Art Craft (luxury carpentry) grew inside HACFI (metal industry) until its activity, financials, and Metallica brand got entangled. The split reveals its true value, protects its brand, and lets each company excel in its own space.</span></p>
+        </div>
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">الجانب</span><span class="lang-en">Aspect</span></th>
+                <th>🔴 <span class="lang-ar">فرع داخل HACFI</span><span class="lang-en">Branch inside HACFI</span></th>
+                <th>🟢 <span class="lang-ar">شركة مستقلة</span><span class="lang-en">Standalone LLC</span></th>
+            </tr>
+            <tr><td><span class="lang-ar">الأنشطة</span><span class="lang-en">Activities</span></td><td><span class="lang-ar">مختلطة (معدن + خشب)</span><span class="lang-en">Mixed (metal + wood)</span></td><td><span class="lang-ar">واضحة (خشب فقط)</span><span class="lang-en">Focused (wood only)</span></td></tr>
+            <tr><td><span class="lang-ar">الماليات</span><span class="lang-en">Financials</span></td><td><span class="lang-ar">غير مُميّزة عن HACFI</span><span class="lang-en">Not separable from HACFI</span></td><td><span class="lang-ar">قوائم مستقلة</span><span class="lang-en">Standalone statements</span></td></tr>
+            <tr><td><span class="lang-ar">علامة Metallica</span><span class="lang-en">Metallica brand</span></td><td><span class="lang-ar">ضائعة تحت اسم HACFI</span><span class="lang-en">Lost under HACFI name</span></td><td><span class="lang-ar">مسجّلة SAIP، هوية مميزة</span><span class="lang-en">SAIP-registered, distinct identity</span></td></tr>
+            <tr><td><span class="lang-ar">الاستثمار</span><span class="lang-en">Investment</span></td><td><span class="lang-ar">لا يجذب لأنشطة النجارة</span><span class="lang-en">Doesn't attract carpentry investors</span></td><td><span class="lang-ar">قابلة للتمويل مستقلاً</span><span class="lang-en">Independently fundable</span></td></tr>
+            <tr><td><span class="lang-ar">مدير مستقل</span><span class="lang-en">Independent MD</span></td><td><span class="lang-ar">لا — يتبع أكمل</span><span class="lang-en">No — reports to Akmal</span></td><td><span class="lang-ar">نعم — أمان MD مباشر</span><span class="lang-en">Yes — Aman as direct MD</span></td></tr>
+            <tr><td><span class="lang-ar">الكفاءة التشغيلية</span><span class="lang-en">Ops efficiency</span></td><td><span class="lang-ar">متأثرة بتداخل المشاريع</span><span class="lang-en">Affected by project overlap</span></td><td><span class="lang-ar">عالية بفرق متخصصة</span><span class="lang-en">High with specialized teams</span></td></tr>
+        </table>
+        <div class="pc-grid">
+            <div class="pc-box pro">
+                <h4>✅ <span class="lang-ar">الإيجابيات</span><span class="lang-en">Pros</span></h4>
+                <ul>
+                    <li><span class="lang-ar">كل شركة تركز على قوّتها</span><span class="lang-en">Each company focuses on its strength</span></li>
+                    <li><span class="lang-ar">Metallica تأخذ حقها كعلامة بوتيك</span><span class="lang-en">Metallica gets its due as boutique brand</span></li>
+                    <li><span class="lang-ar">قوائم مالية نظيفة لكل كيان</span><span class="lang-en">Clean financials per entity</span></li>
+                    <li><span class="lang-ar">قابلية البيع أو الشراكة مستقبلاً</span><span class="lang-en">Future sale or partnership option</span></li>
+                </ul>
+            </div>
+            <div class="pc-box con">
+                <h4>⚠️ <span class="lang-ar">السلبيات</span><span class="lang-en">Cons</span></h4>
+                <ul>
+                    <li><span class="lang-ar">عملية فصل معقدة (أصول + موظفون)</span><span class="lang-en">Complex split (assets + employees)</span></li>
+                    <li><span class="lang-ar">رسوم تأسيس كيان جديد</span><span class="lang-en">New entity incorporation fees</span></li>
+                    <li><span class="lang-ar">حاجة لاتفاقية توريد متبادل</span><span class="lang-en">Need for mutual-supply agreement</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> الفصل ضروري. الخطة الكاملة موثّقة في <a href="split-plan.html" style="color:#c9a961;">خطة الفصل</a>.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> Split is necessary. Full plan in <a href="split-plan.html" style="color:#c9a961;">Split Plan</a>.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q4: WHY BOARD? -->
+<article class="why-card" id="q4">
+    <header class="why-head">
+        <div class="q-num">4</div>
+        <h2><span class="lang-ar">لماذا مجلس إدارة؟ أنا المساهم الوحيد!</span><span class="lang-en">Why a Board? I'm the sole shareholder!</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">لأن المجلس ليس لمراقبتك — بل <strong>لدعمك</strong>. يُضيف عقولاً مستقلة لاتخاذ القرارات الكبرى، يحمي من قرارات اللحظة، ويعطي البنوك والشركاء المستقبليين ضمانة حوكمة. أنت تبقى المالك صاحب الكلمة النهائية.</span>
+            <span class="lang-en">The Board isn't to monitor you — it's to <strong>support</strong> you. It adds independent minds for major decisions, shields from impulsive ones, and gives banks and future partners governance assurance. You remain the owner with the final word.</span></p>
+        </div>
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">الحالة</span><span class="lang-en">Scenario</span></th>
+                <th>🔴 <span class="lang-ar">بدون مجلس</span><span class="lang-en">No Board</span></th>
+                <th>🟢 <span class="lang-ar">مع مجلس</span><span class="lang-en">With Board</span></th>
+            </tr>
+            <tr><td><span class="lang-ar">صفقة كبرى</span><span class="lang-en">Major deal</span></td><td><span class="lang-ar">قرار فردي</span><span class="lang-en">Solo decision</span></td><td><span class="lang-ar">قرار مدروس ومعتمد</span><span class="lang-en">Informed, approved</span></td></tr>
+            <tr><td><span class="lang-ar">تعامل مع البنوك</span><span class="lang-en">Bank dealings</span></td><td><span class="lang-ar">كفاءة فردية</span><span class="lang-en">Personal credibility</span></td><td><span class="lang-ar">كفاءة مؤسسية</span><span class="lang-en">Institutional credibility</span></td></tr>
+            <tr><td><span class="lang-ar">رؤية استراتيجية</span><span class="lang-en">Strategic view</span></td><td><span class="lang-ar">منك فقط</span><span class="lang-en">Yours only</span></td><td><span class="lang-ar">خبرات متعددة</span><span class="lang-en">Diverse expertise</span></td></tr>
+            <tr><td><span class="lang-ar">في غيابك</span><span class="lang-en">Your absence</span></td><td><span class="lang-ar">تعطّل قرارات</span><span class="lang-en">Decisions stall</span></td><td><span class="lang-ar">استمرارية</span><span class="lang-en">Continuity</span></td></tr>
+            <tr><td><span class="lang-ar">الكلمة النهائية</span><span class="lang-en">Final word</span></td><td><span class="lang-ar">لك (وحدك)</span><span class="lang-en">Yours (alone)</span></td><td><span class="lang-ar">لك (كمساهم)</span><span class="lang-en">Yours (as shareholder)</span></td></tr>
+        </table>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> مجلس من 3-5 أعضاء، غالبيتهم مستقلون، برئاستك. أنت تقود، والمجلس يسند.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> 3-5 members, independent majority, you chair. You lead, Board supports.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q5: WHY COMMITTEES? -->
+<article class="why-card" id="q5">
+    <header class="why-head">
+        <div class="q-num">5</div>
+        <h2><span class="lang-ar">لماذا لجان؟ أليس المجلس يكفي؟</span><span class="lang-en">Why committees? Isn't the Board enough?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">اللجان <strong>تُعمِّق</strong> عمل المجلس في ملفات متخصصة (مراجعة، مخاطر، ترشيحات، استراتيجية) بدون إشغال المجلس بتفاصيل. يجتمع المجلس ربع سنوياً، واللجان شهرياً لتغطية التفاصيل.</span>
+            <span class="lang-en">Committees <strong>deepen</strong> Board work on specialized files (audit, risk, nominations, strategy) without burdening the Board with details. Board meets quarterly, committees monthly for details.</span></p>
+        </div>
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">اللجنة</span><span class="lang-en">Committee</span></th>
+                <th><span class="lang-ar">المجال</span><span class="lang-en">Scope</span></th>
+                <th><span class="lang-ar">الأهمية</span><span class="lang-en">Why critical</span></th>
+            </tr>
+            <tr><td><strong>ExCom</strong></td><td><span class="lang-ar">تنفيذ الاستراتيجية</span><span class="lang-en">Strategy execution</span></td><td><span class="lang-ar">تسريع القرارات بين اجتماعات المجلس</span><span class="lang-en">Speeds decisions between Board meetings</span></td></tr>
+            <tr><td><strong>ARC</strong></td><td><span class="lang-ar">مراجعة، مخاطر، امتثال</span><span class="lang-en">Audit, Risk, Compliance</span></td><td><span class="lang-ar">حصن الرقابة المستقل</span><span class="lang-en">Independent oversight fortress</span></td></tr>
+            <tr><td><strong>N&amp;R</strong></td><td><span class="lang-ar">ترشيحات ومكافآت</span><span class="lang-en">Nominations & Rem.</span></td><td><span class="lang-ar">ضمان الشفافية في التعيينات والأجور</span><span class="lang-en">Transparency in hiring & pay</span></td></tr>
+            <tr><td><strong>I&amp;S</strong></td><td><span class="lang-ar">استثمار واستراتيجية</span><span class="lang-en">Investment & Strategy</span></td><td><span class="lang-ar">تقييم فرص النمو الجديدة</span><span class="lang-en">Evaluating growth opportunities</span></td></tr>
+        </table>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> 4 لجان حد أدنى. ARC الأكثر حرجاً — ترفع مباشرة للمجلس وليس للإدارة.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> 4 committees minimum. ARC most critical — reports to Board, not management.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q6: WHY GC? -->
+<article class="why-card" id="q6">
+    <header class="why-head">
+        <div class="q-num">6</div>
+        <h2><span class="lang-ar">لماذا مستشار عام + فريق قانوني داخلي؟</span><span class="lang-en">Why a GC + internal legal team?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">لأن الاعتماد الكامل على مكاتب محاماة خارجية مكلف جداً ومتأخر. الفريق الداخلي يغطي 90% من العمل اليومي بسرعة ومعرفة دقيقة، والمكاتب الخارجية تأتي للأمور الحرجة فقط. تفاصيل كاملة في <a href="legal-function.html" style="color:#c9a961;">صفحة الوظيفة القانونية</a>.</span>
+            <span class="lang-en">Because relying entirely on external firms is prohibitively expensive and slow. Internal team covers 90% of daily work with speed and precise knowledge; external firms engage only for critical matters. Full details in <a href="legal-function.html" style="color:#c9a961;">Legal Function page</a>.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> GC + 4 موظفين داخليين + لوحة مستشارين خارجية عند الحاجة فقط.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> GC + 4 internal staff + external counsel panel on-demand.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q7: WHY SSC? -->
+<article class="why-card" id="q7">
+    <header class="why-head">
+        <div class="q-num">7</div>
+        <h2><span class="lang-ar">لماذا مركز خدمات مشتركة (SSC)؟</span><span class="lang-en">Why a Shared Services Center?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">بدلاً من أن تملك كل شركة قسم مالية/HR/IT مستقلاً، يُوحَّد الكل في القابضة. <strong>وفر التكاليف 20-30%</strong>، وحّد السياسات، وحرّر المديرين للتركيز على أعمالهم الأساسية.</span>
+            <span class="lang-en">Instead of each company having separate Finance/HR/IT, consolidate at the Holding. <strong>Save 20-30% costs</strong>, unify policies, free MDs to focus on core business.</span></p>
+        </div>
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">الخدمة</span><span class="lang-en">Service</span></th>
+                <th>🔴 <span class="lang-ar">مستقلة</span><span class="lang-en">Independent</span></th>
+                <th>🟢 <span class="lang-ar">مشتركة</span><span class="lang-en">Shared</span></th>
+            </tr>
+            <tr><td>Finance</td><td>3 <span class="lang-ar">أقسام</span><span class="lang-en">depts</span></td><td>1 <span class="lang-ar">قسم موحّد</span><span class="lang-en">unified</span></td></tr>
+            <tr><td>HR</td><td>3 <span class="lang-ar">مدراء</span><span class="lang-en">managers</span></td><td>1 CHRO + <span class="lang-ar">فريق مشترك</span><span class="lang-en">shared team</span></td></tr>
+            <tr><td>IT</td><td>3 <span class="lang-ar">أنظمة منفصلة</span><span class="lang-en">separate systems</span></td><td><span class="lang-ar">نظام موحد</span><span class="lang-en">Unified system</span></td></tr>
+            <tr><td>Legal</td><td>—</td><td>GC + <span class="lang-ar">فريق</span><span class="lang-en">team</span></td></tr>
+            <tr><td><span class="lang-ar">المشتريات</span><span class="lang-en">Procurement</span></td><td><span class="lang-ar">منفصلة</span><span class="lang-en">Separate</span></td><td><span class="lang-ar">قوة تفاوض موحّدة</span><span class="lang-en">Unified buying power</span></td></tr>
+        </table>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> SSC من المرحلة الأولى. الخسائر من عدم تطبيقه تتراكم شهرياً.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> SSC from phase one. Losses from not implementing compound monthly.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q8: WHY DOA? -->
+<article class="why-card" id="q8">
+    <header class="why-head">
+        <div class="q-num">8</div>
+        <h2><span class="lang-ar">لماذا مصفوفة صلاحيات (DOA)؟</span><span class="lang-en">Why a Delegation of Authority (DOA) Matrix?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">بدون DOA: كل قرار كبير أو صغير يرفع لك. مع DOA: كل منصب يعرف سقفه المالي وحدود قراراته. <strong>يسرِّع الأعمال ويمنع التجاوزات</strong>.</span>
+            <span class="lang-en">Without DOA: every decision, big or small, escalates to you. With DOA: each role knows its financial ceiling and decision limits. <strong>Speeds work, prevents overreach</strong>.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> DOA ضرورة — بدونها تصبح أنت عقدة الاختناق في كل قرار.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> DOA is essential — without it, you become the bottleneck of every decision.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q9: WHY POLICIES? -->
+<article class="why-card" id="q9">
+    <header class="why-head">
+        <div class="q-num">9</div>
+        <h2><span class="lang-ar">لماذا سياسات حوكمة (COI، أطراف ذات علاقة، توقيع)؟</span><span class="lang-en">Why governance policies (COI, RPT, Signature)?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">لحماية المجموعة من 3 مخاطر قاتلة: (1) قرار بتعارض مصالح غير مُفصح عنه، (2) معاملات مع أطراف ذات علاقة بأسعار غير عادلة، (3) توقيع غير مُفوّض على عقد ملزم. كل سياسة = درع قانوني.</span>
+            <span class="lang-en">To protect against 3 fatal risks: (1) undisclosed COI decisions, (2) related-party deals at unfair prices, (3) unauthorized signatures on binding contracts. Each policy = a legal shield.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> 6 سياسات حد أدنى. تكلفة إعدادها تساوي يوماً من تكلفة أزمة واحدة بدونها.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> 6 policies minimum. Their prep cost = one day of a single crisis without them.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q10: WHY NOW? -->
+<article class="why-card" id="q10">
+    <header class="why-head">
+        <div class="q-num">10</div>
+        <h2><span class="lang-ar">لماذا الآن؟ ألا يمكن التأجيل؟</span><span class="lang-en">Why now? Can't we delay?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">كل شهر تأخير = تراكم مخاطر + ضياع فرص. كلما كبرت الشركات بدون إطار، صعب التفكيك لاحقاً. إعادة الهيكلة في وقت الاستقرار أرخص بكثير من فعلها تحت الضغط (أزمة، نزاع، قضية، أو وفاة لا سمح الله).</span>
+            <span class="lang-en">Every month of delay = accumulating risk + lost opportunities. The more companies grow without a frame, the harder to disentangle later. Restructuring in stable times is much cheaper than doing it under pressure (crisis, dispute, lawsuit, or — God forbid — sudden death).</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> البدء فوراً. الموعد المثالي كان قبل 5 سنوات؛ الثاني هو اليوم.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> Start immediately. The best time was 5 years ago; the second best is today.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q11: WHY MANY DOCS? -->
+<article class="why-card" id="q11">
+    <header class="why-head">
+        <div class="q-num">11</div>
+        <h2><span class="lang-ar">لماذا كل هذه الوثائق (28 وثيقة)؟</span><span class="lang-en">Why so many documents (28)?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">كل وثيقة تحل مشكلة محددة. الأقلية وثيقة = ثغرة قانونية أو مالية لاحقاً. الوثائق ليست ترفاً إدارياً — هي <strong>شبكة أمان</strong> تحمي المجموعة لـ 50 عاماً قادمة.</span>
+            <span class="lang-en">Each document solves a specific problem. Fewer docs = legal or financial gap later. Documents aren't admin luxury — they're a <strong>safety net</strong> for the next 50 years.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> 28 وثيقة = الحد الأدنى المطلوب. ليس مبالغة، بل كفاية.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> 28 documents = minimum needed. Not excess, just sufficiency.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q12: WHY TRANSFER PRICING? -->
+<article class="why-card" id="q12">
+    <header class="why-head">
+        <div class="q-num">12</div>
+        <h2><span class="lang-ar">لماذا Transfer Pricing؟</span><span class="lang-en">Why Transfer Pricing documentation?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">ZATCA تطلبه إلزامياً. المعاملات بين شركات المجموعة (HACFI يبيع لـ Superstruct مثلاً) يجب أن تُسعَّر كأنها بين أطراف مستقلة. بدون توثيق = غرامات ضريبية + تعديلات ضريبية.</span>
+            <span class="lang-en">ZATCA mandates it. Intercompany transactions (e.g., HACFI selling to Superstruct) must be priced as between unrelated parties. Without documentation = tax penalties + tax adjustments.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> Master File + Local File لكل شركة. إلزامية لا خيار فيها.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> Master File + Local File per entity. Mandatory, no option.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q13: WHY VAT GROUP? -->
+<article class="why-card" id="q13">
+    <header class="why-head">
+        <div class="q-num">13</div>
+        <h2><span class="lang-ar">لماذا تسجيل VAT Group؟</span><span class="lang-en">Why register a VAT Group?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">عند تسجيل شركات المجموعة كمجموعة ضريبية واحدة، المعاملات البينية (HACFI → Superstruct) <strong>تُعفى من VAT</strong>. توفير كبير في السيولة والدورة المستندية.</span>
+            <span class="lang-en">When Group companies register as a single VAT Group, intercompany transactions (HACFI → Superstruct) are <strong>VAT-exempt</strong>. Major savings in cash flow and paperwork.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> تسجيل VAT Group في المرحلة 6. توفير فوري.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> Register VAT Group in Phase 6. Immediate savings.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q14: WHY UNIFIED AUDITOR? -->
+<article class="why-card" id="q14">
+    <header class="why-head">
+        <div class="q-num">14</div>
+        <h2><span class="lang-ar">لماذا مراجع خارجي موحّد للمجموعة؟</span><span class="lang-en">Why a unified external auditor?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar">مراجع واحد يرى الصورة الكاملة، يُصدر قوائم موحّدة للقابضة، ويقدم رسوماً أقل من 3 مراجعين مختلفين. أيضاً: يُسهّل على البنوك تحليل المجموعة.</span>
+            <span class="lang-en">One auditor sees the full picture, issues consolidated statements for the Holding, and charges less than 3 separate auditors. Also: makes group analysis easier for banks.</span></p>
+        </div>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> مكتب معتمد من SOCPA — اختياره من ARC.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> SOCPA-registered firm — selected by ARC.</span>
+        </div>
+    </div>
+</article>
+
+<!-- Q15: LOSE CONTROL? -->
+<article class="why-card" id="q15">
+    <header class="why-head">
+        <div class="q-num">15</div>
+        <h2><span class="lang-ar">هل سأفقد السيطرة على شركاتي؟</span><span class="lang-en">Will I lose control over my companies?</span></h2>
+    </header>
+    <div class="why-content">
+        <div class="answer-box">
+            <span class="lbl"><span class="lang-ar">الإجابة المختصرة</span><span class="lang-en">Short Answer</span></span>
+            <p><span class="lang-ar"><strong>لا، أبداً.</strong> أنت تبقى المساهم الوحيد (100%) في القابضة، ورئيس مجلسها، وكلمتك النهائية في كل قرار. الحوكمة تُنظِّم السلطة وتحميها — لا تنتزعها منك.</span>
+            <span class="lang-en"><strong>No, absolutely not.</strong> You remain sole shareholder (100%) of the Holding, its Chairman, and final word on every decision. Governance organizes and protects authority — it doesn't take it away.</span></p>
+        </div>
+        <table class="comp-table">
+            <tr>
+                <th><span class="lang-ar">السلطة</span><span class="lang-en">Power</span></th>
+                <th>🔴 <span class="lang-ar">الوضع الحالي</span><span class="lang-en">Current</span></th>
+                <th>🟢 <span class="lang-ar">مع القابضة</span><span class="lang-en">With Holding</span></th>
+            </tr>
+            <tr><td><span class="lang-ar">الملكية</span><span class="lang-en">Ownership</span></td><td>100% <span class="lang-ar">(شخصي)</span><span class="lang-en">(personal)</span></td><td>100% <span class="lang-ar">(مؤسسي)</span><span class="lang-en">(corporate)</span></td></tr>
+            <tr><td><span class="lang-ar">القرار الاستراتيجي</span><span class="lang-en">Strategic decision</span></td><td><span class="lang-ar">لك</span><span class="lang-en">Yours</span></td><td><span class="lang-ar">لك (كمساهم + رئيس)</span><span class="lang-en">Yours (shareholder + Chair)</span></td></tr>
+            <tr><td><span class="lang-ar">المسائل المحجوزة</span><span class="lang-en">Reserved matters</span></td><td>—</td><td><span class="lang-ar">موافقتك إلزامية</span><span class="lang-en">Your approval required</span></td></tr>
+            <tr><td><span class="lang-ar">عزل أي تنفيذي</span><span class="lang-en">Remove any exec</span></td><td><span class="lang-ar">لك مباشرة</span><span class="lang-en">Directly yours</span></td><td><span class="lang-ar">لك (بقرار مكتوب)</span><span class="lang-en">Yours (written resolution)</span></td></tr>
+            <tr><td><span class="lang-ar">بيع شركة</span><span class="lang-en">Sell a company</span></td><td><span class="lang-ar">قرارك وحدك</span><span class="lang-en">Solely yours</span></td><td><span class="lang-ar">قرارك وحدك</span><span class="lang-en">Solely yours</span></td></tr>
+        </table>
+        <div class="verdict">
+            <div class="check">✓</div>
+            <span class="lang-ar"><strong>التوصية:</strong> لا قلق. القابضة تعطي سلطتك <em>هيكلاً قانونياً</em>، لا تأخذ منها شيئاً.</span>
+            <span class="lang-en"><strong>Recommendation:</strong> No worry. The Holding gives your authority a <em>legal structure</em>, takes nothing away.</span>
+        </div>
+    </div>
+</article>
+
+<!-- FINAL SUMMARY -->
+<div style="background: linear-gradient(135deg, #0a1e3f, #162b5e); color: #c9a961; border-radius: 20px; padding: 40px 36px; margin-top: 40px; text-align: center;">
+    <h2 style="font-family: 'Playfair Display','Tajawal',serif; color: #fff; margin: 0 0 16px; font-size: 26px; border: none; padding: 0; background: none !important;">
+        <span class="lang-ar">الخلاصة النهائية</span><span class="lang-en">The Final Takeaway</span>
+    </h2>
+    <p style="color: rgba(255,255,255,0.88); margin: 0; font-size: 16px; line-height: 1.8; max-width: 720px; margin: 0 auto;">
+        <span class="lang-ar">كل "لماذا" في هذه الصفحة له إجابة واحدة مشتركة: <strong style="color: #c9a961;">لحماية ما بنيت، وتنميته بنظام.</strong> أي مخاطرة بالتأجيل تتحوّل — بعد سنوات — إلى قرار لا تستطيع تأجيله تحت الضغط.</span>
+        <span class="lang-en">Every "Why" in this page has one shared answer: <strong style="color: #c9a961;">to protect what you built and grow it systematically.</strong> Any risk in delaying becomes — years later — a decision you can't delay under pressure.</span>
+    </p>
+</div>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p><span class="lang-ar">© لماذا؟ — مجموعة نصرت القابضة</span><span class="lang-en">© Why? — Nusrath Holding Group</span></p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

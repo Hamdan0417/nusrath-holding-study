@@ -31,6 +31,7 @@
   // ============ SITE-WIDE PAGES INDEX (for search) ============
   const SITE_PAGES = [
     { url: 'index.html', titleAr: 'الرئيسية — الدراسة الشاملة', titleEn: 'Home — Comprehensive Study', keys: ['نصرت', 'قابضة', 'holding', 'home', 'main'] },
+    { url: 'why.html', titleAr: 'لماذا؟ — صفحة صنع القرار', titleEn: 'Why? — Decision Rationale', keys: ['why', 'rationale', 'decision', 'لماذا', 'قرار', 'مقارنة', 'ايجابيات', 'سلبيات'] },
     { url: 'holding.html', titleAr: 'نصرت القابضة (SJSC)', titleEn: 'Nusrath Holding (SJSC)', keys: ['holding', 'sjsc', 'قابضة'] },
     { url: 'hacfi.html', titleAr: 'HACFI — منصة الصناعة', titleEn: 'HACFI — Industrial Platform', keys: ['hacfi', 'industry', 'صناعة', 'akmal'] },
     { url: 'aret.html', titleAr: 'Art Craft — النجارة', titleEn: 'Art Craft — Carpentry', keys: ['art', 'craft', 'metallica', 'aman', 'نجارة'] },

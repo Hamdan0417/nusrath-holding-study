@@ -45,6 +45,7 @@
     { url: 'implementation.html', titleAr: 'خطة التنفيذ', titleEn: 'Implementation Plan', keys: ['implementation', 'phases', 'تنفيذ'] },
     { url: 'documents.html', titleAr: 'فهرس الوثائق (40)', titleEn: 'Documents Index (40)', keys: ['documents', 'وثائق'] },
     { url: 'checklist.html', titleAr: 'القائمة التنفيذية', titleEn: 'Executive Checklist', keys: ['checklist', 'قائمة'] },
+    { url: 'roadmap.html', titleAr: 'خارطة الطريق التنفيذية', titleEn: 'Implementation Roadmap', keys: ['roadmap', 'milestones', 'phases', 'execution', 'خارطة', 'محطات', 'تنفيذ'] },
     { url: 'infographics.html', titleAr: 'الانفوجرافيك (16)', titleEn: 'Infographics (16)', keys: ['infographics', 'visuals', 'انفوجرافيك'] },
     { url: 'doc-01-aoa.html', titleAr: 'النظام الأساس للقابضة', titleEn: 'Holding Articles of Association', keys: ['aoa', 'articles', 'نظام أساس'] },
     { url: 'doc-02-founder.html', titleAr: 'قرار المؤسس', titleEn: 'Founder Resolution', keys: ['founder', 'resolution', 'قرار مؤسس'] },

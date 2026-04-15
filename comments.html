@@ -3,300 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كلمات الفريق | Voices from the Team</title>
+<title>ملاحظات ومقترحات التعديل | Change Requests & Review</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-    /* Comments page — warm editorial style */
-    .comments-hero {
+    /* Revision workflow page */
+    .rev-hero {
         background: linear-gradient(135deg, #0a1e3f 0%, #162b5e 100%);
-        color: #fff;
-        padding: 80px 24px 60px;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
+        color: #fff; padding: 64px 24px 48px; text-align: center;
     }
-    .comments-hero::before {
-        content: '"'; position: absolute;
-        font-family: 'Playfair Display', serif;
-        font-size: 400px; line-height: 1;
-        color: rgba(201,169,97,0.08);
-        top: -60px; inset-inline-start: 20px;
-        pointer-events: none;
+    .rev-hero h1 {
+        font-family: 'Playfair Display','Tajawal',serif;
+        font-size: clamp(28px, 4vw, 44px);
+        margin: 0 0 12px; color: #fff;
     }
-    .comments-hero h1 {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: clamp(32px, 4.5vw, 52px);
-        margin: 0 0 16px; font-weight: 700;
-        color: #fff; position: relative;
-    }
-    .comments-hero .tagline {
-        font-size: 17px; opacity: 0.85;
-        max-width: 600px; margin: 0 auto;
-        line-height: 1.7; font-style: italic;
-        position: relative;
+    .rev-hero .tagline {
+        font-size: 16px; opacity: 0.85; max-width: 640px;
+        margin: 0 auto; line-height: 1.7;
     }
 
-    .comments-body { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+    .rev-body { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
 
-    /* Featured testimonial cards */
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 28px;
-        margin-bottom: 60px;
+    /* Stats strip */
+    .rev-stats {
+        display: grid; gap: 14px; margin-bottom: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
+    .rev-stat {
+        background: #fff; border: 1px solid #e5d7a8;
+        border-radius: 14px; padding: 18px 14px;
+        text-align: center; transition: all 0.2s ease;
+    }
+    body.dark-mode .rev-stat { background: #1a1f2e; border-color: #3a3f55; }
+    .rev-stat:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10,30,63,0.08); }
+    .rev-stat .rs-num {
+        font-family: 'Playfair Display','Tajawal',serif;
+        font-size: 32px; font-weight: 700; color: #c9a961; line-height: 1;
+    }
+    .rev-stat .rs-label {
+        font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+        color: #718096; margin-top: 6px;
+    }
+    .rev-stat.pending .rs-num { color: #f59e0b; }
+    .rev-stat.approved .rs-num { color: #10b981; }
+    .rev-stat.rejected .rs-num { color: #dc2626; }
+    .rev-stat.modified .rs-num { color: #6366f1; }
+    .rev-stat.implemented .rs-num { color: #059669; }
 
-    .testimonial-card {
-        background: #fff;
-        border: 1px solid #e5d7a8;
-        border-radius: 20px;
-        padding: 36px 28px 28px;
-        position: relative;
+    /* Submit form */
+    .rev-form-card {
+        background: #fff; border: 1px solid #e5d7a8;
+        border-radius: 20px; padding: 32px 28px;
         box-shadow: 0 4px 20px rgba(10,30,63,0.06);
-        transition: all 0.3s ease;
+        margin-bottom: 40px;
     }
-    body.dark-mode .testimonial-card {
-        background: #1a1f2e; border-color: #3a3f55;
+    body.dark-mode .rev-form-card { background: #1a1f2e; border-color: #3a3f55; }
+    .rev-form-card h2 {
+        font-family: 'Playfair Display','Tajawal',serif;
+        color: #0a1e3f; margin: 0 0 18px; font-size: 22px;
     }
-    .testimonial-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(10,30,63,0.12);
-        border-color: #c9a961;
+    body.dark-mode .rev-form-card h2 { color: #f5c977; }
+    .rev-form-card .grid {
+        display: grid; gap: 14px; grid-template-columns: 1fr 1fr;
     }
-
-    .testimonial-card::before {
-        content: '"';
-        position: absolute;
-        top: -10px; inset-inline-start: 20px;
-        background: linear-gradient(135deg, #c9a961, #b8924a);
-        color: #fff; font-family: 'Playfair Display', serif;
-        width: 48px; height: 48px; border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 52px; line-height: 1;
-        padding-top: 14px;
-        box-shadow: 0 6px 16px rgba(201,169,97,0.4);
+    .rev-form-card .grid.single { grid-template-columns: 1fr; }
+    .rev-form-card label {
+        display: block; font-size: 13px; font-weight: 600;
+        color: #2d3748; margin-bottom: 6px; letter-spacing: 0.5px;
     }
-
-    .tcard-person {
-        display: flex; align-items: center; gap: 16px;
-        margin-bottom: 20px; padding-bottom: 20px;
-        border-bottom: 2px solid #f5f0e4;
-    }
-    body.dark-mode .tcard-person { border-bottom-color: #3a3f55; }
-
-    .tcard-avatar {
-        width: 56px; height: 56px; border-radius: 50%;
-        background: linear-gradient(135deg, #0a1e3f, #162b5e);
-        color: #c9a961;
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 22px; font-weight: 700;
-        flex-shrink: 0;
-        border: 3px solid #c9a961;
-    }
-
-    .tcard-who { flex: 1; }
-    .tcard-name {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        font-size: 18px; font-weight: 700;
-        color: #0a1e3f; line-height: 1.3;
-    }
-    body.dark-mode .tcard-name { color: #f5c977; }
-    .tcard-role {
-        font-size: 12px; color: #718096;
-        letter-spacing: 1px; text-transform: uppercase;
-        margin-top: 2px;
-    }
-
-    .tcard-quote {
-        font-size: 16px; line-height: 1.8; color: #2d3748;
-        font-family: 'Tajawal', 'Inter', sans-serif;
-        min-height: 120px;
-        padding: 12px;
-        border-radius: 10px;
-        border: 1px dashed transparent;
-        cursor: text;
-        transition: all 0.2s ease;
-    }
-    body.dark-mode .tcard-quote { color: #d4d8e0; }
-    .tcard-quote:hover {
-        border-color: #c9a961;
-        background: rgba(201,169,97,0.03);
-    }
-    .tcard-quote:focus {
-        outline: none;
-        border-color: #c9a961;
-        border-style: solid;
-        background: rgba(201,169,97,0.08);
-    }
-
-    .tcard-foot {
-        display: flex; justify-content: space-between;
-        align-items: center; margin-top: 20px;
-        padding-top: 16px; border-top: 1px dashed #e5d7a8;
-        font-size: 12px; color: #a0a0a0;
-    }
-    body.dark-mode .tcard-foot { border-top-color: #3a3f55; }
-
-    .save-btn {
-        background: #c9a961; color: #0a1e3f;
-        border: none; padding: 6px 14px; border-radius: 20px;
-        font-size: 12px; font-weight: 600; cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    .save-btn:hover { background: #0a1e3f; color: #c9a961; }
-    .save-btn.saved { background: #10b981; color: #fff; }
-
-    /* Public comments section */
-    .public-section {
-        margin-top: 60px;
-        background: linear-gradient(135deg, #fafaf5 0%, #f5f0e4 100%);
-        border-radius: 24px; padding: 48px 36px;
-        border: 1px solid #e5d7a8;
-    }
-    body.dark-mode .public-section {
-        background: linear-gradient(135deg, #1a1f2e 0%, #252b3d 100%);
-        border-color: #3a3f55;
-    }
-    .public-section h2 {
-        font-family: 'Playfair Display', 'Tajawal', serif;
-        text-align: center; color: #0a1e3f; font-size: 28px;
-        margin: 0 0 8px;
-    }
-    body.dark-mode .public-section h2 { color: #f5c977; }
-    .public-section .sub {
-        text-align: center; color: #718096; font-size: 14px;
-        margin-bottom: 32px; font-style: italic;
-    }
-
-    /* Comment form */
-    .comment-form {
-        max-width: 680px; margin: 0 auto 40px;
-        background: #fff; border-radius: 16px;
-        padding: 28px; border: 1px solid #e5d7a8;
-        box-shadow: 0 4px 16px rgba(10,30,63,0.06);
-    }
-    body.dark-mode .comment-form {
-        background: #1a1f2e; border-color: #3a3f55;
-    }
-    .comment-form .row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px; margin-bottom: 12px;
-    }
-    .comment-form input, .comment-form textarea {
-        width: 100%; padding: 12px 14px;
+    body.dark-mode .rev-form-card label { color: #d4d8e0; }
+    .rev-form-card input, .rev-form-card select, .rev-form-card textarea {
+        width: 100%; padding: 12px 14px; box-sizing: border-box;
         border: 1px solid #d4c79a; border-radius: 10px;
         font-family: inherit; font-size: 14px;
         background: #fafaf5; color: #2d3748;
-        transition: all 0.2s ease; box-sizing: border-box;
+        transition: all 0.2s ease;
     }
-    body.dark-mode .comment-form input,
-    body.dark-mode .comment-form textarea {
+    body.dark-mode .rev-form-card input,
+    body.dark-mode .rev-form-card select,
+    body.dark-mode .rev-form-card textarea {
         background: #252b3d; color: #d4d8e0; border-color: #3a3f55;
     }
-    .comment-form input:focus, .comment-form textarea:focus {
+    .rev-form-card input:focus, .rev-form-card select:focus, .rev-form-card textarea:focus {
         outline: none; border-color: #c9a961;
         box-shadow: 0 0 0 3px rgba(201,169,97,0.15);
     }
-    .comment-form textarea { min-height: 100px; resize: vertical; }
-    .comment-form .post-btn {
+    .rev-form-card textarea { min-height: 110px; resize: vertical; }
+    .rev-form-card .submit-row {
+        margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .btn-primary {
         background: linear-gradient(135deg, #0a1e3f, #162b5e);
         color: #c9a961; border: 2px solid #c9a961;
-        padding: 14px 36px; border-radius: 999px;
+        padding: 12px 28px; border-radius: 999px;
         font-size: 14px; font-weight: 700; cursor: pointer;
-        transition: all 0.3s ease; margin-top: 8px;
-        width: 100%;
+        transition: all 0.3s ease;
     }
-    .comment-form .post-btn:hover {
+    .btn-primary:hover {
         background: linear-gradient(135deg, #c9a961, #b8924a);
         color: #0a1e3f; transform: translateY(-2px);
         box-shadow: 0 10px 24px rgba(201,169,97,0.4);
     }
 
-    /* Public comment list */
-    .public-list {
-        max-width: 800px; margin: 0 auto;
-        display: flex; flex-direction: column; gap: 16px;
+    /* Filter tabs */
+    .filter-tabs {
+        display: flex; gap: 8px; flex-wrap: wrap;
+        margin-bottom: 24px;
     }
-    .public-item {
-        background: #fff; border-radius: 14px;
-        padding: 20px 24px; border: 1px solid #e5d7a8;
-        display: grid; grid-template-columns: auto 1fr;
-        gap: 16px; align-items: flex-start;
-        animation: slideIn 0.4s ease;
+    .filter-tab {
+        background: #fff; color: #2d3748;
+        border: 1px solid #e5d7a8; padding: 8px 18px;
+        border-radius: 20px; cursor: pointer; font-size: 13px;
+        font-weight: 600; transition: all 0.2s ease;
+        font-family: inherit;
     }
-    body.dark-mode .public-item {
-        background: #1a1f2e; border-color: #3a3f55;
+    body.dark-mode .filter-tab { background: #1a1f2e; color: #d4d8e0; border-color: #3a3f55; }
+    .filter-tab:hover { border-color: #c9a961; }
+    .filter-tab.active {
+        background: linear-gradient(135deg, #0a1e3f, #162b5e);
+        color: #c9a961; border-color: #c9a961;
     }
-    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-    .pi-avatar {
-        width: 42px; height: 42px; border-radius: 50%;
-        background: linear-gradient(135deg, #c9a961, #b8924a);
-        color: #0a1e3f; display: flex;
-        align-items: center; justify-content: center;
-        font-weight: 700; font-size: 16px;
-        font-family: 'Playfair Display', 'Tajawal', serif;
+
+    /* Change request item */
+    .cr-item {
+        background: #fff; border: 1px solid #e5d7a8;
+        border-inline-start: 4px solid #f59e0b;
+        border-radius: 14px; padding: 20px 24px;
+        margin-bottom: 16px;
+        transition: all 0.2s ease;
     }
-    .pi-content { flex: 1; min-width: 0; }
-    .pi-head {
+    body.dark-mode .cr-item { background: #1a1f2e; border-color: #3a3f55; }
+    .cr-item:hover { box-shadow: 0 6px 20px rgba(10,30,63,0.08); }
+    .cr-item.status-approved { border-inline-start-color: #10b981; }
+    .cr-item.status-rejected { border-inline-start-color: #dc2626; }
+    .cr-item.status-modified { border-inline-start-color: #6366f1; }
+    .cr-item.status-implemented { border-inline-start-color: #059669; }
+    .cr-item.status-review { border-inline-start-color: #3b82f6; }
+
+    .cr-head {
         display: flex; justify-content: space-between;
-        gap: 12px; flex-wrap: wrap; margin-bottom: 6px;
+        gap: 12px; flex-wrap: wrap; margin-bottom: 12px;
     }
-    .pi-name {
-        font-weight: 700; color: #0a1e3f;
-        font-family: 'Playfair Display', 'Tajawal', serif;
+    .cr-title-block { flex: 1; min-width: 200px; }
+    .cr-title {
+        font-family: 'Playfair Display','Tajawal',serif;
+        font-size: 17px; font-weight: 700; color: #0a1e3f;
+        margin-bottom: 4px; line-height: 1.3;
     }
-    body.dark-mode .pi-name { color: #f5c977; }
-    .pi-role-date { font-size: 12px; color: #a0a0a0; }
-    .pi-body {
-        color: #2d3748; line-height: 1.7; font-size: 15px;
-        word-wrap: break-word;
+    body.dark-mode .cr-title { color: #f5c977; }
+    .cr-meta {
+        font-size: 12px; color: #718096; display: flex;
+        gap: 8px; flex-wrap: wrap; align-items: center;
     }
-    body.dark-mode .pi-body { color: #d4d8e0; }
-    .pi-delete {
-        background: transparent; border: none; color: #a0a0a0;
-        cursor: pointer; font-size: 14px; padding: 4px 8px;
-        border-radius: 6px; transition: all 0.2s ease;
-        margin-top: 4px;
-    }
-    .pi-delete:hover { background: #fde8e8; color: #dc2626; }
+    .cr-meta .dot { opacity: 0.4; }
 
-    .empty-state {
-        text-align: center; padding: 40px 20px;
-        color: #a0a0a0; font-style: italic;
+    .status-chip {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 4px 12px; border-radius: 20px;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 0.8px; text-transform: uppercase;
+        white-space: nowrap; height: fit-content;
+    }
+    .status-pending { background: #fef3c7; color: #92400e; }
+    .status-review { background: #dbeafe; color: #1e40af; }
+    .status-approved { background: #d1fae5; color: #065f46; }
+    .status-rejected { background: #fee2e2; color: #991b1b; }
+    .status-modified { background: #ede9fe; color: #4c1d95; }
+    .status-implemented { background: #a7f3d0; color: #064e3b; }
+
+    .cr-body {
+        background: rgba(201,169,97,0.05); border-radius: 10px;
+        padding: 14px 16px; margin-bottom: 12px;
+        font-size: 14px; line-height: 1.7; color: #2d3748;
+        white-space: pre-wrap; word-wrap: break-word;
+    }
+    body.dark-mode .cr-body { color: #d4d8e0; background: rgba(201,169,97,0.08); }
+
+    .cr-area-tag {
+        display: inline-block; background: rgba(10,30,63,0.08);
+        color: #0a1e3f; padding: 3px 10px;
+        border-radius: 6px; font-size: 11px; font-weight: 600;
+        margin-inline-end: 6px;
+    }
+    body.dark-mode .cr-area-tag { background: rgba(201,169,97,0.15); color: #f5c977; }
+
+    /* Decision panel (expandable) */
+    .cr-decision {
+        margin-top: 14px; padding-top: 14px;
+        border-top: 1px dashed #e5d7a8;
+    }
+    body.dark-mode .cr-decision { border-top-color: #3a3f55; }
+    .cr-decision-header {
+        font-size: 12px; font-weight: 700; color: #c9a961;
+        letter-spacing: 1.5px; text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+    .cr-decision-text {
+        font-size: 14px; line-height: 1.7; color: #2d3748;
+        padding: 10px 14px; background: rgba(16,185,129,0.06);
+        border-radius: 8px; border-inline-start: 3px solid #10b981;
+    }
+    body.dark-mode .cr-decision-text { color: #d4d8e0; }
+    .cr-decision-text.rejected {
+        background: rgba(220,38,38,0.06);
+        border-inline-start-color: #dc2626;
+    }
+    .cr-decision-text.modified {
+        background: rgba(99,102,241,0.06);
+        border-inline-start-color: #6366f1;
     }
 
-    .export-bar {
-        max-width: 800px; margin: 24px auto 0;
-        display: flex; gap: 12px; justify-content: center;
+    /* Review actions */
+    .cr-actions {
+        display: flex; gap: 8px; margin-top: 12px;
         flex-wrap: wrap;
     }
-    .export-bar button {
+    .cr-btn {
+        padding: 7px 16px; border-radius: 18px;
+        font-size: 12px; font-weight: 600; cursor: pointer;
+        border: 1px solid transparent; transition: all 0.2s ease;
+        font-family: inherit;
+    }
+    .cr-btn-review { background: #dbeafe; color: #1e40af; }
+    .cr-btn-review:hover { background: #1e40af; color: #fff; }
+    .cr-btn-approve { background: #d1fae5; color: #065f46; }
+    .cr-btn-approve:hover { background: #065f46; color: #fff; }
+    .cr-btn-reject { background: #fee2e2; color: #991b1b; }
+    .cr-btn-reject:hover { background: #991b1b; color: #fff; }
+    .cr-btn-modify { background: #ede9fe; color: #4c1d95; }
+    .cr-btn-modify:hover { background: #4c1d95; color: #fff; }
+    .cr-btn-implement { background: #a7f3d0; color: #064e3b; }
+    .cr-btn-implement:hover { background: #064e3b; color: #fff; }
+    .cr-btn-delete { background: transparent; color: #a0a0a0; margin-inline-start: auto; }
+    .cr-btn-delete:hover { background: #fee2e2; color: #dc2626; }
+
+    .empty-state {
+        text-align: center; padding: 60px 20px;
+        color: #a0a0a0; font-style: italic; font-size: 15px;
+    }
+
+    .toolbar-row {
+        display: flex; gap: 10px; justify-content: flex-end;
+        flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .toolbar-row button {
         background: transparent; color: #0a1e3f;
-        border: 1px solid #c9a961; padding: 8px 18px;
+        border: 1px solid #c9a961; padding: 8px 16px;
         border-radius: 20px; font-size: 13px; cursor: pointer;
         font-weight: 600; transition: all 0.2s ease;
+        font-family: inherit;
     }
-    body.dark-mode .export-bar button { color: #f5c977; }
-    .export-bar button:hover { background: #c9a961; color: #0a1e3f; }
+    body.dark-mode .toolbar-row button { color: #f5c977; }
+    .toolbar-row button:hover { background: #c9a961; color: #0a1e3f; }
 
-    @media (max-width: 600px) {
-        .comment-form .row { grid-template-columns: 1fr; }
-        .testimonials-grid { grid-template-columns: 1fr; }
+    /* Modal for decision */
+    .decision-modal {
+        position: fixed; inset: 0;
+        background: rgba(10,30,63,0.65); backdrop-filter: blur(6px);
+        display: none; align-items: center; justify-content: center;
+        z-index: 10500; padding: 20px;
     }
+    .decision-modal.show { display: flex; }
+    .decision-modal .mc {
+        background: #fff; border-radius: 20px;
+        width: min(540px, 100%); padding: 32px 28px;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+    }
+    body.dark-mode .decision-modal .mc { background: #1a1f2e; color: #d4d8e0; }
+    .decision-modal h3 {
+        font-family: 'Playfair Display','Tajawal',serif;
+        margin: 0 0 16px; color: #0a1e3f; font-size: 20px;
+    }
+    body.dark-mode .decision-modal h3 { color: #f5c977; }
+    .decision-modal textarea {
+        width: 100%; min-height: 120px; padding: 12px;
+        border: 1px solid #d4c79a; border-radius: 10px;
+        font-family: inherit; font-size: 14px; resize: vertical;
+        box-sizing: border-box; background: #fafaf5;
+    }
+    body.dark-mode .decision-modal textarea {
+        background: #252b3d; color: #d4d8e0; border-color: #3a3f55;
+    }
+    .decision-modal .mc-actions {
+        display: flex; gap: 10px; margin-top: 18px; justify-content: flex-end;
+    }
+    .mc-btn-cancel {
+        background: transparent; border: 1px solid #a0a0a0;
+        color: #2d3748; padding: 10px 20px; border-radius: 20px;
+        cursor: pointer; font-size: 13px; font-weight: 600;
+    }
+    body.dark-mode .mc-btn-cancel { color: #d4d8e0; border-color: #3a3f55; }
+    .mc-btn-confirm {
+        background: #0a1e3f; color: #c9a961; border: 1px solid #c9a961;
+        padding: 10px 24px; border-radius: 20px;
+        cursor: pointer; font-size: 13px; font-weight: 700;
+    }
+    .mc-btn-confirm:hover { background: #c9a961; color: #0a1e3f; }
 </style>
 </head>
 <body dir="rtl">
 
 <header class="header">
     <div class="header-content">
-        <div class="logo">VOICES</div>
-        <h1><span class="lang-ar">كلمات الفريق</span><span class="lang-en">Voices from the Team</span></h1>
-        <div class="subtitle"><span class="lang-ar">تعليقات أصحاب الرحلة — ومساحة لكلمتك</span><span class="lang-en">Comments from the journey's authors — and space for your own</span></div>
+        <div class="logo">CHANGE REQUESTS</div>
+        <h1><span class="lang-ar">ملاحظات ومقترحات التعديل</span><span class="lang-en">Change Requests & Review</span></h1>
+        <div class="subtitle"><span class="lang-ar">سجل مقترحاتك — تُدرس، ثم تُعتمد أو تُرفض أو تُعدَّل</span><span class="lang-en">Submit proposals — reviewed, then approved, rejected, or modified</span></div>
         <div class="breadcrumb">
             <a href="index.html"><span class="lang-ar">الرئيسية</span><span class="lang-en">Home</span></a> /
-            <span class="lang-ar">كلمات الفريق</span><span class="lang-en">Voices</span>
+            <span class="lang-ar">التعديلات</span><span class="lang-en">Change Requests</span>
         </div>
     </div>
 </header>
@@ -327,337 +340,246 @@
         <a href="split-plan.html">✂ <span class="lang-ar">الفصل</span><span class="lang-en">Split</span></a>
         <a href="implementation.html">📅 <span class="lang-ar">التنفيذ</span><span class="lang-en">Implementation</span></a>
         <a href="journey.html" class="nav-action-gold">✨ <span class="lang-ar">خاطرة الطريق</span><span class="lang-en">The Journey</span></a>
-        <a href="comments.html" class="nav-action-gold">💬 <span class="lang-ar">الكلمات</span><span class="lang-en">Voices</span></a>
+        <a href="comments.html" class="nav-action-gold">📝 <span class="lang-ar">التعديلات</span><span class="lang-en">Revisions</span></a>
     </div>
 </nav>
 
-<!-- HERO -->
-<section class="comments-hero">
-    <h1><span class="lang-ar">كلماتٌ تبقى بعد أن تُطوى الصفحات</span><span class="lang-en">Words That Remain After the Pages Close</span></h1>
+<section class="rev-hero">
+    <h1><span class="lang-ar">سجل الملاحظات والتعديلات</span><span class="lang-en">Change Request Ledger</span></h1>
     <p class="tagline">
-        <span class="lang-ar">هنا يترك كل من رافق هذه الرحلة أثراً — تعليقاً، اقتراحاً، تقديراً، أو ببساطةً توقيعاً. انقر على أي بطاقة لكتابة كلمتك.</span>
-        <span class="lang-en">Here, everyone who accompanied this journey leaves a trace — a comment, a suggestion, an acknowledgment, or simply a signature. Click any card to write your words.</span>
+        <span class="lang-ar">دورة حياة كاملة لكل ملاحظة: تُقدَّم → تُدرس → تُعتمد أو تُرفض أو تُعدَّل → تُنفَّذ. كل قرار موثَّق.</span>
+        <span class="lang-en">Full lifecycle for each note: submitted → reviewed → approved, rejected, or modified → implemented. Every decision documented.</span>
     </p>
 </section>
 
-<main class="comments-body">
+<main class="rev-body">
 
-<!-- FEATURED TESTIMONIALS -->
-<div class="testimonials-grid">
+    <!-- STATS -->
+    <div class="rev-stats" id="rev-stats"></div>
 
-    <!-- NUSRATH -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">MN</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">م. محمد نصرت ديلوار</span><span class="lang-en">Eng. Mohammed Nusrath Dilawar</span></div>
-                <div class="tcard-role"><span class="lang-ar">المؤسس والرئيس</span><span class="lang-en">Founder & Chairman</span></div>
+    <!-- SUBMIT FORM -->
+    <section class="rev-form-card">
+        <h2>📝 <span class="lang-ar">تقديم ملاحظة جديدة</span><span class="lang-en">Submit a New Change Request</span></h2>
+        <div class="grid">
+            <div>
+                <label><span class="lang-ar">مقدّم الطلب *</span><span class="lang-en">Submitted by *</span></label>
+                <input type="text" id="cr-author" placeholder="نصرت / حمدان / لياقة / ...">
+            </div>
+            <div>
+                <label><span class="lang-ar">النطاق / الصفحة المتأثرة</span><span class="lang-en">Scope / Affected Area</span></label>
+                <select id="cr-area">
+                    <option value="general"><span class="lang-ar">عام</span>General</option>
+                    <option value="holding">Holding / <span class="lang-ar">القابضة</span></option>
+                    <option value="hacfi">HACFI</option>
+                    <option value="art-craft">Art Craft</option>
+                    <option value="superstruct">Superstruct</option>
+                    <option value="mqsala">mQsala</option>
+                    <option value="governance"><span class="lang-ar">الحوكمة</span>Governance</option>
+                    <option value="doa"><span class="lang-ar">الصلاحيات DOA</span>DOA Matrix</option>
+                    <option value="documents"><span class="lang-ar">الوثائق</span>Documents</option>
+                    <option value="policies"><span class="lang-ar">السياسات</span>Policies</option>
+                    <option value="split"><span class="lang-ar">خطة الفصل</span>Split Plan</option>
+                    <option value="other"><span class="lang-ar">أخرى</span>Other</option>
+                </select>
             </div>
         </div>
-        <div class="tcard-quote" contenteditable="true" data-person="nusrath" data-placeholder="اكتب تعليق المهندس نصرت هنا... | Nusrath's comment here...">
-            <span class="lang-ar">ما بنيناه في سنوات، تحوّل اليوم إلى نظامٍ يحمله من بعدنا. الحمد لله على البداية، والتوفيق لكل من ساهم في صياغة هذا الإطار.</span>
-            <span class="lang-en">What we built over years has now become a system that will carry on after us. Praise be to God for the start, and thanks to all who helped shape this framework.</span>
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">📍 نصرت القابضة</span><span class="lang-en">📍 Nusrath Holding</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
-    </div>
-
-    <!-- HAMDAN -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">HG</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">حمدان الغامدي</span><span class="lang-en">Hamdan Al-Ghamdi</span></div>
-                <div class="tcard-role"><span class="lang-ar">المستشار العام</span><span class="lang-en">General Counsel</span></div>
+        <div class="grid single" style="margin-top: 14px;">
+            <div>
+                <label><span class="lang-ar">عنوان الملاحظة *</span><span class="lang-en">Title *</span></label>
+                <input type="text" id="cr-title" placeholder="مثال: إضافة شرط ROFR إلى عقد mQsala">
             </div>
         </div>
-        <div class="tcard-quote" contenteditable="true" data-person="hamdan" data-placeholder="اكتب تعليق حمدان هنا... | Hamdan's comment here...">
-            <span class="lang-ar">لم أرَ عملاً يُشبه البناء إلا هذا. كل وثيقةٍ لبنة، وكل توقيعٍ إسمنت. الفخر ليس بما كُتب، بل بأنه كُتب بضمير.</span>
-            <span class="lang-en">I've never seen work that resembles construction more than this. Each document a brick, each signature a mortar. The pride is not in what was written, but that it was written with conscience.</span>
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">⚖ قانوني وحوكمة</span><span class="lang-en">⚖ Legal & Governance</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
-    </div>
-
-    <!-- LIAQATH -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">LA</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">لياقة علي</span><span class="lang-en">Liaqath Ali</span></div>
-                <div class="tcard-role">COO · Superstruct MD</div>
+        <div class="grid single" style="margin-top: 14px;">
+            <div>
+                <label><span class="lang-ar">تفاصيل الاقتراح *</span><span class="lang-en">Proposal Details *</span></label>
+                <textarea id="cr-body" placeholder="صف التعديل المقترح، الأسباب، الأثر المتوقع..."></textarea>
             </div>
         </div>
-        <div class="tcard-quote" contenteditable="true" data-person="liaqath" data-placeholder="اكتب تعليق لياقة هنا... | Liaqath's comment here...">
-            <span class="lang-ar">في الميدان نعرف قيمة النظام. هذه الوثائق ليست ترفاً إدارياً — هي خريطة تُجنّبنا أخطاء كلّفتنا في الماضي وقتاً وعقوداً. شكراً لكل من صبر على التفاصيل.</span>
-            <span class="lang-en">In the field, we know the value of a system. These documents aren't administrative luxury — they are a map that spares us mistakes that once cost us time and contracts. Thanks to all who had patience for the details.</span>
+        <div class="submit-row">
+            <button class="btn-primary" onclick="submitCR()">
+                <span class="lang-ar">📤 إرسال للمراجعة</span><span class="lang-en">📤 Submit for Review</span>
+            </button>
         </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">🏗 العمليات والمقاولات</span><span class="lang-en">🏗 Operations & Contracting</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all"><span class="lang-ar">الكل</span><span class="lang-en">All</span></button>
+        <button class="filter-tab" data-filter="pending">🟡 <span class="lang-ar">مقترحة</span><span class="lang-en">Pending</span></button>
+        <button class="filter-tab" data-filter="review">🔵 <span class="lang-ar">قيد الدراسة</span><span class="lang-en">Under Review</span></button>
+        <button class="filter-tab" data-filter="approved">🟢 <span class="lang-ar">معتمدة</span><span class="lang-en">Approved</span></button>
+        <button class="filter-tab" data-filter="rejected">🔴 <span class="lang-ar">مرفوضة</span><span class="lang-en">Rejected</span></button>
+        <button class="filter-tab" data-filter="modified">🟣 <span class="lang-ar">معدّلة</span><span class="lang-en">Modified</span></button>
+        <button class="filter-tab" data-filter="implemented">✅ <span class="lang-ar">منفّذة</span><span class="lang-en">Implemented</span></button>
     </div>
 
-    <!-- AKMAL -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">AK</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">أكمل</span><span class="lang-en">Akmal</span></div>
-                <div class="tcard-role">HACFI Managing Director</div>
-            </div>
-        </div>
-        <div class="tcard-quote" contenteditable="true" data-person="akmal" data-placeholder="اكتب تعليق أكمل هنا... | Akmal's comment here...">
-            <span class="lang-ar">فصل Art Craft عن HACFI قرارٌ كان يجب أن يأتي منذ سنوات. المجموعة تُكبِر حين تُحترم حدود كل شركة. جاهز للمرحلة القادمة.</span>
-            <span class="lang-en">Separating Art Craft from HACFI is a decision that should have come years ago. A group grows when each company's boundaries are respected. Ready for the next phase.</span>
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">🏭 الصناعة والتصنيع</span><span class="lang-en">🏭 Industry & Manufacturing</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
+    <!-- TOOLBAR -->
+    <div class="toolbar-row">
+        <button onclick="exportCRs()">📥 <span class="lang-ar">تصدير JSON</span><span class="lang-en">Export JSON</span></button>
+        <button onclick="importCRs()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button>
+        <button onclick="printCRs()">🖨 <span class="lang-ar">طباعة</span><span class="lang-en">Print</span></button>
+        <button onclick="clearCRs()">🗑 <span class="lang-ar">مسح الكل</span><span class="lang-en">Clear All</span></button>
     </div>
 
-    <!-- AMAN -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">AM</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">أمان</span><span class="lang-en">Aman</span></div>
-                <div class="tcard-role">Art Craft MD</div>
-            </div>
-        </div>
-        <div class="tcard-quote" contenteditable="true" data-person="aman" data-placeholder="اكتب تعليق أمان هنا... | Aman's comment here...">
-            <span class="lang-ar">Art Craft لم تكن مجرد فرع — كانت حكاية خشبٍ وأيدٍ ماهرة. اليوم تصبح كياناً مستقلاً، وعلامة Metallica تحتاج إلى ما يستحقّها من اهتمام. هنا تبدأ الحكاية الجديدة.</span>
-            <span class="lang-en">Art Craft was never just a branch — it was a story of wood and skilled hands. Today it becomes an independent entity, and the Metallica brand deserves the attention it is owed. Here begins the new story.</span>
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">🪵 النجارة والأثاث</span><span class="lang-en">🪵 Carpentry & Furniture</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
-    </div>
-
-    <!-- MOHAMMED ALI -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">MA</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">محمد علي</span><span class="lang-en">Mohammed Ali</span></div>
-                <div class="tcard-role">CFO · Group</div>
-            </div>
-        </div>
-        <div class="tcard-quote" contenteditable="true" data-person="mohammed-ali" data-placeholder="اكتب تعليق محمد علي... | Mohammed Ali's comment...">
-            <span class="lang-ar">الأرقام تصبح معنىً حين تُبنى على نظام. اليوم، كل ريال سيجد طريقه الصحيح في القوائم — من المنشأ إلى الموطن الضريبي. هذا ما كنا نحتاجه.</span>
-            <span class="lang-en">Numbers acquire meaning when built on a system. Today, every riyal will find its correct path in the statements — from origin to tax residence. This is what we needed.</span>
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">💰 المالية والضرائب</span><span class="lang-en">💰 Finance & Tax</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
-    </div>
-
-    <!-- MASARRAT -->
-    <div class="testimonial-card">
-        <div class="tcard-person">
-            <div class="tcard-avatar">MS</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">مسرّت</span><span class="lang-en">Masarrat</span></div>
-                <div class="tcard-role">CTO · mQsala</div>
-            </div>
-        </div>
-        <div class="tcard-quote" contenteditable="true" data-person="masarrat" data-placeholder="اكتب تعليق مسرّت... | Masarrat's comment...">
-            <span class="lang-ar">التقنية لا تزدهر إلا تحت حوكمةٍ ذكيّة. عقد الشركاء الجديد (SHA) ليس عبئاً بل درعٌ يسمح لنا بأن نركّز على ما نحبّه: بناء المنتج.</span>
-            <span class="lang-en">Technology thrives only under smart governance. The new SHA isn't a burden but a shield that lets us focus on what we love: building the product.</span>
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">💻 التقنية والمنتج</span><span class="lang-en">💻 Tech & Product</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
-    </div>
-
-    <!-- EMPTY SLOT -->
-    <div class="testimonial-card" style="border-style: dashed; background: transparent;">
-        <div class="tcard-person">
-            <div class="tcard-avatar" style="background: transparent; color: #c9a961; border-color: #c9a961;">+</div>
-            <div class="tcard-who">
-                <div class="tcard-name"><span class="lang-ar">عضو جديد</span><span class="lang-en">New Member</span></div>
-                <div class="tcard-role"><span class="lang-ar">أضف اسمك وتعليقك</span><span class="lang-en">Add your name & comment</span></div>
-            </div>
-        </div>
-        <div class="tcard-quote" contenteditable="true" data-person="custom" data-placeholder="اكتب اسمك وكلمتك هنا... | Write your name and words here...">
-        </div>
-        <div class="tcard-foot">
-            <span class="lang-ar">✍ مساحة حرّة</span><span class="lang-en">✍ Free space</span>
-            <button class="save-btn" onclick="saveTestimonial(this)">💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span></button>
-        </div>
-    </div>
-
-</div>
-
-<!-- PUBLIC COMMENTS SECTION -->
-<section class="public-section">
-    <h2><span class="lang-ar">💬 دفتر الزوّار</span><span class="lang-en">💬 Visitors' Guestbook</span></h2>
-    <p class="sub"><span class="lang-ar">اترك كلمة • ملاحظة • تقدير — تبقى هنا محفوظة</span><span class="lang-en">Leave a word • a note • an acknowledgment — it stays here</span></p>
-
-    <div class="comment-form">
-        <div class="row">
-            <input type="text" id="ci-name" placeholder="الاسم / Name" maxlength="60">
-            <input type="text" id="ci-role" placeholder="الصفة (اختياري) / Role (optional)" maxlength="60">
-        </div>
-        <textarea id="ci-body" placeholder="كلمتك... / Your message..." maxlength="800"></textarea>
-        <button class="post-btn" onclick="addComment()">
-            <span class="lang-ar">✨ نشر التعليق</span><span class="lang-en">✨ Post Comment</span>
-        </button>
-    </div>
-
-    <div class="public-list" id="public-list"></div>
-
-    <div class="export-bar">
-        <button onclick="exportComments()">📥 <span class="lang-ar">تصدير</span><span class="lang-en">Export</span></button>
-        <button onclick="importComments()">📤 <span class="lang-ar">استيراد</span><span class="lang-en">Import</span></button>
-        <button onclick="clearComments()">🗑 <span class="lang-ar">مسح الكل</span><span class="lang-en">Clear All</span></button>
-    </div>
-</section>
+    <!-- LIST -->
+    <div id="cr-list"></div>
 
 </main>
 
+<!-- DECISION MODAL -->
+<div class="decision-modal" id="decision-modal">
+    <div class="mc">
+        <h3 id="modal-title"></h3>
+        <label id="modal-label"></label>
+        <textarea id="modal-text" placeholder=""></textarea>
+        <div class="mc-actions">
+            <button class="mc-btn-cancel" onclick="closeModal()"><span class="lang-ar">إلغاء</span><span class="lang-en">Cancel</span></button>
+            <button class="mc-btn-confirm" onclick="confirmModal()"><span class="lang-ar">تأكيد</span><span class="lang-en">Confirm</span></button>
+        </div>
+    </div>
+</div>
+
 <footer>
     <div class="footer-content">
-        <p><span class="lang-ar">© كلمات الفريق — مجموعة نصرت القابضة</span><span class="lang-en">© Voices from the Team — Nusrath Holding Group</span></p>
+        <p><span class="lang-ar">© سجل التعديلات — مجموعة نصرت القابضة</span><span class="lang-en">© Change Request Ledger — Nusrath Holding Group</span></p>
     </div>
 </footer>
 
 <script src="script.js"></script>
 <script>
-/* Comments page specific logic */
 (function() {
-    const KEY_TESTIMONIALS = 'nh_testimonials';
-    const KEY_COMMENTS = 'nh_public_comments';
+    const KEY = 'nh_change_requests';
+    let currentFilter = 'all';
+    let pendingAction = null; // { id, newStatus, label }
 
-    // Load saved testimonials
-    function loadTestimonials() {
-        const saved = JSON.parse(localStorage.getItem(KEY_TESTIMONIALS) || '{}');
-        document.querySelectorAll('[data-person]').forEach(el => {
-            const id = el.dataset.person;
-            if (saved[id]) el.innerHTML = saved[id];
-            // Show placeholder if empty
-            if (!el.textContent.trim()) {
-                el.innerHTML = '<span style="color:#c9a961; font-style:italic; opacity:0.6;">' + (el.dataset.placeholder || '') + '</span>';
-            }
-        });
-    }
+    function load() { return JSON.parse(localStorage.getItem(KEY) || '[]'); }
+    function save(arr) { localStorage.setItem(KEY, JSON.stringify(arr)); }
 
-    window.saveTestimonial = function(btn) {
-        const card = btn.closest('.testimonial-card');
-        const quote = card.querySelector('[data-person]');
-        const id = quote.dataset.person;
-        const saved = JSON.parse(localStorage.getItem(KEY_TESTIMONIALS) || '{}');
-        saved[id] = quote.innerHTML;
-        localStorage.setItem(KEY_TESTIMONIALS, JSON.stringify(saved));
-        btn.classList.add('saved');
-        btn.innerHTML = '✓ <span class="lang-ar">محفوظ</span><span class="lang-en">Saved</span>';
-        setTimeout(() => {
-            btn.classList.remove('saved');
-            btn.innerHTML = '💾 <span class="lang-ar">حفظ</span><span class="lang-en">Save</span>';
-        }, 2000);
+    function escHTML(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+    const STATUS_LABELS = {
+        pending:     { ar: '🟡 مقترحة',    en: '🟡 Pending' },
+        review:      { ar: '🔵 قيد الدراسة', en: '🔵 Under Review' },
+        approved:    { ar: '🟢 معتمدة',    en: '🟢 Approved' },
+        rejected:    { ar: '🔴 مرفوضة',    en: '🔴 Rejected' },
+        modified:    { ar: '🟣 معدّلة',    en: '🟣 Modified' },
+        implemented: { ar: '✅ منفّذة',    en: '✅ Implemented' }
     };
 
-    // Public comments
-    function loadComments() {
-        const list = document.getElementById('public-list');
-        const comments = JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]');
-        if (!comments.length) {
-            list.innerHTML = '<div class="empty-state"><span class="lang-ar">لا توجد تعليقات بعد — كن الأول!</span><span class="lang-en">No comments yet — be the first!</span></div>';
+    const AREA_LABELS = {
+        general:'عام / General', holding:'Holding', hacfi:'HACFI', 'art-craft':'Art Craft',
+        superstruct:'Superstruct', mqsala:'mQsala', governance:'Governance / الحوكمة',
+        doa:'DOA Matrix', documents:'Documents / الوثائق', policies:'Policies / السياسات',
+        split:'Split Plan / خطة الفصل', other:'Other / أخرى'
+    };
+
+    window.submitCR = function() {
+        const author = document.getElementById('cr-author').value.trim();
+        const area = document.getElementById('cr-area').value;
+        const title = document.getElementById('cr-title').value.trim();
+        const body = document.getElementById('cr-body').value.trim();
+        const isRtl = document.body.getAttribute('dir') === 'rtl';
+        if (!author || !title || !body) {
+            alert(isRtl ? 'الرجاء تعبئة الحقول المطلوبة (*)' : 'Please fill required fields (*)');
             return;
         }
-        list.innerHTML = '';
-        comments.forEach((c, i) => {
-            const initials = (c.name || '?').split(' ').map(s => s[0]).slice(0,2).join('').toUpperCase();
-            const date = new Date(c.ts).toLocaleString();
-            const item = document.createElement('div');
-            item.className = 'public-item';
-            item.innerHTML = `
-                <div class="pi-avatar">${initials}</div>
-                <div class="pi-content">
-                    <div class="pi-head">
-                        <div>
-                            <span class="pi-name">${escapeHTML(c.name)}</span>
-                            ${c.role ? '<span class="pi-role-date"> • ' + escapeHTML(c.role) + '</span>' : ''}
-                        </div>
-                        <span class="pi-role-date">${date}</span>
-                    </div>
-                    <div class="pi-body">${escapeHTML(c.body).replace(/\n/g, '<br>')}</div>
-                </div>
-                <button class="pi-delete" onclick="deleteComment(${i})" title="Delete">🗑</button>
-            `;
-            list.appendChild(item);
-        });
-    }
-
-    function escapeHTML(s) {
-        const d = document.createElement('div');
-        d.textContent = s || '';
-        return d.innerHTML;
-    }
-
-    window.addComment = function() {
-        const name = document.getElementById('ci-name').value.trim();
-        const role = document.getElementById('ci-role').value.trim();
-        const body = document.getElementById('ci-body').value.trim();
-        if (!name || !body) {
-            alert(document.body.getAttribute('dir') === 'rtl'
-                ? 'الرجاء كتابة الاسم والرسالة'
-                : 'Please enter name and message');
-            return;
-        }
-        const comments = JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]');
-        comments.unshift({ name, role, body, ts: Date.now() });
-        localStorage.setItem(KEY_COMMENTS, JSON.stringify(comments));
-        document.getElementById('ci-name').value = '';
-        document.getElementById('ci-role').value = '';
-        document.getElementById('ci-body').value = '';
-        loadComments();
-    };
-
-    window.deleteComment = function(idx) {
-        if (!confirm(document.body.getAttribute('dir') === 'rtl' ? 'حذف هذا التعليق؟' : 'Delete this comment?')) return;
-        const comments = JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]');
-        comments.splice(idx, 1);
-        localStorage.setItem(KEY_COMMENTS, JSON.stringify(comments));
-        loadComments();
-    };
-
-    window.exportComments = function() {
-        const data = {
-            testimonials: JSON.parse(localStorage.getItem(KEY_TESTIMONIALS) || '{}'),
-            comments: JSON.parse(localStorage.getItem(KEY_COMMENTS) || '[]'),
-            exportedAt: new Date().toISOString()
+        const arr = load();
+        const cr = {
+            id: 'CR-' + Date.now().toString(36).toUpperCase(),
+            author, area, title, body,
+            status: 'pending',
+            submittedAt: Date.now(),
+            history: [{ status: 'pending', at: Date.now(), by: author, note: 'Submitted' }],
+            decision: null,
+            modification: null
         };
+        arr.unshift(cr);
+        save(arr);
+        document.getElementById('cr-author').value = '';
+        document.getElementById('cr-title').value = '';
+        document.getElementById('cr-body').value = '';
+        render();
+        // scroll to list
+        document.getElementById('cr-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    window.setStatus = function(id, newStatus) {
+        const isRtl = document.body.getAttribute('dir') === 'rtl';
+        // Statuses that just change state without note
+        if (newStatus === 'review' || newStatus === 'implemented') {
+            const arr = load();
+            const cr = arr.find(x => x.id === id);
+            if (!cr) return;
+            cr.status = newStatus;
+            cr.history.push({ status: newStatus, at: Date.now() });
+            save(arr); render();
+            return;
+        }
+        // Statuses that need a note
+        const labels = {
+            approved:  { ar: '✅ اعتماد — سبب القبول', en: '✅ Approval — reason' },
+            rejected:  { ar: '❌ رفض — سبب الرفض', en: '❌ Rejection — reason' },
+            modified:  { ar: '🔄 تعديل — صياغة الفكرة المعدّلة', en: '🔄 Modify — modified version of the idea' }
+        };
+        pendingAction = { id, newStatus };
+        document.getElementById('modal-title').innerHTML = isRtl ? labels[newStatus].ar : labels[newStatus].en;
+        document.getElementById('modal-label').innerHTML = isRtl ? 'اكتب الملاحظة / القرار:' : 'Write the note / decision:';
+        document.getElementById('modal-text').value = '';
+        document.getElementById('modal-text').placeholder = isRtl
+            ? (newStatus === 'modified' ? 'الفكرة المعدّلة الجديدة...' : 'سبب القرار وأي ملاحظات...')
+            : (newStatus === 'modified' ? 'The new modified version...' : 'Decision reason and any notes...');
+        document.getElementById('decision-modal').classList.add('show');
+        setTimeout(() => document.getElementById('modal-text').focus(), 100);
+    };
+
+    window.confirmModal = function() {
+        const text = document.getElementById('modal-text').value.trim();
+        if (!text) { alert('Required'); return; }
+        const arr = load();
+        const cr = arr.find(x => x.id === pendingAction.id);
+        if (!cr) return;
+        cr.status = pendingAction.newStatus;
+        if (pendingAction.newStatus === 'modified') cr.modification = text;
+        else cr.decision = text;
+        cr.history.push({ status: pendingAction.newStatus, at: Date.now(), note: text });
+        save(arr);
+        closeModal();
+        render();
+    };
+
+    window.closeModal = function() {
+        document.getElementById('decision-modal').classList.remove('show');
+        pendingAction = null;
+    };
+
+    window.deleteCR = function(id) {
+        const isRtl = document.body.getAttribute('dir') === 'rtl';
+        if (!confirm(isRtl ? 'حذف هذه الملاحظة نهائياً؟' : 'Delete this change request permanently?')) return;
+        save(load().filter(x => x.id !== id));
+        render();
+    };
+
+    window.exportCRs = function() {
+        const data = { changeRequests: load(), exportedAt: new Date().toISOString(), version: '1.0' };
         const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = `nusrath-voices-${new Date().toISOString().split('T')[0]}.json`;
+        a.download = `nusrath-change-requests-${new Date().toISOString().split('T')[0]}.json`;
         a.click();
     };
 
-    window.importComments = function() {
+    window.importCRs = function() {
         const inp = document.createElement('input');
         inp.type = 'file'; inp.accept = 'application/json';
         inp.onchange = (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
+            const file = e.target.files[0]; if (!file) return;
             const reader = new FileReader();
             reader.onload = (ev) => {
                 try {
                     const data = JSON.parse(ev.target.result);
-                    if (data.testimonials) localStorage.setItem(KEY_TESTIMONIALS, JSON.stringify(data.testimonials));
-                    if (data.comments) localStorage.setItem(KEY_COMMENTS, JSON.stringify(data.comments));
-                    loadTestimonials();
-                    loadComments();
-                    alert('✅ تم الاستيراد / Imported successfully');
+                    if (data.changeRequests) save(data.changeRequests);
+                    render();
+                    alert('✅ Imported');
                 } catch(e) { alert('❌ Invalid file'); }
             };
             reader.readAsText(file);
@@ -665,18 +587,116 @@
         inp.click();
     };
 
-    window.clearComments = function() {
-        if (!confirm(document.body.getAttribute('dir') === 'rtl'
-            ? 'سيتم مسح جميع التعليقات. متأكد؟'
-            : 'All comments will be deleted. Sure?')) return;
-        localStorage.removeItem(KEY_COMMENTS);
-        loadComments();
+    window.printCRs = function() { window.print(); };
+
+    window.clearCRs = function() {
+        const isRtl = document.body.getAttribute('dir') === 'rtl';
+        if (!confirm(isRtl ? 'سيتم حذف جميع الملاحظات. متأكد؟' : 'All change requests will be deleted. Sure?')) return;
+        save([]); render();
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-        loadTestimonials();
-        loadComments();
+    // Filter tabs
+    document.querySelectorAll('.filter-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            renderList();
+        });
     });
+
+    function renderStats() {
+        const arr = load();
+        const counts = { all: arr.length, pending: 0, review: 0, approved: 0, rejected: 0, modified: 0, implemented: 0 };
+        arr.forEach(x => { if (counts[x.status] !== undefined) counts[x.status]++; });
+        const box = document.getElementById('rev-stats');
+        box.innerHTML = `
+            <div class="rev-stat"><div class="rs-num">${counts.all}</div><div class="rs-label"><span class="lang-ar">الإجمالي</span><span class="lang-en">Total</span></div></div>
+            <div class="rev-stat pending"><div class="rs-num">${counts.pending}</div><div class="rs-label"><span class="lang-ar">مقترحة</span><span class="lang-en">Pending</span></div></div>
+            <div class="rev-stat"><div class="rs-num" style="color:#3b82f6;">${counts.review}</div><div class="rs-label"><span class="lang-ar">قيد الدراسة</span><span class="lang-en">Reviewing</span></div></div>
+            <div class="rev-stat approved"><div class="rs-num">${counts.approved}</div><div class="rs-label"><span class="lang-ar">معتمدة</span><span class="lang-en">Approved</span></div></div>
+            <div class="rev-stat rejected"><div class="rs-num">${counts.rejected}</div><div class="rs-label"><span class="lang-ar">مرفوضة</span><span class="lang-en">Rejected</span></div></div>
+            <div class="rev-stat modified"><div class="rs-num">${counts.modified}</div><div class="rs-label"><span class="lang-ar">معدّلة</span><span class="lang-en">Modified</span></div></div>
+            <div class="rev-stat implemented"><div class="rs-num">${counts.implemented}</div><div class="rs-label"><span class="lang-ar">منفّذة</span><span class="lang-en">Implemented</span></div></div>
+        `;
+    }
+
+    function renderList() {
+        const arr = load();
+        const filtered = currentFilter === 'all' ? arr : arr.filter(x => x.status === currentFilter);
+        const box = document.getElementById('cr-list');
+        const isRtl = document.body.getAttribute('dir') === 'rtl';
+        if (!filtered.length) {
+            box.innerHTML = `<div class="empty-state"><span class="lang-ar">لا توجد ملاحظات ${currentFilter === 'all' ? 'بعد — أرسل الأولى!' : 'في هذه الحالة'}.</span><span class="lang-en">No change requests ${currentFilter === 'all' ? 'yet — submit the first one!' : 'in this status.'}</span></div>`;
+            return;
+        }
+        box.innerHTML = filtered.map(cr => {
+            const st = STATUS_LABELS[cr.status] || STATUS_LABELS.pending;
+            const date = new Date(cr.submittedAt).toLocaleDateString();
+            const time = new Date(cr.submittedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            let decisionHTML = '';
+            if (cr.decision && (cr.status === 'approved' || cr.status === 'rejected')) {
+                decisionHTML = `
+                    <div class="cr-decision">
+                        <div class="cr-decision-header">${isRtl ? '📋 القرار' : '📋 Decision'}</div>
+                        <div class="cr-decision-text ${cr.status === 'rejected' ? 'rejected' : ''}">${escHTML(cr.decision).replace(/\n/g,'<br>')}</div>
+                    </div>`;
+            }
+            if (cr.modification && cr.status === 'modified') {
+                decisionHTML = `
+                    <div class="cr-decision">
+                        <div class="cr-decision-header">${isRtl ? '🔄 الفكرة المعدّلة' : '🔄 Modified Version'}</div>
+                        <div class="cr-decision-text modified">${escHTML(cr.modification).replace(/\n/g,'<br>')}</div>
+                    </div>`;
+            }
+
+            // Actions based on current status
+            let actions = '<div class="cr-actions">';
+            if (cr.status === 'pending') {
+                actions += `<button class="cr-btn cr-btn-review" onclick="setStatus('${cr.id}','review')">🔍 <span class="lang-ar">ابدأ الدراسة</span><span class="lang-en">Start Review</span></button>`;
+                actions += `<button class="cr-btn cr-btn-approve" onclick="setStatus('${cr.id}','approved')">✅ <span class="lang-ar">اعتماد</span><span class="lang-en">Approve</span></button>`;
+                actions += `<button class="cr-btn cr-btn-reject" onclick="setStatus('${cr.id}','rejected')">❌ <span class="lang-ar">رفض</span><span class="lang-en">Reject</span></button>`;
+                actions += `<button class="cr-btn cr-btn-modify" onclick="setStatus('${cr.id}','modified')">🔄 <span class="lang-ar">تعديل الفكرة</span><span class="lang-en">Modify Idea</span></button>`;
+            } else if (cr.status === 'review') {
+                actions += `<button class="cr-btn cr-btn-approve" onclick="setStatus('${cr.id}','approved')">✅ <span class="lang-ar">اعتماد</span><span class="lang-en">Approve</span></button>`;
+                actions += `<button class="cr-btn cr-btn-reject" onclick="setStatus('${cr.id}','rejected')">❌ <span class="lang-ar">رفض</span><span class="lang-en">Reject</span></button>`;
+                actions += `<button class="cr-btn cr-btn-modify" onclick="setStatus('${cr.id}','modified')">🔄 <span class="lang-ar">تعديل الفكرة</span><span class="lang-en">Modify Idea</span></button>`;
+            } else if (cr.status === 'approved' || cr.status === 'modified') {
+                actions += `<button class="cr-btn cr-btn-implement" onclick="setStatus('${cr.id}','implemented')">🏁 <span class="lang-ar">تأكيد التنفيذ</span><span class="lang-en">Mark Implemented</span></button>`;
+            }
+            actions += `<button class="cr-btn cr-btn-delete" onclick="deleteCR('${cr.id}')">🗑</button>`;
+            actions += '</div>';
+
+            return `
+                <article class="cr-item status-${cr.status}">
+                    <div class="cr-head">
+                        <div class="cr-title-block">
+                            <div class="cr-title">${escHTML(cr.title)}</div>
+                            <div class="cr-meta">
+                                <span class="cr-area-tag">${AREA_LABELS[cr.area] || cr.area}</span>
+                                <span>👤 ${escHTML(cr.author)}</span>
+                                <span class="dot">•</span>
+                                <span>${date} ${time}</span>
+                                <span class="dot">•</span>
+                                <span style="color:#c9a961;font-weight:600;">${cr.id}</span>
+                            </div>
+                        </div>
+                        <span class="status-chip status-${cr.status}">
+                            <span class="lang-ar">${st.ar}</span><span class="lang-en">${st.en}</span>
+                        </span>
+                    </div>
+                    <div class="cr-body">${escHTML(cr.body)}</div>
+                    ${decisionHTML}
+                    ${actions}
+                </article>
+            `;
+        }).join('');
+    }
+
+    function render() { renderStats(); renderList(); }
+
+    document.addEventListener('DOMContentLoaded', render);
 })();
 </script>
 </body>

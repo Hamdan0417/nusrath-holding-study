@@ -59,7 +59,7 @@
     { url: 'doc-job-descriptions.html', titleAr: 'الأوصاف الوظيفية', titleEn: 'Job Descriptions', keys: ['jd', 'jobs', 'أوصاف'] },
     { url: 'doc-related-party.html', titleAr: 'سياسة الأطراف ذات العلاقة', titleEn: 'Related Party Policy', keys: ['related', 'party', 'أطراف'] },
     { url: 'doc-signature.html', titleAr: 'سياسة التوقيع والتفويض', titleEn: 'Signature & Authorization Policy', keys: ['signature', 'توقيع'] },
-    { url: 'comments.html', titleAr: 'كلمات الفريق', titleEn: 'Voices from the Team', keys: ['voices', 'comments', 'testimonials', 'كلمات', 'تعليقات'] },
+    { url: 'comments.html', titleAr: 'ملاحظات ومقترحات التعديل', titleEn: 'Change Requests & Review', keys: ['revisions', 'change', 'requests', 'feedback', 'تعديلات', 'ملاحظات', 'مقترحات'] },
     { url: 'journey.html', titleAr: 'خاطرة الطريق', titleEn: 'The Journey — Reflection', keys: ['journey', 'reflection', 'خاطرة', 'طريق', 'ختامية'] },
     { url: 'doc-coi.html', titleAr: 'سياسة تعارض المصالح', titleEn: 'Conflict of Interest Policy', keys: ['coi', 'conflict', 'تعارض'] }
   ];

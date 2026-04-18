@@ -483,17 +483,54 @@
     if (picker) picker.classList.toggle('show');
   }
 
-  // ============ MOBILE MENU ============
+  // ============ MOBILE MENU (sidebar drawer) ============
   function setupMobileMenu() {
     const topnav = document.querySelector('.topnav');
-    const content = document.querySelector('.topnav-content');
-    if (!topnav || !content) return;
+    if (!topnav) return;
     if (document.querySelector('.mobile-menu-toggle')) return;
+
+    // Hamburger button (fixed top-right/left)
     const btn = document.createElement('button');
     btn.className = 'mobile-menu-toggle';
-    btn.innerHTML = '☰ ' + (STATE.currentLang === 'ar' ? 'القائمة' : 'Menu');
-    btn.onclick = () => content.classList.toggle('mobile-open');
-    topnav.insertBefore(btn, content);
+    btn.innerHTML = '☰';
+    btn.setAttribute('aria-label', 'Menu');
+    document.body.appendChild(btn);
+
+    // Overlay behind sidebar
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+    document.body.appendChild(overlay);
+
+    function openMenu() {
+      topnav.classList.add('mobile-open');
+      overlay.classList.add('show');
+      btn.innerHTML = '✕';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      topnav.classList.remove('mobile-open');
+      overlay.classList.remove('show');
+      btn.innerHTML = '☰';
+      document.body.style.overflow = '';
+    }
+
+    btn.onclick = () => {
+      if (topnav.classList.contains('mobile-open')) closeMenu();
+      else openMenu();
+    };
+    overlay.onclick = closeMenu;
+
+    // Close menu on link click (mobile)
+    topnav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (window.innerWidth <= 768) closeMenu();
+      });
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && topnav.classList.contains('mobile-open')) closeMenu();
+    });
   }
 
   // ============ EXPORT/IMPORT ============

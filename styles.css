@@ -442,7 +442,7 @@ body[dir="ltr"] .note-popup { right: auto; left: 12px; }
     background: var(--surface);
     border-bottom: 1px solid var(--border);
     padding: 14px 20px;
-    position: sticky; top: 0; z-index: 100;
+    position: relative; z-index: 100;
     box-shadow: var(--shadow-sm);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -1752,8 +1752,7 @@ body.dark-mode .section tr:nth-child(even) td { background: rgba(255,255,255,0.0
     background: #fff !important;
     border-bottom: 1px solid var(--border, #e5d7a8) !important;
     box-shadow: 0 2px 12px rgba(10,30,63,0.05);
-    position: sticky; top: 0; z-index: 90;
-    backdrop-filter: saturate(180%);
+    position: relative; z-index: 90;
 }
 body.dark-mode .topnav {
     background: #1a1f2e !important;
